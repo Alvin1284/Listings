@@ -123,6 +123,35 @@
         .footer-logo { height: 72px; }
     }
 
+    /* Small-screen tweaks */
+    @media (max-width: 640px) {
+    /* ensure hero content sits below the fixed header */
+    .hero-section { padding-top: 6.5rem; min-height: 70vh; }
+    /* slightly reduce hero heading on phones */
+    .hero-section h2 { font-size: 1.6rem !important; line-height: 1.15 !important; }
+    .hero-section p { font-size: 0.95rem !important; }
+
+        /* make apartment images a bit shorter to avoid long scrolling */
+        .apartment-card .relative { height: 12rem; }
+
+        /* larger tap targets for plus/minus and mobile menu */
+        .search-input button { min-width: 40px; min-height: 40px; font-size: 18px; }
+
+        /* mobile menu spacing */
+        #mobile-menu a { padding: 0.75rem 1rem; font-size: 1rem; }
+
+        /* tighten header padding on small screens */
+        #header .container { padding-top: 0.5rem; padding-bottom: 0.5rem; }
+    }
+
+    /* Hero buttons and chevron adjustments for small screens */
+    @media (max-width: 640px) {
+        .hero-actions { flex-direction: column; }
+        .hero-actions a { width: 100%; text-align: center; padding-left: 1rem; padding-right: 1rem; }
+        .hero-chev { position: static; transform: none; margin-top: 0.75rem; }
+        .hero-chev a { font-size: 2rem; }
+    }
+
         .search-input:last-child {
             border-right: none;
         }
@@ -170,8 +199,8 @@
             </div>
         </div>
 
-        <!-- Mobile Menu -->
-        <div class="hidden md:hidden bg-white shadow-md" id="mobile-menu">
+    <!-- Mobile Menu -->
+    <div class="hidden md:hidden bg-white shadow-md absolute top-full left-0 w-full z-40" id="mobile-menu">
             <div class="container mx-auto px-4 py-4">
                 <a href="#home" class="block py-2 text-gray-600 hover:text-primary font-medium">Home</a>
                 <a href="#apartments" class="block py-2 text-gray-600 hover:text-primary font-medium">Apartments</a>
@@ -194,7 +223,7 @@
 
             <!-- Airbnb-style Search Card -->
             <div class="bg-white search-card p-2 md:p-4 max-w-5xl mx-auto mt-8">
-                <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex flex-col md:flex-row justify-between items-center space-y-3 md:space-y-0 md:space-x-4">
                     <div class="search-input w-full md:w-1/4 p-3 md:p-4">
                         <div class="text-left">
                             <label class="block text-xs font-bold text-gray-500 uppercase mb-1">Location</label>
@@ -251,15 +280,15 @@
 
                     <div class="w-full md:w-auto p-3 md:p-4">
                         <button
-                            class="bg-primary hover:bg-opacity-90 text-white w-full md:w-auto px-6 py-3 md:py-4 rounded-lg font-medium transition">
-                            <span class="hidden md:inline">Search</span>
+                            class="bg-primary hover:bg-opacity-90 text-white w-full px-6 py-3 rounded-lg font-medium transition">
+                            <span class="inline">Search</span>
                             <i class="fas fa-search md:ml-2"></i>
                         </button>
                     </div>
                 </div>
             </div>
 
-            <div class="flex flex-wrap gap-4 justify-center mt-8">
+            <div class="flex flex-wrap gap-4 justify-center mt-8 hero-actions">
                 <a href="#apartments"
                     class="bg-primary hover:bg-opacity-90 text-white px-8 py-4 rounded-lg font-medium transition text-lg">View
                     Apartments</a>
@@ -272,7 +301,7 @@
             </div>
         </div>
 
-        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+    <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce hero-chev">
             <a href="#apartments" class="text-white text-4xl">
                 <i class="fas fa-chevron-down"></i>
             </a>
@@ -673,6 +702,7 @@
         document.getElementById('mobile-menu-button').addEventListener('click', function () {
             const menu = document.getElementById('mobile-menu');
             menu.classList.toggle('hidden');
+            menu.classList.toggle('block');
         });
 
         // Adults / Children counters in hero search
