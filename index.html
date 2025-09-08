@@ -4,85 +4,227 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nairobi Luxury Apartments | Premium Rentals</title>
+    <title>The Manna Stays - Luxury Accommodations</title>
+    <meta name="description"
+        content="Discover extraordinary places to stay with The Manna Stays. From luxury villas to boutique retreats, find the perfect accommodation for your next adventure." />
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#D72660',
-                        secondary: '#0f172a',
-                        accent: '#f97316',
-                        whatsapp: '#25D366'
-                    }
-                }
-            }
-        }
-    </script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <style>
-        /* Brand / layout tweaks to better match the logo */
-        .logo-img { filter: drop-shadow(0 6px 12px rgba(0,0,0,0.15)); }
-        .brand-text { color: #D72660; }
+        /* Elegant Manna Stays Design System */
+        :root {
+            --background: 0 0% 100%;
+            --foreground: 0 0% 8%;
+            --card: 0 0% 100%;
+            --card-foreground: 0 0% 8%;
+            --primary: 341 81% 60%;
+            --primary-foreground: 0 0% 100%;
+            --secondary: 0 0% 96%;
+            --secondary-foreground: 0 0% 8%;
+            --muted: 0 0% 98%;
+            --muted-foreground: 0 0% 45%;
+            --accent: 341 81% 60%;
+            --accent-foreground: 0 0% 100%;
+            --border: 0 0% 90%;
+            --elegant-pink: 341 81% 60%;
+            --elegant-dark: 0 0% 8%;
+            --gradient-primary: linear-gradient(135deg, hsl(341 81% 60%), hsl(345 85% 65%));
+            --gradient-hero: linear-gradient(135deg, hsl(0 0% 8%) 0%, hsl(341 81% 60% / 0.1) 100%);
+            --gradient-card: linear-gradient(145deg, hsl(0 0% 100% / 0.95), hsl(341 81% 60% / 0.05));
+            --shadow-luxury: 0 25px 50px -12px hsl(341 81% 60% / 0.25);
+            --shadow-card: 0 10px 30px -10px hsl(0 0% 50% / 0.1);
+            --shadow-glow: 0 0 40px hsl(341 81% 60% / 0.3);
+            --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
 
-        /* Nav link coloring that adapts when header gets the .nav-scroll class */
-        .nav-link { color: #fff; transition: color 0.25s ease; }
-        .mobile-icon { color: #fff; transition: color 0.25s ease; }
-        .nav-scroll .nav-link { color: #0f172a; }
-        .nav-scroll .mobile-icon { color: #0f172a; }
+        /* Typography */
+        .font-script {
+            font-family: 'Playfair Display', serif;
+        }
 
-        body {
+        .font-elegant {
             font-family: 'Inter', sans-serif;
-            scroll-behavior: smooth;
         }
 
-        .hero-section {
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('assets/WLX2---uo4hJmUHwx2HKZ1-P7lSDD73EacfDTFNQrCY=_plaintext_638917516735025036.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
+        /* Design System Classes */
+        .bg-gradient-primary {
+            background: var(--gradient-primary);
         }
 
-        .apartment-card {
-            transition: transform 0.3s ease;
+        .bg-gradient-hero {
+            background: var(--gradient-hero);
         }
 
-        .apartment-card:hover {
-            transform: translateY(-5px);
+        .bg-gradient-card {
+            background: var(--gradient-card);
         }
 
-        .gallery-image {
+        .bg-gradient-subtle {
+            background: var(--gradient-subtle);
+        }
+
+        .shadow-luxury {
+            box-shadow: var(--shadow-luxury);
+        }
+
+        .shadow-card-hover {
+            box-shadow: var(--shadow-card);
+        }
+
+        .shadow-glow {
+            box-shadow: var(--shadow-glow);
+        }
+
+        .text-gradient {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .transition-smooth {
+            transition: var(--transition-smooth);
+        }
+
+        /* Enhanced search form styles */
+        .search-section {
+            background: hsl(0 0% 98%);
+            border: 2px solid hsl(0 0% 90%);
+            border-radius: 16px;
+            padding: 24px;
+        }
+
+        .search-input {
+            background: white;
+            border: 2px solid hsl(0 0% 88%);
             transition: all 0.3s ease;
         }
 
-        .gallery-image:hover {
-            transform: scale(1.02);
+        .search-input:focus {
+            border-color: hsl(341 81% 60%);
+            box-shadow: 0 0 0 3px hsl(341 81% 60% / 0.1);
         }
 
-        .nav-scroll {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        .counter-section {
+            background: white;
+            border: 2px solid hsl(0 0% 88%);
+            border-radius: 12px;
+            padding: 16px;
         }
 
-        .whatsapp-float {
-            position: fixed;
-            width: 60px;
-            height: 60px;
-            bottom: 25px;
-            right: 25px;
-            background-color: #25D366;
-            color: #FFF;
-            border-radius: 50px;
+        .counter-btn {
+            background: hsl(0 0% 96%);
+            border: 1px solid hsl(0 0% 88%);
+            transition: all 0.2s ease;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+        }
+
+        .counter-btn:hover {
+            background: hsl(341 81% 60%);
+            color: white;
+        }
+
+        .property-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .property-card img {
+            transition: transform 0.7s ease;
+        }
+
+        .property-card:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Mobile menu toggle */
+        .mobile-menu {
+            display: none;
+        }
+
+        .mobile-menu.active {
+            display: block;
+        }
+
+        /* New styles for improved design */
+        .hero-overlay {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7));
+        }
+
+        .property-image {
+            height: 250px;
+            object-fit: cover;
+            width: 100%;
+        }
+
+        .testimonial-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .stats-counter {
+            font-size: 2.5rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, hsl(341 81% 60%), hsl(345 85% 65%));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .swiper {
+            width: 100%;
+            height: 100%;
+        }
+
+        .swiper-slide {
             text-align: center;
-            font-size: 30px;
-            box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.2);
-            z-index: 100;
             display: flex;
-            align-items: center;
             justify-content: center;
+            align-items: center;
+        }
+
+        .swiper-slide img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+
+        .swiper-pagination-bullet-active {
+            background: hsl(341 81% 60%) !important;
+        }
+
+        .swiper-button-next,
+        .swiper-button-prev {
+            color: hsl(341 81% 60%) !important;
+        }
+
+        .location-marker {
+            position: relative;
+        }
+
+        .location-marker::before {
+            content: '';
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: hsl(341 81% 60%);
+            border-radius: 50%;
+            left: -20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .pulse {
             animation: pulse 2s infinite;
         }
 
@@ -94,7 +236,7 @@
 
             70% {
                 transform: scale(1.05);
-                box-shadow: 0 0 0 10px rgba(37, 211, 102, 0.0);
+                box-shadow: 0 0 0 10px rgba(37, 211, 102, 0);
             }
 
             100% {
@@ -103,1070 +245,878 @@
             }
         }
 
-        .search-card {
-            border-radius: 16px;
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
-            transition: all 0.3s ease;
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 20px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, hsl(341 81% 60%), hsl(345 85% 65%));
+            color: white;
+            font-size: 28px;
         }
 
-        .search-card:hover {
-            box-shadow: 0 20px 35px -5px rgba(0, 0, 0, 0.3);
+        .tab-button {
+            padding: 12px 24px;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s;
+            cursor: pointer;
         }
 
-        .search-input {
-            border-right: 1px solid #e5e7eb;
+        .tab-button.active {
+            border-bottom: 3px solid hsl(341 81% 60%);
+            color: hsl(341 81% 60%);
         }
 
-    /* Footer logo sizing (larger and responsive) */
-    .footer-logo { height: 120px; width: auto; display: block; margin-bottom: 0.5rem; }
-    @media (max-width: 640px) {
-        .footer-logo { height: 72px; }
-    }
-
-    /* Small-screen tweaks */
-    @media (max-width: 640px) {
-        /* ensure hero content sits below the fixed header */
-        .hero-section { 
-            padding-top: 6.5rem; 
-            min-height: 100vh; 
-            height: auto;
-            padding-bottom: 2rem;
-        }
-        /* slightly reduce hero heading on phones */
-        .hero-section h2 { 
-            font-size: 1.8rem !important; 
-            line-height: 1.2 !important; 
-            margin-bottom: 1rem;
-        }
-        .hero-section p { 
-            font-size: 1rem !important; 
-            margin-bottom: 1.5rem;
+        .tab-content {
+            display: none;
         }
 
-        /* make apartment images a bit shorter to avoid long scrolling */
-        .apartment-card .relative { height: 12rem; }
-
-        /* larger tap targets for plus/minus and mobile menu */
-        .search-input button { 
-            min-width: 44px; 
-            min-height: 44px; 
-            font-size: 18px; 
+        .tab-content.active {
+            display: block;
         }
 
-        /* mobile menu spacing */
-        #mobile-menu a { 
-            padding: 0.75rem 1rem; 
-            font-size: 1rem; 
+        .booking-steps {
+            counter-reset: step-counter;
         }
 
-        /* tighten header padding on small screens */
-        #header .container { 
-            padding-top: 0.5rem; 
-            padding-bottom: 0.5rem; 
-        }
-
-        /* Improve search card mobile layout */
-        .search-card {
-            margin: 1rem;
-            border-radius: 12px;
-            padding: 1rem;
-        }
-
-        /* Better mobile form spacing */
-        .search-input {
-            padding: 1rem !important;
-            margin-bottom: 0.5rem;
-        }
-
-        /* Mobile-friendly apartment cards */
-        .apartment-card {
-            margin: 0 0.5rem;
-        }
-
-        /* Improve mobile gallery */
-        .gallery-image {
-            height: 12rem;
-            margin: 0 0.25rem;
-        }
-
-        /* Better mobile contact form */
-        #contact .md\:flex {
-            flex-direction: column;
-        }
-
-        #contact .md\:w-2\/3,
-        #contact .md\:w-1\/3 {
-            width: 100%;
-        }
-
-        /* Mobile-friendly footer */
-        .footer-logo { 
-            height: 80px; 
-            margin: 0 auto 1rem;
-        }
-
-        /* Hero search card mobile improvements */
-        .search-card .flex {
-            flex-direction: column;
-            gap: 0.75rem;
-        }
-
-        .search-card .search-input {
-            width: 100% !important;
-            border-right: none !important;
-            border-bottom: 1px solid #e5e7eb;
-            padding: 1rem !important;
-        }
-
-        .search-card .search-input:last-child {
-            border-bottom: none;
-        }
-
-        /* Mobile-friendly counter buttons */
-        .search-input button {
-            padding: 0.75rem;
+        .booking-step::before {
+            counter-increment: step-counter;
+            content: counter(step-counter);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, hsl(341 81% 60%), hsl(345 85% 65%));
+            color: white;
             font-weight: bold;
-            min-width: 48px;
-            min-height: 48px;
+            margin-right: 15px;
+            flex-shrink: 0;
         }
 
-        /* Mobile Search Bar Redesign */
-        @media (max-width: 640px) {
-            .search-card {
-                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-                border-radius: 20px;
-                margin: 1rem 0.5rem;
-                padding: 1.5rem;
-                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-                position: relative;
-                overflow: hidden;
+        @media (max-width: 768px) {
+            .stats-counter {
+                font-size: 2rem;
             }
 
-            .search-card::before {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                background: rgba(255, 255, 255, 0.1);
-                backdrop-filter: blur(10px);
-                border-radius: 20px;
-            }
-
-            .search-card .flex {
-                position: relative;
-                z-index: 10;
-                background: rgba(255, 255, 255, 0.95);
-                border-radius: 16px;
-                padding: 1.5rem;
-                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            }
-
-            .search-card .search-input {
-                background: white;
-                border: 2px solid #e5e7eb;
-                border-radius: 12px;
-                padding: 1rem !important;
-                margin-bottom: 0.75rem;
-                transition: all 0.3s ease;
-                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-            }
-
-            .search-card .search-input:focus-within {
-                border-color: #D72660;
-                box-shadow: 0 4px 16px rgba(215, 38, 96, 0.2);
-                transform: translateY(-2px);
-            }
-
-            .search-card .search-input label {
-                color: #374151;
-                font-weight: 600;
-                margin-bottom: 0.5rem;
-            }
-
-            .search-card .search-input select,
-            .search-card .search-input input {
-                background: transparent;
-                border: none;
-                font-size: 1rem;
-                font-weight: 500;
-                color: #1f2937;
-                padding: 0.5rem 0;
-            }
-
-            .search-card .search-input select:focus,
-            .search-card .search-input input:focus {
-                outline: none;
-                background: transparent;
-            }
-
-            /* Mobile Counter Buttons Redesign */
-            .search-card .search-input .flex {
-                background: #f8fafc;
-                border-radius: 8px;
-                padding: 0.5rem;
-                gap: 0.5rem;
-            }
-
-            .search-card .search-input button {
-                background: #D72660;
-                color: white;
-                border: none;
-                border-radius: 8px;
-                padding: 0.75rem;
-                min-width: 44px;
-                min-height: 44px;
-                font-weight: bold;
-                font-size: 1.2rem;
-                transition: all 0.3s ease;
-                box-shadow: 0 2px 8px rgba(215, 38, 96, 0.3);
-            }
-
-            .search-card .search-input button:hover {
-                background: #b91c5b;
-                transform: translateY(-1px);
-                box-shadow: 0 4px 12px rgba(215, 38, 96, 0.4);
-            }
-
-            .search-card .search-input input[readonly] {
-                background: white;
-                border: 2px solid #e5e7eb;
-                border-radius: 6px;
-                text-align: center;
-                font-weight: bold;
-                color: #1f2937;
-                min-width: 60px;
-            }
-
-            /* Mobile Search Button Redesign */
-            .search-card button[type="submit"] {
-                background: linear-gradient(135deg, #D72660 0%, #b91c5b 100%);
-                color: white;
-                border: none;
-                border-radius: 12px;
-                padding: 1rem 2rem;
-                font-weight: 600;
-                font-size: 1.1rem;
-                width: 100%;
-                transition: all 0.3s ease;
-                box-shadow: 0 4px 16px rgba(215, 38, 96, 0.3);
-                position: relative;
-                overflow: hidden;
-            }
-
-            .search-card button[type="submit"]::before {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: -100%;
-                width: 100%;
-                height: 100%;
-                background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-                transition: left 0.5s;
-            }
-
-            .search-card button[type="submit"]:hover::before {
-                left: 100%;
-            }
-
-            .search-card button[type="submit"]:hover {
-                transform: translateY(-2px);
-                box-shadow: 0 8px 24px rgba(215, 38, 96, 0.4);
-            }
-
-            .search-card button[type="submit"] i {
-                margin-left: 0.5rem;
-                font-size: 1.2rem;
+            .feature-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 24px;
             }
         }
-
-        /* Better mobile spacing */
-        .container {
-            padding-left: 1rem;
-            padding-right: 1rem;
-        }
-
-        /* Mobile navigation improvements */
-        #mobile-menu {
-            border-top: 1px solid #e5e7eb;
-        }
-
-        #mobile-menu a {
-            border-bottom: 1px solid #f3f4f6;
-            padding: 1rem;
-        }
-
-        #mobile-menu a:last-child {
-            border-bottom: none;
-        }
-
-        /* Mobile Book Now button improvements */
-        #header .bg-primary {
-            padding: 0.5rem 1rem !important;
-            font-size: 0.875rem !important;
-            white-space: nowrap;
-        }
-
-        /* Hero actions mobile improvements */
-        .hero-actions { 
-            flex-direction: column; 
-            gap: 1rem;
-            padding: 0 1rem;
-            margin-top: 1.5rem;
-        }
-        .hero-actions a { 
-            width: 100%; 
-            text-align: center; 
-            padding: 1rem; 
-            font-size: 1rem;
-        }
-        .hero-chev { 
-            position: static; 
-            transform: none; 
-            margin-top: 1.5rem; 
-        }
-        .hero-chev a { 
-            font-size: 2rem; 
-        }
-    }
-
-    /* Tablet improvements */
-    @media (min-width: 641px) and (max-width: 1024px) {
-        .hero-section h2 {
-            font-size: 2.5rem !important;
-        }
-        
-        .search-card {
-            margin: 2rem;
-        }
-
-        .apartment-card {
-            margin: 0 0.5rem;
-        }
-    }
-
-    /* Touch-friendly improvements for all mobile devices */
-    @media (hover: none) and (pointer: coarse) {
-        .apartment-card:hover {
-            transform: none;
-        }
-
-        .gallery-image:hover {
-            transform: none;
-        }
-
-        /* Larger touch targets */
-        button, a {
-            min-height: 44px;
-            min-width: 44px;
-        }
-
-        /* Better mobile scrolling */
-        .apartment-card {
-            scroll-snap-align: start;
-        }
-
-        .grid {
-            scroll-snap-type: x mandatory;
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-        }
-    }
-
-    /* Additional mobile hero improvements */
-    @media (max-width: 480px) {
-        .hero-section {
-            padding-top: 5rem;
-            padding-bottom: 1rem;
-        }
-        
-        .hero-section h2 {
-            font-size: 1.5rem !important;
-            line-height: 1.3 !important;
-            margin-bottom: 0.75rem;
-        }
-        
-        .hero-section p {
-            font-size: 0.9rem !important;
-            margin-bottom: 1rem;
-        }
-        
-        .search-card {
-            margin: 0.5rem;
-            padding: 0.75rem;
-        }
-        
-        .search-card .search-input {
-            padding: 0.75rem !important;
-            margin-bottom: 0.5rem;
-        }
-        
-        .hero-actions {
-            margin-top: 1rem;
-            gap: 0.75rem;
-        }
-        
-        .hero-actions a {
-            padding: 0.75rem;
-            font-size: 0.9rem;
-        }
-        
-        .hero-chev {
-            margin-top: 1rem;
-        }
-        
-        .hero-chev a {
-            font-size: 1.5rem;
-        }
-
-        /* Extra small mobile Book Now button */
-        #header .bg-primary {
-            padding: 0.375rem 0.75rem !important;
-            font-size: 0.8rem !important;
-            white-space: nowrap;
-            min-width: auto;
-        }
-
-        /* Extra small mobile search bar improvements */
-        .search-card {
-            margin: 0.75rem 0.25rem;
-            padding: 1.25rem;
-        }
-
-        .search-card .flex {
-            padding: 1.25rem;
-        }
-
-        .search-card .search-input {
-            padding: 0.875rem !important;
-            margin-bottom: 0.5rem;
-        }
-
-        .search-card .search-input label {
-            font-size: 0.75rem;
-            margin-bottom: 0.375rem;
-        }
-
-        .search-card .search-input select,
-        .search-card .search-input input {
-            font-size: 0.9rem;
-        }
-
-        .search-card button[type="submit"] {
-            padding: 0.875rem 1.5rem;
-            font-size: 1rem;
-        }
-    }
-
-    /* Landscape mobile improvements */
-    @media (max-width: 768px) and (orientation: landscape) {
-        .hero-section {
-            min-height: 80vh;
-            padding-top: 6.5rem;
-        }
-        
-        .hero-section h2 {
-            font-size: 2rem !important;
-            margin-bottom: 0.5rem;
-        }
-        
-        .hero-section p {
-            font-size: 1rem !important;
-            margin-bottom: 1rem;
-        }
-        
-        .search-card {
-            margin: 0.5rem 2rem;
-        }
-    }
     </style>
 </head>
 
-<body class="bg-gray-50">
-    <!-- WhatsApp Float Button -->
-    <a href="https://wa.me/254700123456?text=Hi,%20I'm%20interested%20in%20your%20apartments" class="whatsapp-float"
-        target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </a>
+<body class="bg-white text-gray-800 font-elegant">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-200 shadow-md">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center space-x-3">
+                    <img src="assets/logo.jpg" alt="The Manna Stays" class="h-12 w-auto rounded-lg">
+                    <span class="flex items-end font-bold text-xl md:text-2xl font-script">
+                        <span class="text-black">The</span>
+                        <span class="mx-1" style="color: hsl(341,81%,60%)">Manna</span>
+                        <span class="text-black">Stays</span>
+                    </span>
+                </a>
 
-    <!-- Header/Navigation -->
-    <header id="header" class="fixed w-full z-50 transition-all duration-300 bg-transparent">
-        <div class="container mx-auto px-4 py-4">
-            <div class="flex justify-between items-center">
-                <div class="flex items-center space-x-2">
-                    <img src="assets/logo.jpg" alt="The Manna Stays Logo" class="logo-img h-14 w-auto">
-                    <span class="font-bold text-xl brand-text">The Manna Stays</span>
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="index.html" class="font-semibold" style="color: hsl(341 81% 60%)">Home</a>
+                    <a href="gallery.html" class="text-gray-600 hover:text-gray-800 transition-colors">Properties</a>
+                    <a href="#testimonials" class="text-gray-600 hover:text-gray-800 transition-colors">Testimonials</a>
+                    <a href="#contact" class="text-gray-600 hover:text-gray-800 transition-colors">Contact</a>
+                    <a href="https://wa.me/1234567890?text=Hi,%20I%27m%20interested%20in%20your%20properties"
+                        target="_blank"
+                        class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition-colors flex items-center">
+                        <i class="fab fa-whatsapp mr-2"></i>
+                        WhatsApp
+                    </a>
                 </div>
 
-                <nav class="hidden md:flex space-x-10">
-                    <a href="#home" class="nav-link hover:text-primary font-medium">Home</a>
-                    <a href="#apartments" class="nav-link hover:text-primary font-medium">Apartments</a>
-                    <a href="#gallery" class="nav-link hover:text-primary font-medium">Gallery</a>
-                    <a href="#contact" class="nav-link hover:text-primary font-medium">Contact</a>
-                </nav>
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden p-2">
+                    <i class="fas fa-bars text-gray-600 text-xl"></i>
+                </button>
+            </div>
 
-                <div class="flex items-center space-x-4">
-                    <a href="#contact"
-                        class="bg-primary text-white px-5 py-2 rounded-lg font-medium hover:bg-opacity-90 transition">Book
-                        Now</a>
-                    <button class="md:hidden" id="mobile-menu-button">
-                        <i class="fas fa-bars text-xl mobile-icon"></i>
+            <!-- Mobile Navigation -->
+            <div id="mobile-menu" class="mobile-menu md:hidden mt-4 pt-4 border-t border-gray-200">
+                <div class="flex flex-col space-y-4 pb-4">
+                    <a href="index.html" class="font-semibold" style="color: hsl(341 81% 60%)">Home</a>
+                    <a href="gallery.html" class="text-gray-600 hover:text-gray-800 transition-colors">Properties</a>
+                    <a href="#testimonials" class="text-gray-600 hover:text-gray-800 transition-colors">Testimonials</a>
+                    <a href="#contact" class="text-gray-600 hover:text-gray-800 transition-colors">Contact</a>
+                    <a href="https://wa.me/1234567890?text=Hi,%20I%27m%20interested%20in%20your%20properties"
+                        target="_blank" class="text-green-600 hover:text-green-700 transition-colors flex items-center">
+                        <i class="fab fa-whatsapp mr-2"></i>
+                        WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center pt-20"
+        style="background-image: url('assets/rnb6tX61flLCW6QY7dVnvZD_KsIZ1NiEMhwGe86bSnc=_plaintext_638917518844958067.jpg'); background-size: cover; background-position: center;">
+        <div class="hero-overlay absolute inset-0"></div>
+        <div class="container mx-auto px-4 text-center relative z-10">
+            <div class="max-w-4xl mx-auto">
+                <span
+                    class="inline-block mb-6 bg-white/20 text-white border border-white/30 px-4 py-2 rounded-full text-sm font-medium">
+                    ✨ Find Your Perfect Stay
+                </span>
+
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight font-script">
+                    Find Your Perfect
+                    <span class="block" style="color: hsl(341,81%,60%)">Nairobi Apartment</span>
+                </h1>
+
+                <p class="text-lg md:text-xl text-white/90 mb-10 max-w-3xl mx-auto">
+                    Experience luxury accommodations with personalized service and unforgettable memories in the heart
+                    of Nairobi
+                </p>
+
+                <!-- Enhanced Search Bar -->
+                <div class="max-w-6xl mx-auto mb-10">
+                    <div class="search-section">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-4 lg:gap-6">
+                            <!-- Destination -->
+                            <div class="lg:col-span-2 sm:col-span-2">
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Destination</label>
+                                <input type="text" placeholder="Where would you like to stay?"
+                                    class="search-input w-full px-4 py-3 rounded-lg text-base placeholder-gray-500 outline-none">
+                            </div>
+
+                            <!-- Check-in -->
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Check-in</label>
+                                <input type="date" id="checkin"
+                                    class="search-input w-full px-4 py-3 rounded-lg outline-none">
+                            </div>
+
+                            <!-- Check-out -->
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Check-out</label>
+                                <input type="date" id="checkout"
+                                    class="search-input w-full px-4 py-3 rounded-lg outline-none">
+                            </div>
+
+                            <!-- Adults -->
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Adults</label>
+                                <div class="counter-section">
+                                    <div class="flex items-center justify-center gap-3">
+                                        <button type="button"
+                                            class="counter-btn flex items-center justify-center text-sm font-medium"
+                                            onclick="changeGuestCount('adults', -1)">-</button>
+                                        <span id="adults-count" class="w-8 text-center text-base font-medium">2</span>
+                                        <button type="button"
+                                            class="counter-btn flex items-center justify-center text-sm font-medium"
+                                            onclick="changeGuestCount('adults', 1)">+</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Children -->
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Children</label>
+                                <div class="counter-section">
+                                    <div class="flex items-center justify-center gap-3">
+                                        <button type="button"
+                                            class="counter-btn flex items-center justify-center text-sm font-medium"
+                                            onclick="changeGuestCount('children', -1)">-</button>
+                                        <span id="children-count" class="w-8 text-center text-base font-medium">0</span>
+                                        <button type="button"
+                                            class="counter-btn flex items-center justify-center text-sm font-medium"
+                                            onclick="changeGuestCount('children', 1)">+</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Search Button -->
+                        <div class="mt-6 flex justify-center">
+                            <button
+                                class="bg-gradient-primary text-white px-8 py-4 rounded-lg hover:shadow-glow transition-all font-medium text-lg flex items-center w-full sm:w-auto justify-center">
+                                <i class="fas fa-search mr-3"></i>
+                                Find Your Perfect Stay
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex flex-col sm:flex-row flex-wrap justify-center gap-4">
+                    <a href="gallery.html"
+                        class="bg-gradient-primary text-white px-8 py-3 rounded-lg hover:shadow-lg transition-all inline-flex items-center justify-center font-medium">
+                        Explore Properties
+                        <i class="fas fa-arrow-right ml-3"></i>
+                    </a>
+                    <button onclick="scrollToSection('testimonials')"
+                        class="bg-white/10 text-white border border-white/30 hover:bg-white/20 px-8 py-3 rounded-lg transition-all font-medium">
+                        See Testimonials
                     </button>
                 </div>
             </div>
         </div>
 
-    <!-- Mobile Menu -->
-    <div class="hidden md:hidden bg-white shadow-md absolute top-full left-0 w-full z-40" id="mobile-menu">
-            <div class="container mx-auto px-4 py-4">
-                <a href="#home" class="block py-2 text-gray-600 hover:text-primary font-medium">Home</a>
-                <a href="#apartments" class="block py-2 text-gray-600 hover:text-primary font-medium">Apartments</a>
-                <a href="#gallery" class="block py-2 text-gray-600 hover:text-primary font-medium">Gallery</a>
-                <a href="#contact" class="block py-2 text-gray-600 hover:text-primary font-medium">Contact</a>
-                <a href="https://wa.me/254700123456?text=Hi,%20I'm%20interested%20in%20your%20apartments"
-                    target="_blank" class="block py-2 text-gray-600 hover:text-primary font-medium">
-                    <i class="fab fa-whatsapp text-whatsapp mr-2"></i> WhatsApp Us
-                </a>
-            </div>
-        </div>
-    </header>
-
-    <!-- Hero Section with Airbnb-style Search -->
-    <section id="home" class="hero-section flex items-center justify-center pt-16">
-        <div class="container mx-auto px-4 text-center text-white">
-            <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Find Your Perfect Nairobi Apartment</h2>
-            <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">Experience luxury living with our modern,
-                fully-furnished apartments in prime locations.</p>
-
-            <!-- Airbnb-style Search Card -->
-            <div class="bg-white search-card p-2 md:p-4 max-w-5xl mx-auto mt-8">
-                <div class="flex flex-col md:flex-row justify-between items-center space-y-3 md:space-y-0 md:space-x-4">
-                    <div class="search-input w-full md:w-1/4 p-3 md:p-4">
-                        <div class="text-left">
-                            <label class="block text-xs font-bold text-gray-500 uppercase mb-1">Location</label>
-                            <select class="w-full text-gray-700 focus:outline-none">
-                                <option>Kilimani</option>
-                                <option>South B</option>
-                                <option>Nairobi West</option>
-                                <option>All Locations</option>
-                            </select>
-                        </div>
+        <!-- Floating Stats -->
+        <!-- <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 hidden lg:block">
+            <div class="bg-white/95 backdrop-blur rounded-2xl p-6 shadow-luxury">
+                <div class="flex gap-8">
+                    <div class="text-center">
+                        <div class="stats-counter">500+</div>
+                        <div class="text-sm text-gray-600 mt-1">Happy Guests</div>
                     </div>
-
-                    <div class="search-input w-full md:w-1/4 p-3 md:p-4">
-                        <div class="text-left">
-                            <label class="block text-xs font-bold text-gray-500 uppercase mb-1">Check In</label>
-                            <input type="date" class="w-full text-gray-700 focus:outline-none">
-                        </div>
+                    <div class="text-center">
+                        <div class="stats-counter">50+</div>
+                        <div class="text-sm text-gray-600 mt-1">Properties</div>
                     </div>
-
-                    <div class="search-input w-full md:w-1/4 p-3 md:p-4">
-                        <div class="text-left">
-                            <label class="block text-xs font-bold text-gray-500 uppercase mb-1">Check Out</label>
-                            <input type="date" class="w-full text-gray-700 focus:outline-none">
-                        </div>
+                    <div class="text-center">
+                        <div class="stats-counter">4.9</div>
+                        <div class="text-sm text-gray-600 mt-1">Average Rating</div>
                     </div>
-
-                    <div class="search-input w-full md:w-1/4 p-3 md:p-4">
-                        <div class="text-left">
-                            <label class="block text-xs font-bold text-gray-500 uppercase mb-1">Adults</label>
-                            <div class="flex items-center space-x-2">
-                                <button type="button" id="adults-decr"
-                                    class="bg-gray-100 text-secondary px-3 py-1 rounded-lg hover:bg-gray-200">-</button>
-                                <input type="text" id="adults-count" value="1" readonly
-                                    class="w-12 text-center border border-gray-200 rounded-md bg-white text-gray-800">
-                                <button type="button" id="adults-incr"
-                                    class="bg-gray-100 text-secondary px-3 py-1 rounded-lg hover:bg-gray-200">+</button>
-                            </div>
-
-                            <label class="block text-xs font-bold text-gray-500 uppercase mb-1 mt-4">Children</label>
-                            <div class="flex items-center space-x-2">
-                                <button type="button" id="children-decr"
-                                    class="bg-gray-100 text-secondary px-3 py-1 rounded-lg hover:bg-gray-200">-</button>
-                                <input type="text" id="children-count" value="0" readonly
-                                    class="w-12 text-center border border-gray-200 rounded-md bg-white text-gray-800">
-                                <button type="button" id="children-incr"
-                                    class="bg-gray-100 text-secondary px-3 py-1 rounded-lg hover:bg-gray-200">+</button>
-                            </div>
-
-                            <!-- hidden inputs (for later form integration) -->
-                            <input type="hidden" id="adults" name="adults" value="1">
-                            <input type="hidden" id="children" name="children" value="0">
-                        </div>
-                    </div>
-
-                    <div class="w-full md:w-auto p-3 md:p-4">
-                        <button
-                            class="bg-primary hover:bg-opacity-90 text-white w-full px-6 py-3 rounded-lg font-medium transition">
-                            <span class="inline">Search</span>
-                            <i class="fas fa-search md:ml-2"></i>
-                        </button>
+                    <div class="text-center">
+                        <div class="stats-counter">24/7</div>
+                        <div class="text-sm text-gray-600 mt-1">Support</div>
                     </div>
                 </div>
             </div>
-
-            <div class="flex flex-wrap gap-4 justify-center mt-8 hero-actions">
-                <a href="#apartments"
-                    class="bg-primary hover:bg-opacity-90 text-white px-8 py-4 rounded-lg font-medium transition text-lg">View
-                    Apartments</a>
-                <!-- Book a Tour removed per request -->
-                <a href="https://wa.me/254700123456?text=Hi,%20I'm%20interested%20in%20your%20apartments"
-                    target="_blank"
-                    class="bg-whatsapp hover:bg-green-500 text-white px-8 py-4 rounded-lg font-medium transition text-lg">
-                    <i class="fab fa-whatsapp mr-2"></i> Chat Now
-                </a>
-            </div>
-        </div>
-
-    <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce hero-chev">
-            <a href="#apartments" class="text-white text-4xl">
-                <i class="fas fa-chevron-down"></i>
-            </a>
-        </div>
+        </div> -->
     </section>
 
-    <!-- Features Section -->
-    <section class="py-16 bg-white">
+    <!-- Featured Properties -->
+    <section class="py-20 bg-gray-50">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center text-secondary mb-12">Why Choose Our Apartments</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="text-center p-6 rounded-lg">
-                    <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-map-marker-alt text-primary text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-2">Prime Locations</h3>
-                    <p class="text-gray-600">Situated in the most desirable neighborhoods with easy access to amenities.
-                    </p>
-                </div>
-
-                <div class="text-center p-6 rounded-lg">
-                    <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-couch text-primary text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-2">Fully Furnished</h3>
-                    <p class="text-gray-600">Modern furniture and appliances included for a comfortable living
-                        experience.</p>
-                </div>
-
-                <div class="text-center p-6 rounded-lg">
-                    <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-shield-alt text-primary text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-2">24/7 Security</h3>
-                    <p class="text-gray-600">Gated compounds with professional security personnel for your peace of
-                        mind.</p>
-                </div>
+            <div class="text-center mb-16">
+                <span
+                    class="inline-block mb-4 bg-white text-gray-800 px-4 py-2 rounded-full text-sm font-medium shadow-sm">
+                    Featured Properties
+                </span>
+                <h2 class="text-4xl md:text-5xl font-bold mb-6 font-script">Handpicked for You</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    Discover our most popular properties, carefully selected for their exceptional quality and guest
+                    satisfaction
+                </p>
             </div>
-        </div>
-    </section>
 
-    <!-- Apartments Section -->
-    <section id="apartments" class="py-16 bg-gray-50">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center text-secondary mb-4">Our Apartments</h2>
-            <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">Browse our selection of premium apartments
-                available for booking. Each unit is designed for comfort and style.</p>
+            <!-- Properties Tabs -->
+            <div class="flex justify-center mb-12 border-b border-gray-200">
+                <!-- <div class="flex space-x-2 md:space-x-6">
+                    <button class="tab-button active" data-tab="all">All Properties</button>
+                    <button class="tab-button" data-tab="apartments">Apartments</button>
+                    <button class="tab-button" data-tab="studios">Studios</button>
+                    <button class="tab-button" data-tab="luxury">Luxury</button>
+                </div> -->
+            </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Kilimani 1-Bedroom -->
-                <div class="apartment-card bg-white rounded-xl shadow-md overflow-hidden">
-                    <div class="relative h-56 overflow-hidden">
-                        <img src="assets/AC_v1xdEUUHClk76gqICnUlMBCIa-6CA4zkCELqi4LQ=_plaintext_638917516780851508.jpg"
-                            alt="Kilimani 1-Bedroom Apartment" class="w-full h-full object-cover">
-                        <div
-                            class="absolute top-4 right-4 bg-primary text-white px-3 py-1 rounded-full text-sm font-medium">
-                            KSh 45,000/month</div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+                <!-- Property Card 1 -->
+                <div
+                    class="property-card bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-smooth">
+                    <div class="relative overflow-hidden">
+                        <img src="assets/WLX2---uo4hJmUHwx2HKZ1-P7lSDD73EacfDTFNQrCY=_plaintext_638917516735025036.jpg"
+                            alt="Luxury Apartment" class="property-image">
+                        <div class="absolute top-4 left-4">
+                            <span
+                                class="bg-orange-500 text-white px-3 py-1 rounded-full text-xs font-medium">Featured</span>
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <button class="bg-white/90 p-2 rounded-full hover:bg-white transition-colors">
+                                <i class="far fa-heart text-gray-600"></i>
+                            </button>
+                        </div>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold text-secondary mb-2">Kilimani - 1 Bedroom</h3>
-                        <p class="text-gray-600 mb-4">Spacious 1-bedroom apartment in the heart of Kilimani with modern
-                            finishes and amenities.</p>
-                        <ul class="space-y-2 mb-6">
-                            <li class="flex items-center text-gray-600">
-                                <i class="fas fa-bed text-primary mr-2"></i>
-                                <span>1 Bedroom</span>
-                            </li>
-                            <li class="flex items-center text-gray-600">
-                                <i class="fas fa-bath text-primary mr-2"></i>
-                                <span>1 Bathroom</span>
-                            </li>
-                            <li class="flex items-center text-gray-600">
-                                <i class="fas fa-ruler-combined text-primary mr-2"></i>
-                                <span>650 sq ft</span>
-                            </li>
-                            <li class="flex items-center text-gray-600">
-                                <i class="fas fa-wifi text-primary mr-2"></i>
-                                <span>High-speed Internet</span>
-                            </li>
-                        </ul>
-                        <a href="#contact"
-                            class="block w-full bg-primary hover:bg-opacity-90 text-white text-center py-3 rounded-lg font-medium transition mb-3">Book
-                            Now</a>
-                        <a href="https://wa.me/254700123456?text=Hi,%20I'm%20interested%20in%20the%20Kilimani%201-bedroom%20apartment"
-                            target="_blank"
-                            class="block w-full bg-whatsapp hover:bg-green-500 text-white text-center py-3 rounded-lg font-medium transition">
-                            <i class="fab fa-whatsapp mr-2"></i> WhatsApp
-                        </a>
-                    </div>
-                </div>
-
-                <!-- South B Studio -->
-                <div class="apartment-card bg-white rounded-xl shadow-md overflow-hidden">
-                    <div class="relative h-56 overflow-hidden">
-                        <img src="assets/7JzW47nuDgEpXozZteNrEmzsFi9aVaqMwwUE3XQoO-w=_plaintext_638917516765900340.jpg"
-                            alt="South B Studio Apartment" class="w-full h-full object-cover">
-                        <div
-                            class="absolute top-4 right-4 bg-primary text-white px-3 py-1 rounded-full text-sm font-medium">
-                            KSh 30,000/month</div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-secondary mb-2">South B - Studio</h3>
-                        <p class="text-gray-600 mb-4">Modern studio apartment in South B, perfect for singles or
-                            couples. Fully equipped and secure.</p>
-                        <ul class="space-y-2 mb-6">
-                            <li class="flex items-center text-gray-600">
-                                <i class="fas fa-bed text-primary mr-2"></i>
-                                <span>Studio Layout</span>
-                            </li>
-                            <li class="flex items-center text-gray-600">
-                                <i class="fas fa-bath text-primary mr-2"></i>
-                                <span>1 Bathroom</span>
-                            </li>
-                            <li class="flex items-center text-gray-600">
-                                <i class="fas fa-ruler-combined text-primary mr-2"></i>
-                                <span>450 sq ft</span>
-                            </li>
-                            <li class="flex items-center text-gray-600">
-                                <i class="fas fa-parking text-primary mr-2"></i>
-                                <span>Parking Available</span>
-                            </li>
-                        </ul>
-                        <a href="#contact"
-                            class="block w-full bg-primary hover:bg-opacity-90 text-white text-center py-3 rounded-lg font-medium transition mb-3">Book
-                            Now</a>
-                        <a href="https://wa.me/254700123456?text=Hi,%20I'm%20interested%20in%20the%20South%20B%20studio%20apartment"
-                            target="_blank"
-                            class="block w-full bg-whatsapp hover:bg-green-500 text-white text-center py-3 rounded-lg font-medium transition">
-                            <i class="fab fa-whatsapp mr-2"></i> WhatsApp
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Nairobi West Studio -->
-                <div class="apartment-card bg-white rounded-xl shadow-md overflow-hidden">
-                    <div class="relative h-56 overflow-hidden">
-                        <img src="assets/9xCAYhF1ryiJwsMAlQww14UgRru5N_57aZOUtn6tC9g=_plaintext_638917517854012132.jpg"
-                            alt="Nairobi West Studio Apartment" class="w-full h-full object-cover">
-                        <div
-                            class="absolute top-4 right-4 bg-primary text-white px-3 py-1 rounded-full text-sm font-medium">
-                            KSh 28,000/month</div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-secondary mb-2">Nairobi West - Studio</h3>
-                        <p class="text-gray-600 mb-4">Cozy studio apartment in Nairobi West with modern amenities and
-                            convenient access to transport.</p>
-                        <ul class="space-y-2 mb-6">
-                            <li class="flex items-center text-gray-600">
-                                <i class="fas fa-bed text-primary mr-2"></i>
-                                <span>Studio Layout</span>
-                            </li>
-                            <li class="flex items-center text-gray-600">
-                                <i class="fas fa-bath text-primary mr-2"></i>
-                                <span>1 Bathroom</span>
-                            </li>
-                            <li class="flex items-center text-gray-600">
-                                <i class="fas fa-ruler-combined text-primary mr-2"></i>
-                                <span>400 sq ft</span>
-                            </li>
-                            <li class="flex items-center text-gray-600">
-                                <i class="fas fa-tint text-primary mr-2"></i>
-                                <span>24/7 Water Supply</span>
-                            </li>
-                        </ul>
-                        <a href="#contact"
-                            class="block w-full bg-primary hover:bg-opacity-90 text-white text-center py-3 rounded-lg font-medium transition mb-3">Book
-                            Now</a>
-                        <a href="https://wa.me/254700123456?text=Hi,%20I'm%20interested%20in%20the%20Nairobi%20West%20studio%20apartment"
-                            target="_blank"
-                            class="block w-full bg-whatsapp hover:bg-green-500 text-white text-center py-3 rounded-lg font-medium transition">
-                            <i class="fab fa-whatsapp mr-2"></i> WhatsApp
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Gallery Section -->
-    <section id="gallery" class="py-16 bg-white">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center text-secondary mb-4">Gallery</h2>
-            <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">Take a visual tour of our beautifully designed
-                apartments and amenities.</p>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                <div class="gallery-image rounded-lg overflow-hidden h-56">
-                    <img src="assets/7eIgonvgW9XqR3-g0sSR5KSAOGuzqxX02NMOOX9eGL0=_plaintext_638917518850342158.jpg"
-                        alt="Apartment Interior" class="w-full h-full object-cover">
-                </div>
-                <div class="gallery-image rounded-lg overflow-hidden h-56">
-                    <img src="assets/8mV0vgTobe46gCkVMdrnsK64zP47rE2aVMWG-bGxEGg=_plaintext_638917517343809697.jpg"
-                        alt="Apartment Kitchen" class="w-full h-full object-cover">
-                </div>
-                <div class="gallery-image rounded-lg overflow-hidden h-56">
-                    <img src="assets/64KX66ElbYSeVF2uKDV4T1z2gVZH9NxNMgBAcloO5eo=_plaintext_638917517844521117.jpg"
-                        alt="Apartment Bathroom" class="w-full h-full object-cover">
-                </div>
-                <div class="gallery-image rounded-lg overflow-hidden h-56">
-                    <img src="assets/BGgvVK8kRmn6C6pPKIfEnmJ6Raes_up9G6C6Nisay8k=_plaintext_638917518928970881.jpg"
-                        alt="Apartment Exterior" class="w-full h-full object-cover">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact/Booking Section -->
-    <section id="contact" class="py-16 bg-gray-50">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center text-secondary mb-4">Book a Viewing</h2>
-            <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">Interested in one of our apartments? Fill out
-                the form below and we'll contact you to schedule a viewing.</p>
-
-            <div class="max-w-3xl mx-auto bg-white rounded-xl shadow-md overflow-hidden">
-                <div class="md:flex">
-                    <div class="md:w-2/3 p-8">
-                        <form id="bookingForm" class="space-y-6">
-                            <div>
-                                <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
-                                <input type="text" id="name"
-                                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary"
-                                    required>
-                            </div>
-
-                            <div>
-                                <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email
-                                    Address</label>
-                                <input type="email" id="email"
-                                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary"
-                                    required>
-                            </div>
-
-                            <div>
-                                <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Phone
-                                    Number</label>
-                                <input type="tel" id="phone"
-                                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary"
-                                    required>
-                            </div>
-
-                            <div>
-                                <label for="apartment" class="block text-sm font-medium text-gray-700 mb-1">Preferred
-                                    Apartment</label>
-                                <select id="apartment"
-                                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary"
-                                    required>
-                                    <option value="">Select an apartment</option>
-                                    <option value="kilimani">Kilimani - 1 Bedroom</option>
-                                    <option value="southb">South B - Studio</option>
-                                    <option value="nairobiwest">Nairobi West - Studio</option>
-                                </select>
-                            </div>
-
-                            <div>
-                                <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Message
-                                    (Optional)</label>
-                                <textarea id="message" rows="4"
-                                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary"></textarea>
-                            </div>
-
-                            <button type="submit"
-                                class="w-full bg-primary hover:bg-opacity-90 text-white py-3 px-4 rounded-lg font-medium transition">Submit
-                                Booking Request</button>
-                        </form>
-                    </div>
-
-                    <div class="md:w-1/3 bg-primary text-white p-8">
-                        <h3 class="text-xl font-bold mb-4">Contact Information</h3>
-                        <div class="space-y-4">
-                            <div class="flex items-start">
-                                <i class="fas fa-map-marker-alt mt-1 mr-3"></i>
-                                <span>Nairobi, Kenya</span>
-                            </div>
-                            <div class="flex items-start">
-                                <i class="fas fa-phone mt-1 mr-3"></i>
-                                <span>+254 700 123 456</span>
-                            </div>
-                            <div class="flex items-start">
-                                <i class="fas fa-envelope mt-1 mr-3"></i>
-                                <span>bookings@nairobi-luxury.com</span>
+                        <div class="flex items-start justify-between mb-3">
+                            <h3 class="font-semibold text-xl">One Bedroom Apartment</h3>
+                            <div class="flex items-center gap-1">
+                                <i class="fas fa-star text-amber-400"></i>
+                                <span class="font-medium">4.9</span>
+                                <span class="text-xs text-gray-500">(127)</span>
                             </div>
                         </div>
-
-                        <div class="mt-8">
-                            <h3 class="text-xl font-bold mb-4">Office Hours</h3>
-                            <p>Monday - Friday: 9am - 5pm</p>
-                            <p>Saturday: 10am - 4pm</p>
-                            <p>Sunday: Closed</p>
+                        <div class="flex items-center gap-2 mb-4">
+                            <i class="fas fa-map-marker-alt text-gray-400"></i>
+                            <span class="text-gray-600">Westlands, Nairobi</span>
                         </div>
-
-                        <div class="mt-8">
-                            <h3 class="text-xl font-bold mb-4">Connect via WhatsApp</h3>
-                            <a href="https://wa.me/254700123456?text=Hi,%20I'm%20interested%20in%20your%20apartments"
-                                target="_blank"
-                                class="inline-flex items-center justify-center w-full bg-whatsapp hover:bg-green-500 text-white py-3 px-4 rounded-lg font-medium transition">
-                                <i class="fab fa-whatsapp mr-2 text-xl"></i> Chat Now
+                        <div class="flex items-center gap-4 mb-4 text-sm text-gray-600">
+                            <div class="flex items-center gap-1">
+                                <i class="fas fa-users"></i>
+                                <span>4 guests</span>
+                            </div>
+                            <div class="flex items-center gap-1">
+                                <i class="fas fa-bed"></i>
+                                <span>1 bedroom</span>
+                            </div>
+                            <div class="flex items-center gap-1">
+                                <i class="fas fa-bath"></i>
+                                <span>1 bathroom</span>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap gap-2 mb-5">
+                            <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-xs">WiFi</span>
+                            <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-xs">Parking</span>
+                            <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-xs">Kitchen</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <span class="text-2xl font-bold">$450</span>
+                                <span class="text-sm text-gray-600">/night</span>
+                            </div>
+                            <a href="property-1.html">
+                                <button
+                                    class="bg-gradient-primary text-white px-5 py-2.5 rounded-lg hover:shadow-lg transition-all font-medium">
+                                    View Details
+                                </button>
                             </a>
                         </div>
                     </div>
+                </div>
+
+                <!-- Property Card 2 -->
+                <div
+                    class="property-card bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-smooth">
+                    <div class="relative overflow-hidden">
+                        <img src="assets/W6Mcpm7w0T6UpvvrKf0yOoSaK1tIoFDFyq4WpSSECMo=_plaintext_638917517300168966.jpg"
+                            alt="Studio Apartment" class="property-image">
+                        <div class="absolute top-4 right-4">
+                            <button class="bg-white/90 p-2 rounded-full hover:bg-white transition-colors">
+                                <i class="far fa-heart text-gray-600"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-start justify-between mb-3">
+                            <h3 class="font-semibold text-xl">Studio Apartment</h3>
+                            <div class="flex items-center gap-1">
+                                <i class="fas fa-star text-amber-400"></i>
+                                <span class="font-medium">4.7</span>
+                                <span class="text-xs text-gray-500">(89)</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2 mb-4">
+                            <i class="fas fa-map-marker-alt text-gray-400"></i>
+                            <span class="text-gray-600">Nairobi West</span>
+                        </div>
+                        <div class="flex items-center gap-4 mb-4 text-sm text-gray-600">
+                            <div class="flex items-center gap-1">
+                                <i class="fas fa-users"></i>
+                                <span>2 guests</span>
+                            </div>
+                            <div class="flex items-center gap-1">
+                                <i class="fas fa-bed"></i>
+                                <span>1 bedroom</span>
+                            </div>
+                            <div class="flex items-center gap-1">
+                                <i class="fas fa-bath"></i>
+                                <span>1 bathroom</span>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap gap-2 mb-5">
+                            <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-xs">WiFi</span>
+                            <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-xs">Kitchen</span>
+                            <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-xs">Gym</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <span class="text-2xl font-bold">$280</span>
+                                <span class="text-sm text-gray-600">/night</span>
+                            </div>
+                            <button
+                                class="bg-gradient-primary text-white px-5 py-2.5 rounded-lg hover:shadow-lg transition-all font-medium">
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Property Card 3 -->
+                <div
+                    class="property-card bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-smooth">
+                    <div class="relative overflow-hidden">
+                        <img src="assets/x4QVkBXF4YexAjxtnsJDsdSs8qUObo-ATbq4F2QqVe8=_plaintext_638917517820641763.jpg"
+                            alt="Luxury Apartment" class="property-image">
+                        <div class="absolute top-4 right-4">
+                            <button class="bg-white/90 p-2 rounded-full hover:bg-white transition-colors">
+                                <i class="far fa-heart text-gray-600"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-start justify-between mb-3">
+                            <h3 class="font-semibold text-xl">Luxury Apartment</h3>
+                            <div class="flex items-center gap-1">
+                                <i class="fas fa-star text-amber-400"></i>
+                                <span class="font-medium">4.8</span>
+                                <span class="text-xs text-gray-500">(156)</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2 mb-4">
+                            <i class="fas fa-map-marker-alt text-gray-400"></i>
+                            <span class="text-gray-600">Kilimani, Nairobi</span>
+                        </div>
+                        <div class="flex items-center gap-4 mb-4 text-sm text-gray-600">
+                            <div class="flex items-center gap-1">
+                                <i class="fas fa-users"></i>
+                                <span>6 guests</span>
+                            </div>
+                            <div class="flex items-center gap-1">
+                                <i class="fas fa-bed"></i>
+                                <span>3 bedrooms</span>
+                            </div>
+                            <div class="flex items-center gap-1">
+                                <i class="fas fa-bath"></i>
+                                <span>2 bathrooms</span>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap gap-2 mb-5">
+                            <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-xs">WiFi</span>
+                            <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-xs">Parking</span>
+                            <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-xs">Pool</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <span class="text-2xl font-bold">$320</span>
+                                <span class="text-sm text-gray-600">/night</span>
+                            </div>
+                            <button
+                                class="bg-gradient-primary text-white px-5 py-2.5 rounded-lg hover:shadow-lg transition-all font-medium">
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <a href="gallery.html"
+                    class="bg-gradient-primary text-white px-8 py-3.5 rounded-lg hover:shadow-lg transition-all inline-flex items-center font-medium">
+                    View All Properties
+                    <i class="fas fa-arrow-right ml-3"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <span class="inline-block mb-4 bg-gray-100 text-gray-800 px-4 py-2 rounded-full text-sm font-medium">
+                    Easy Booking Process
+                </span>
+                <h2 class="text-4xl md:text-5xl font-bold mb-6 font-script">How It Works</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    Booking your perfect stay has never been easier with our simple 3-step process
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+                <div class="text-center">
+                    <div class="feature-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">1. Find Your Stay</h3>
+                    <p class="text-gray-600">Browse our curated collection of properties and find the perfect
+                        accommodation for your needs.</p>
+                </div>
+
+                <div class="text-center">
+                    <div class="feature-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">2. Book Online</h3>
+                    <p class="text-gray-600">Select your dates, number of guests, and complete your booking securely in
+                        just a few clicks.</p>
+                </div>
+
+                <div class="text-center">
+                    <div class="feature-icon">
+                        <i class="fas fa-key"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">3. Enjoy Your Stay</h3>
+                    <p class="text-gray-600">Check in and enjoy your luxury accommodation with 24/7 support available
+                        throughout your stay.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <span
+                    class="inline-block mb-4 bg-white text-gray-800 px-4 py-2 rounded-full text-sm font-medium shadow-sm">
+                    Guest Testimonials
+                </span>
+                <h2 class="text-4xl md:text-5xl font-bold mb-6 font-script">What Our Guests Say</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    Hear from our satisfied guests about their experiences with The Manna Stays
+                </p>
+            </div>
+
+            <!-- Testimonial Slider -->
+            <div class="swiper testimonial-swiper mb-12">
+                <div class="swiper-wrapper">
+                    <!-- Testimonial 1 -->
+                    <div class="swiper-slide">
+                        <div class="testimonial-card p-8 mx-4">
+                            <div class="flex items-center mb-6">
+                                <div class="w-16 h-16 rounded-full bg-gray-200 flex items-center justify-center mr-4">
+                                    <span class="text-xl font-semibold">JD</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold">John Doe</h4>
+                                    <p class="text-gray-600 text-sm">Business Traveler</p>
+                                </div>
+                            </div>
+                            <div class="flex mb-4">
+                                <i class="fas fa-star text-amber-400"></i>
+                                <i class="fas fa-star text-amber-400"></i>
+                                <i class="fas fa-star text-amber-400"></i>
+                                <i class="fas fa-star text-amber-400"></i>
+                                <i class="fas fa-star text-amber-400"></i>
+                            </div>
+                            <p class="text-gray-600 italic">
+                                "The Manna Stays exceeded all my expectations. The apartment was spotless, beautifully
+                                decorated, and had everything I needed for a comfortable stay. The location was perfect
+                                for exploring Nairobi!"
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 2 -->
+                    <div class="swiper-slide">
+                        <div class="testimonial-card p-8 mx-4">
+                            <div class="flex items-center mb-6">
+                                <div class="w-16 h-16 rounded-full bg-gray-200 flex items-center justify-center mr-4">
+                                    <span class="text-xl font-semibold">SM</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold">Sarah Miller</h4>
+                                    <p class="text-gray-600 text-sm">Family Vacation</p>
+                                </div>
+                            </div>
+                            <div class="flex mb-4">
+                                <i class="fas fa-star text-amber-400"></i>
+                                <i class="fas fa-star text-amber-400"></i>
+                                <i class="fas fa-star text-amber-400"></i>
+                                <i class="fas fa-star text-amber-400"></i>
+                                <i class="fas fa-star text-amber-400"></i>
+                            </div>
+                            <p class="text-gray-600 italic">
+                                "We had an amazing family vacation thanks to The Manna Stays. The apartment was
+                                spacious, clean, and had all the amenities we needed. The kids loved it, and we'll
+                                definitely be back!"
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 3 -->
+                    <div class="swiper-slide">
+                        <div class="testimonial-card p-8 mx-4">
+                            <div class="flex items-center mb-6">
+                                <div class="w-16 h-16 rounded-full bg-gray-200 flex items-center justify-center mr-4">
+                                    <span class="text-xl font-semibold">RJ</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold">Robert Johnson</h4>
+                                    <p class="text-gray-600 text-sm">Couples Getaway</p>
+                                </div>
+                            </div>
+                            <div class="flex mb-4">
+                                <i class="fas fa-star text-amber-400"></i>
+                                <i class="fas fa-star text-amber-400"></i>
+                                <i class="fas fa-star text-amber-400"></i>
+                                <i class="fas fa-star text-amber-400"></i>
+                                <i class="fas fa-star text-amber-400"></i>
+                            </div>
+                            <p class="text-gray-600 italic">
+                                "Perfect romantic getaway! The apartment was even better than the photos, and the
+                                attention to detail was impressive. The Manna Stays team was responsive and helpful
+                                throughout our stay."
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Add pagination -->
+                <div class="swiper-pagination mt-8"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <span class="inline-block mb-4 bg-gray-100 text-gray-800 px-4 py-2 rounded-full text-sm font-medium">
+                    Why Choose Us
+                </span>
+                <h2 class="text-4xl md:text-5xl font-bold mb-6 font-script">Your Perfect Stay Awaits</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    We provide exceptional service and carefully curated properties to ensure your perfect getaway
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center p-8 hover:shadow-card-hover transition-all bg-gradient-card rounded-xl">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Secure Booking</h3>
+                    <p class="text-gray-600">Your bookings are protected with industry-leading security measures and
+                        encryption.</p>
+                </div>
+
+                <div class="text-center p-8 hover:shadow-card-hover transition-all bg-gradient-card rounded-xl">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">24/7 Support</h3>
+                    <p class="text-gray-600">Round-the-clock customer service for any assistance you need during your
+                        stay.</p>
+                </div>
+
+                <div class="text-center p-8 hover:shadow-card-hover transition-all bg-gradient-card rounded-xl">
+                    <div class="feature-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Hand-picked Properties</h3>
+                    <p class="text-gray-600">Every property is carefully selected for quality, comfort, and exceptional
+                        guest experiences.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-gradient-hero">
+        <div class="container mx-auto px-4">
+            <div class="text-center max-w-3xl mx-auto">
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-6 font-script">
+                    Ready for Your Next Adventure?
+                </h2>
+                <p class="text-xl text-white/90 mb-8">
+                    Join thousands of happy travelers who have found their perfect stay with The Manna Stays
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="gallery.html"
+                        class="bg-white text-gray-800 px-8 py-3.5 rounded-lg hover:shadow-lg transition-all inline-flex items-center justify-center font-medium">
+                        Start Exploring
+                        <i class="fas fa-arrow-right ml-3"></i>
+                    </a>
+                    <a href="#contact"
+                        class="bg-white/10 text-white border border-white/30 hover:bg-white/20 px-8 py-3.5 rounded-lg transition-all font-medium">
+                        Contact Us
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-secondary text-white py-12">
+    <footer id="contact" class="bg-gray-900 text-white py-16">
         <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <div>
-                    <img src="assets/logo.jpg" alt="The Manna Stays Logo" class="footer-logo">
-                    <h3 class="text-xl font-bold mb-4">The Manna Stays</h3>
-                    <p class="text-gray-400">Premium apartments in prime Nairobi locations. Experience luxury living at
-                        its finest.</p>
-                </div>
-
-                <div>
-                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#home" class="text-gray-400 hover:text-white transition">Home</a></li>
-                        <li><a href="#apartments" class="text-gray-400 hover:text-white transition">Apartments</a></li>
-                        <li><a href="#gallery" class="text-gray-400 hover:text-white transition">Gallery</a></li>
-                        <li><a href="#contact" class="text-gray-400 hover:text-white transition">Contact</a></li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h4 class="text-lg font-semibold mb-4">Apartments</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-400 hover:text-white transition">Kilimani - 1 Bedroom</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition">South B - Studio</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition">Nairobi West - Studio</a></li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h4 class="text-lg font-semibold mb-4">Connect With Us</h4>
-                    <div class="flex space-x-4 mb-4">
-                        <a href="#" class="text-gray-400 hover:text-white transition"><i
-                                class="fab fa-facebook-f text-lg"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-white transition"><i
-                                class="fab fa-twitter text-lg"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-white transition"><i
-                                class="fab fa-instagram text-lg"></i></a>
-                        <a href="https://wa.me/254700123456?text=Hi,%20I'm%20interested%20in%20your%20apartments"
-                            target="_blank" class="text-gray-400 hover:text-white transition"><i
-                                class="fab fa-whatsapp text-lg"></i></a>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <!-- Logo and Description -->
+                <div class="md:col-span-2">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <img src="assets/logo.jpg" alt="The Manna Stays" class="h-14 w-auto rounded-lg">
+                        <span class="flex items-end font-bold text-xl md:text-2xl font-script">
+                            <span class="text-white">The</span>
+                            <span class="mx-1" style="color: hsl(341,81%,60%)">Manna</span>
+                            <span class="text-white">Stays</span>
+                        </span>
                     </div>
-                    <a href="https://wa.me/254700123456?text=Hi,%20I'm%20interested%20in%20your%20apartments"
-                        target="_blank"
-                        class="inline-flex items-center bg-whatsapp hover:bg-green-500 text-white py-2 px-4 rounded-lg transition">
-                        <i class="fab fa-whatsapp mr-2"></i> WhatsApp Us
-                    </a>
+                    <p class="text-gray-300 mb-6 max-w-md">
+                        Creating unforgettable experiences and luxury accommodations in Nairobi. Your perfect stay
+                        awaits with The Manna Stays.
+                    </p>
+                    <!-- Social Media Icons -->
+                    <div class="flex space-x-4">
+                        <a href="#"
+                            class="w-10 h-10 bg-white/10 hover:bg-primary rounded-lg flex items-center justify-center transition-colors">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 bg-white/10 hover:bg-primary rounded-lg flex items-center justify-center transition-colors">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 bg-white/10 hover:bg-primary rounded-lg flex items-center justify-center transition-colors">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://wa.me/1234567890?text=Hi,%20I%27m%20interested%20in%20your%20properties"
+                            target="_blank"
+                            class="w-10 h-10 bg-green-600 hover:bg-green-700 rounded-lg flex items-center justify-center transition-colors">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="font-semibold text-lg mb-4">Quick Links</h3>
+                    <ul class="space-y-3">
+                        <li><a href="index.html" class="text-gray-300 hover:text-white transition-colors">Home</a></li>
+                        <li><a href="gallery.html"
+                                class="text-gray-300 hover:text-white transition-colors">Properties</a></li>
+                        <li><a href="#testimonials"
+                                class="text-gray-300 hover:text-white transition-colors">Testimonials</a></li>
+                        <li><a href="#contact" class="text-gray-300 hover:text-white transition-colors">Contact</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <h3 class="font-semibold text-lg mb-4">Contact</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-center">
+                            <i class="fas fa-phone mr-3 text-primary"></i>
+                            <span class="text-gray-300">+254 700 123 456</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-3 text-primary"></i>
+                            <span class="text-gray-300">hello@mannastays.com</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mr-3 text-primary mt-1"></i>
+                            <span class="text-gray-300">Westlands<br>Nairobi, Kenya</span>
+                        </li>
+                    </ul>
                 </div>
             </div>
 
-            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
-                <p>&copy; 2023 Nairobi Luxury Apartments. All rights reserved.</p>
+            <!-- Bottom Bar -->
+            <div class="border-t border-gray-700 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-400 text-sm mb-4 md:mb-0">
+                        © 2024 The Manna Stays. All rights reserved.
+                    </p>
+                    <div class="flex space-x-6 text-sm">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">Terms of Service</a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">Cancellation Policy</a>
+                    </div>
+                </div>
             </div>
         </div>
     </footer>
 
+    <!-- WhatsApp Floating Button -->
+    <div class="fixed bottom-6 right-6 z-50">
+        <a href="https://wa.me/1234567890?text=Hi,%20I%27m%20interested%20in%20your%20properties" target="_blank"
+            class="w-14 h-14 bg-green-500 hover:bg-green-600 text-white rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 pulse">
+            <i class="fab fa-whatsapp text-2xl"></i>
+        </a>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
-        // Simple form validation and submission handling
-        document.getElementById('bookingForm').addEventListener('submit', function (e) {
-            e.preventDefault();
+        // Guest counter management
+        let guestCounts = {
+            adults: 2,
+            children: 0
+        };
 
-            // Get form values
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const phone = document.getElementById('phone').value;
-            const apartment = document.getElementById('apartment').value;
-
-            // Simple validation
-            if (name && email && phone && apartment) {
-                // In a real application, you would send this data to a server
-                alert(`Thank you ${name}! We've received your booking request for the ${apartment} apartment. We will contact you at ${email} or ${phone} shortly.`);
-
-                // Reset form
-                document.getElementById('bookingForm').reset();
-            } else {
-                alert('Please fill in all required fields.');
+        function changeGuestCount(type, change) {
+            const newCount = guestCounts[type] + change;
+            if (newCount >= 0 && newCount <= 12) { // Set reasonable limits
+                guestCounts[type] = newCount;
+                document.getElementById(type + '-count').textContent = newCount;
             }
-        });
+        }
 
-        // Change navbar style on scroll and toggle nav-link colors
-        window.addEventListener('scroll', function () {
-            const header = document.getElementById('header');
-            if (window.scrollY > 50) {
-                header.classList.add('nav-scroll');
-                header.classList.remove('bg-transparent');
-            } else {
-                header.classList.remove('nav-scroll');
-                header.classList.add('bg-transparent');
-            }
+        // Set minimum date for check-in to today
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('checkin').setAttribute('min', today);
+
+        // Update check-out minimum when check-in changes
+        document.getElementById('checkin').addEventListener('change', function () {
+            const checkinDate = this.value;
+            document.getElementById('checkout').setAttribute('min', checkinDate);
         });
 
         // Mobile menu toggle
-        document.getElementById('mobile-menu-button').addEventListener('click', function () {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
-            menu.classList.toggle('block');
+        document.getElementById('mobile-menu-btn').addEventListener('click', function () {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('active');
         });
 
-        // Adults / Children counters in hero search
-        (function () {
-            const adultsIncr = document.getElementById('adults-incr');
-            const adultsDecr = document.getElementById('adults-decr');
-            const childrenIncr = document.getElementById('children-incr');
-            const childrenDecr = document.getElementById('children-decr');
-            const adultsCount = document.getElementById('adults-count');
-            const childrenCount = document.getElementById('children-count');
-            const adultsHidden = document.getElementById('adults');
-            const childrenHidden = document.getElementById('children');
-
-            function clamp(n, min, max) { return Math.min(max, Math.max(min, n)); }
-
-            adultsIncr && adultsIncr.addEventListener('click', () => {
-                let v = parseInt(adultsCount.value || '1', 10) + 1;
-                v = clamp(v, 1, 10);
-                adultsCount.value = v;
-                adultsHidden.value = v;
+        // Smooth scrolling for anchor links
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({
+                behavior: 'smooth'
             });
-            adultsDecr && adultsDecr.addEventListener('click', () => {
-                let v = parseInt(adultsCount.value || '1', 10) - 1;
-                v = clamp(v, 1, 10);
-                adultsCount.value = v;
-                adultsHidden.value = v;
-            });
+        }
 
-            childrenIncr && childrenIncr.addEventListener('click', () => {
-                let v = parseInt(childrenCount.value || '0', 10) + 1;
-                v = clamp(v, 0, 10);
-                childrenCount.value = v;
-                childrenHidden.value = v;
+        // Tab functionality
+        const tabButtons = document.querySelectorAll('.tab-button');
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                button.classList.add('active');
+                // Here you would filter properties based on the tab
+                // This is just a placeholder for the actual filtering logic
             });
-            childrenDecr && childrenDecr.addEventListener('click', () => {
-                let v = parseInt(childrenCount.value || '0', 10) - 1;
-                v = clamp(v, 0, 10);
-                childrenCount.value = v;
-                childrenHidden.value = v;
-            });
-        })();
+        });
 
-        // Set minimum date for check-in and check-out to today
-        const today = new Date().toISOString().split('T')[0];
-        document.querySelectorAll('input[type="date"]').forEach(input => {
-            input.min = today;
+        // Initialize Swiper
+        const testimonialSwiper = new Swiper('.testimonial-swiper', {
+            loop: true,
+            slidesPerView: 1,
+            spaceBetween: 20,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 1,
+                },
+                768: {
+                    slidesPerView: 2,
+                },
+                1024: {
+                    slidesPerView: 3,
+                },
+            },
+            autoplay: {
+                delay: 5000,
+            },
+        });
+
+        // Property card hover effect
+        const propertyCards = document.querySelectorAll('.property-card');
+        propertyCards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.querySelector('img').style.transform = 'scale(1.1)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.querySelector('img').style.transform = 'scale(1)';
+            });
+        });
+
+        // Search form submission
+        const searchForm = document.querySelector('.search-section');
+        searchForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Here you would handle the search functionality
+            alert('Search functionality would be implemented here!');
         });
     </script>
 </body>

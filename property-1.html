@@ -1,0 +1,1268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Westlands - The Manna Stays</title>
+    <meta name="description"
+        content="Experience unparalleled luxury in this stunning oceanfront villa in Malibu, California. Wake up to breathtaking sunrise views over the Pacific Ocean.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <style>
+        /* Custom Theme Colors */
+        :root {
+            --primary: hsl(341, 81%, 60%);
+            --primary-hover: hsl(341, 81%, 50%);
+            --dark: hsl(220, 13%, 18%);
+            --light: hsl(0, 0%, 98%);
+        }
+
+        .bg-gradient-primary {
+            background: linear-gradient(135deg, #D72660, #E91E63);
+        }
+
+        .text-primary {
+            color: var(--primary);
+        }
+
+        .bg-primary {
+            background-color: var(--primary);
+        }
+
+        .border-primary {
+            border-color: var(--primary);
+        }
+
+        .shadow-luxury {
+            box-shadow: 0 20px 40px -10px rgba(215, 38, 96, 0.3);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            overflow: hidden;
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            position: relative;
+            max-width: 90vw;
+            max-height: 90vh;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+        }
+
+        .modal-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+            z-index: 10;
+        }
+
+        .modal-nav button {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            transition: all 0.3s;
+        }
+
+        .modal-nav button:hover {
+            background: rgba(255, 255, 255, 0.4);
+        }
+
+        /* Gallery Styles */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            grid-template-rows: repeat(4, 150px);
+            gap: 8px;
+        }
+
+        @media (max-width: 1024px) {
+            .gallery-grid {
+                grid-template-rows: repeat(6, 120px);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .gallery-grid {
+                grid-template-rows: repeat(8, 100px);
+            }
+        }
+
+        .gallery-item {
+            overflow: hidden;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(0.98);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            aspect-ratio: 1/1;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-item-1 {
+            grid-column: span 6;
+            grid-row: span 2;
+        }
+
+        .gallery-item-2 {
+            grid-column: span 3;
+            grid-row: span 1;
+        }
+
+        .gallery-item-3 {
+            grid-column: span 3;
+            grid-row: span 1;
+        }
+
+        .gallery-item-4 {
+            grid-column: span 3;
+            grid-row: span 1;
+        }
+
+        .gallery-item-5 {
+            grid-column: span 3;
+            grid-row: span 1;
+        }
+
+        .gallery-item-6 {
+            grid-column: span 4;
+            grid-row: span 2;
+        }
+
+        .gallery-item-7 {
+            grid-column: span 4;
+            grid-row: span 2;
+        }
+
+        .gallery-item-8 {
+            grid-column: span 4;
+            grid-row: span 2;
+        }
+
+        .view-more {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            backdrop-filter: blur(4px);
+        }
+
+        /* Swiper styles */
+        .swiper {
+            width: 100%;
+            height: 400px;
+            border-radius: 12px;
+        }
+
+        .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+            background: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .swiper-slide img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .swiper-button-next,
+        .swiper-button-prev {
+            color: white;
+            background: rgba(0, 0, 0, 0.5);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            backdrop-filter: blur(4px);
+        }
+
+        .swiper-button-next:after,
+        .swiper-button-prev:after {
+            font-size: 20px;
+        }
+
+        /* Tabs */
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .tab-button {
+            padding: 12px 24px;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .tab-button.active {
+            border-bottom: 3px solid var(--primary);
+            color: var(--primary);
+        }
+
+        /* Sticky sidebar */
+        .sticky-sidebar {
+            position: sticky;
+            top: 100px;
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-200 shadow-md">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center space-x-3">
+                    <img src="assets/logo.jpg" alt="The Manna Stays" class="h-10 w-auto rounded">
+                    <span class="text-xl font-semibold text-gray-800">The Manna Stays</span>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="index.html" class="text-gray-600 hover:text-gray-800 transition-colors">Home</a>
+                    <a href="gallery.html" class="text-gray-600 hover:text-gray-800 transition-colors">Properties</a>
+                    <a href="https://wa.me/1234567890?text=Hi,%20I%27m%20interested%20in%20your%20properties"
+                        target="_blank"
+                        class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition-colors flex items-center">
+                        <i class="fab fa-whatsapp mr-2"></i>
+                        WhatsApp
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobileMenu" class="mobile-menu hidden mt-4 pb-4 border-t border-gray-200">
+                <div class="flex flex-col space-y-3 pt-4">
+                    <a href="index.html" class="text-gray-600 hover:text-gray-800 transition-colors">Home</a>
+                    <a href="gallery.html" class="text-gray-600 hover:text-gray-800 transition-colors">Properties</a>
+                    <a href="https://wa.me/1234567890?text=Hi,%20I%27m%20interested%20in%20your%20properties"
+                        target="_blank" class="text-green-600 hover:text-green-700 transition-colors flex items-center">
+                        <i class="fab fa-whatsapp mr-2"></i>
+                        WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-16">
+        <div class="container mx-auto px-4 py-8">
+            <!-- Navigation Back -->
+            <div class="mb-6">
+                <a href="index.html"
+                    class="inline-flex items-center text-gray-600 hover:text-gray-800 transition-colors">
+                    <i class="fas fa-arrow-left mr-2"></i>
+                    Back to Properties
+                </a>
+            </div>
+
+            <!-- Property Header -->
+            <div class="mb-8 bg-white p-6 rounded-xl shadow-sm">
+                <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4 mb-4">
+                    <div class="flex-1">
+                        <div class="flex items-center gap-2 mb-2 flex-wrap">
+                            <h1 class="text-3xl font-bold text-gray-800">One Bedroom Apartment</h1>
+                            <span
+                                class="bg-primary text-white px-3 py-1 rounded-full text-sm font-medium">Featured</span>
+                        </div>
+                        <div class="flex items-center gap-2 mb-3">
+                            <i class="fas fa-map-marker-alt text-gray-500"></i>
+                            <span class="text-gray-600">Westlands, Nairobi</span>
+                        </div>
+                        <div class="flex items-center gap-4 flex-wrap">
+                            <div class="flex items-center gap-1">
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <span class="font-medium">4.9</span>
+                                <span class="text-gray-600">(127 reviews)</span>
+                            </div>
+                            <div class="flex items-center gap-1">
+                                <i class="fas fa-users text-gray-500"></i>
+                                <span class="text-gray-600">Up to 4 guests</span>
+                            </div>
+                            <div class="flex items-center gap-1">
+                                <i class="fas fa-bed text-gray-500"></i>
+                                <span class="text-gray-600">1 bedroom</span>
+                            </div>
+                            <div class="flex items-center gap-1">
+                                <i class="fas fa-bath text-gray-500"></i>
+                                <span class="text-gray-600">1 bathroom</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <div class="text-3xl font-bold text-gray-800">$450</div>
+                        <div class="text-gray-600">per night</div>
+                        <div class="text-sm text-green-600 mt-1">
+                            <i class="fas fa-calendar-check mr-1"></i> Available now
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image Gallery -->
+            <div class="mb-8 relative">
+                <div class="gallery-grid">
+                    <div class="gallery-item gallery-item-1" onclick="openGalleryModal(0)">
+                        <img src="assets/16I5VXgzM8hHSHl1-EH4ITTtF-Y_Q1dxLYt4iu44Gio=_plaintext_638917518845609081.jpg"
+                            alt="Living room view">
+                    </div>
+                    <div class="gallery-item gallery-item-2" onclick="openGalleryModal(1)">
+                        <img src="assets/1Hs9pBNp9ITdezhZFFCE2QL3y-PF3HyStWO9MtwFD5s=_plaintext_638917517840719847.jpg"
+                            alt="Kitchen area">
+                    </div>
+                    <div class="gallery-item gallery-item-3" onclick="openGalleryModal(2)">
+                        <img src="assets/1PPUn-qpuYUzYDfDpDPYu2cEbOpPdU4B4aYYjJXaFzU=_plaintext_638917516800254939.jpg"
+                            alt="Bedroom view">
+                    </div>
+                    <div class="gallery-item gallery-item-4" onclick="openGalleryModal(3)">
+                        <img src="assets/Westlands- 1 bed/jUQm6VwRSSD9KJRWM830KvT2q_4V0P4p74g9D3OMy-4=_plaintext_638917516758279941.jpg"
+                            alt="Bathroom">
+                    </div>
+                    <div class="gallery-item gallery-item-5" onclick="openGalleryModal(4)">
+                        <img src="assets/Westlands- 1 bed/KM-zU8NfEZJKE9fRSimLbAXMw_y9j7YsBKbY8XOML6U=_plaintext_638917516796100431.jpg"
+                            alt="Balcony">
+                    </div>
+                    <div class="gallery-item gallery-item-6" onclick="openGalleryModal(5)">
+                        <img src="assets/Westlands- 1 bed/KmbcR9koAXfygOH3vh7-60tJmpNj_A_3NEcj0s35EDA=_plaintext_638917516769707894.jpg"
+                            alt="Dining area">
+                    </div>
+                    <div class="gallery-item gallery-item-7" onclick="openGalleryModal(6)">
+                        <img src="assets/Westlands- 1 bed/n_O8lG_5oQxStpWZ9h_kk3WAn1kpZbAiaEzzDPJgVlI=_plaintext_638917516773206825.jpg"
+                            alt="Building exterior">
+                    </div>
+                    <div class="gallery-item gallery-item-8" onclick="openGalleryModal(7)">
+                        <img src="assets/Westlands- 1 bed/7JzW47nuDgEpXozZteNrEmzsFi9aVaqMwwUE3XQoO-w=_plaintext_638917516765900340.jpg"
+                            alt="Amenities">
+                        <div class="view-more">+12 more</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Property Details -->
+                <div class="lg:col-span-2 space-y-8">
+                    <!-- Tabs Navigation -->
+                    <div class="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
+                        <div class="flex border-b border-gray-200 overflow-x-auto">
+                            <button class="tab-button active" onclick="openTab(event, 'description')">
+                                Description
+                            </button>
+                            <button class="tab-button" onclick="openTab(event, 'amenities')">
+                                Amenities
+                            </button>
+                            <button class="tab-button" onclick="openTab(event, 'reviews')">
+                                Reviews
+                            </button>
+                            <button class="tab-button" onclick="openTab(event, 'location')">
+                                Location
+                            </button>
+                        </div>
+
+                        <!-- Description Tab -->
+                        <div id="description" class="tab-content active p-6">
+                            <h2 class="text-xl font-semibold mb-4">About this property</h2>
+                            <p class="text-gray-600 leading-relaxed mb-4">Experience unparalleled luxury in this
+                                stunning oceanfront villa. Wake up to breathtaking sunrise views over the Pacific Ocean
+                                from your private balcony. This meticulously designed property features modern
+                                amenities, spacious living areas, and direct beach access.</p>
+
+                            <div class="grid grid-cols-2 gap-4 mb-6">
+                                <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+                                    <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+                                        <i class="fas fa-bed text-primary"></i>
+                                    </div>
+                                    <div>
+                                        <div class="font-semibold">1 Bedroom</div>
+                                        <div class="text-sm text-gray-600">King size bed</div>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+                                    <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+                                        <i class="fas fa-bath text-primary"></i>
+                                    </div>
+                                    <div>
+                                        <div class="font-semibold">1 Bathroom</div>
+                                        <div class="text-sm text-gray-600">With shower</div>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+                                    <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+                                        <i class="fas fa-ruler-combined text-primary"></i>
+                                    </div>
+                                    <div>
+                                        <div class="font-semibold">65 m²</div>
+                                        <div class="text-sm text-gray-600">Total area</div>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+                                    <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+                                        <i class="fas fa-users text-primary"></i>
+                                    </div>
+                                    <div>
+                                        <div class="font-semibold">4 Guests</div>
+                                        <div class="text-sm text-gray-600">Max capacity</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h3 class="font-semibold mb-3">The space</h3>
+                            <p class="text-gray-600 leading-relaxed mb-4">This beautifully appointed one-bedroom
+                                apartment features an open-plan living area with comfortable seating, a fully-equipped
+                                modern kitchen, and a spacious bedroom with a king-sized bed. The private balcony offers
+                                stunning views of the surrounding area.</p>
+
+                            <h3 class="font-semibold mb-3">Guest access</h3>
+                            <p class="text-gray-600 leading-relaxed">Guests have full access to the apartment and all
+                                its amenities, including the swimming pool, gym, and secure parking within the building.
+                            </p>
+                        </div>
+
+                        <!-- Amenities Tab -->
+                        <div id="amenities" class="tab-content p-6">
+                            <h2 class="text-xl font-semibold mb-4">What this place offers</h2>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="flex items-center gap-3">
+                                    <i class="fas fa-wifi text-primary w-5"></i>
+                                    <span>High-speed WiFi</span>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <i class="fas fa-tv text-primary w-5"></i>
+                                    <span>Smart TV</span>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <i class="fas fa-utensils text-primary w-5"></i>
+                                    <span>Fully equipped kitchen</span>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <i class="fas fa-snowflake text-primary w-5"></i>
+                                    <span>Air conditioning</span>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <i class="fas fa-parking text-primary w-5"></i>
+                                    <span>Free parking</span>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <i class="fas fa-swimming-pool text-primary w-5"></i>
+                                    <span>Swimming pool</span>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <i class="fas fa-dumbbell text-primary w-5"></i>
+                                    <span>Gym</span>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <i class="fas fa-tshirt text-primary w-5"></i>
+                                    <span>Washing machine</span>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <i class="fas fa-fire-extinguisher text-primary w-5"></i>
+                                    <span>Fire safety</span>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <i class="fas fa-first-aid text-primary w-5"></i>
+                                    <span>First aid kit</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Reviews Tab -->
+                        <div id="reviews" class="tab-content p-6">
+                            <h2 class="text-xl font-semibold mb-4">Guest reviews</h2>
+                            <div class="flex items-center gap-4 mb-6">
+                                <div class="text-center">
+                                    <div class="text-5xl font-bold text-gray-800">4.9</div>
+                                    <div class="flex justify-center mt-1">
+                                        <i class="fas fa-star text-yellow-400"></i>
+                                        <i class="fas fa-star text-yellow-400"></i>
+                                        <i class="fas fa-star text-yellow-400"></i>
+                                        <i class="fas fa-star text-yellow-400"></i>
+                                        <i class="fas fa-star text-yellow-400"></i>
+                                    </div>
+                                    <div class="text-sm text-gray-600 mt-1">Based on 127 reviews</div>
+                                </div>
+                                <div class="flex-1">
+                                    <div class="flex items-center gap-2">
+                                        <span class="text-sm w-12 text-right">5★</span>
+                                        <div class="h-2 bg-gray-200 rounded-full flex-1">
+                                            <div class="h-2 bg-yellow-400 rounded-full" style="width: 92%"></div>
+                                        </div>
+                                        <span class="text-sm w-8">92%</span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <span class="text-sm w-12 text-right">4★</span>
+                                        <div class="h-2 bg-gray-200 rounded-full flex-1">
+                                            <div class="h-2 bg-yellow-400 rounded-full" style="width: 6%"></div>
+                                        </div>
+                                        <span class="text-sm w-8">6%</span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <span class="text-sm w-12 text-right">3★</span>
+                                        <div class="h-2 bg-gray-200 rounded-full flex-1">
+                                            <div class="h-2 bg-yellow-400 rounded-full" style="width: 2%"></div>
+                                        </div>
+                                        <span class="text-sm w-8">2%</span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <span class="text-sm w-12 text-right">2★</span>
+                                        <div class="h-2 bg-gray-200 rounded-full flex-1">
+                                            <div class="h-2 bg-yellow-400 rounded-full" style="width: 0%"></div>
+                                        </div>
+                                        <span class="text-sm w-8">0%</span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <span class="text-sm w-12 text-right">1★</span>
+                                        <div class="h-2 bg-gray-200 rounded-full flex-1">
+                                            <div class="h-2 bg-yellow-400 rounded-full" style="width: 0%"></div>
+                                        </div>
+                                        <span class="text-sm w-8">0%</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="space-y-6">
+                                <div class="border-b border-gray-100 pb-6">
+                                    <div class="flex items-center gap-3 mb-3">
+                                        <div
+                                            class="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center">
+                                            <span class="font-semibold">JD</span>
+                                        </div>
+                                        <div>
+                                            <div class="font-medium">John Doe</div>
+                                            <div class="text-sm text-gray-500">March 2024</div>
+                                        </div>
+                                    </div>
+                                    <div class="flex mb-2">
+                                        <i class="fas fa-star text-yellow-400"></i>
+                                        <i class="fas fa-star text-yellow-400"></i>
+                                        <i class="fas fa-star text-yellow-400"></i>
+                                        <i class="fas fa-star text-yellow-400"></i>
+                                        <i class="fas fa-star text-yellow-400"></i>
+                                    </div>
+                                    <p class="text-gray-600">This apartment exceeded all our expectations. The location
+                                        was perfect, the amenities were top-notch, and the host was incredibly
+                                        responsive. We'll definitely be back!</p>
+                                </div>
+
+                                <div class="border-b border-gray-100 pb-6">
+                                    <div class="flex items-center gap-3 mb-3">
+                                        <div
+                                            class="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center">
+                                            <span class="font-semibold">SM</span>
+                                        </div>
+                                        <div>
+                                            <div class="font-medium">Sarah Miller</div>
+                                            <div class="text-sm text-gray-500">February 2024</div>
+                                        </div>
+                                    </div>
+                                    <div class="flex mb-2">
+                                        <i class="fas fa-star text-yellow-400"></i>
+                                        <i class="fas fa-star text-yellow-400"></i>
+                                        <i class="fas fa-star text-yellow-400"></i>
+                                        <i class="fas fa-star text-yellow-400"></i>
+                                        <i class="fas fa-star text-yellow-400"></i>
+                                    </div>
+                                    <p class="text-gray-600">The apartment was even better than the photos. Everything
+                                        was clean, modern, and comfortable. The pool and gym facilities were an added
+                                        bonus. Highly recommend!</p>
+                                </div>
+                            </div>
+
+                            <button
+                                class="mt-6 w-full py-3 border border-gray-300 rounded-lg text-gray-700 font-medium hover:bg-gray-50 transition-colors">
+                                Show all 127 reviews
+                            </button>
+                        </div>
+
+                        <!-- Location Tab -->
+                        <div id="location" class="tab-content p-6">
+                            <h2 class="text-xl font-semibold mb-4">Where you'll be</h2>
+                            <p class="text-gray-600 mb-4">Located in the prestigious Westlands area of Nairobi, this
+                                apartment offers easy access to shopping malls, restaurants, and business districts.</p>
+
+                            <div class="bg-gray-200 h-64 rounded-lg mb-4 flex items-center justify-center">
+                                <i class="fas fa-map-marker-alt text-3xl text-gray-400"></i>
+                                <span class="ml-2 text-gray-600">Map would be displayed here</span>
+                            </div>
+
+                            <h3 class="font-semibold mb-2">Getting around</h3>
+                            <p class="text-gray-600 mb-2">Public transportation is easily accessible with bus stops just
+                                a 5-minute walk away.</p>
+                            <p class="text-gray-600">Ride-sharing services like Uber and Bolt are readily available in
+                                the area.</p>
+                        </div>
+                    </div>
+
+                    <!-- Host Information -->
+                    <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
+                        <h2 class="text-xl font-semibold mb-4">Hosted by The Manna Stays</h2>
+                        <div class="flex items-start gap-4">
+                            <div
+                                class="w-16 h-16 rounded-full bg-gradient-primary flex items-center justify-center text-white text-2xl font-bold">
+                                MS
+                            </div>
+                            <div>
+                                <div class="font-medium">The Manna Stays</div>
+                                <div class="text-gray-600 text-sm mb-3">Superhost · 5 years hosting</div>
+                                <div class="flex items-center gap-4 text-sm">
+                                    <div class="flex items-center gap-1">
+                                        <i class="fas fa-star text-yellow-400"></i>
+                                        <span>4.9 (127 reviews)</span>
+                                    </div>
+                                    <div class="flex items-center gap-1">
+                                        <i class="fas fa-check-circle text-green-500"></i>
+                                        <span>Identity verified</span>
+                                    </div>
+                                </div>
+                                <p class="mt-3 text-gray-600">We're dedicated to providing exceptional stays with
+                                    attention to detail and personalized service. Our properties are carefully selected
+                                    and maintained to ensure your comfort.</p>
+
+                                <div class="mt-4 flex items-center gap-3">
+                                    <button
+                                        class="flex items-center gap-2 text-sm font-medium text-gray-700 py-2 px-4 border border-gray-300 rounded-lg hover:bg-gray-50">
+                                        <i class="fas fa-user"></i> Contact host
+                                    </button>
+                                    <button
+                                        class="flex items-center gap-2 text-sm font-medium text-gray-700 py-2 px-4 border border-gray-300 rounded-lg hover:bg-gray-50">
+                                        <i class="fas fa-share-alt"></i> Share
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- House Rules -->
+                    <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
+                        <h2 class="text-xl font-semibold mb-4">Things to know</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <div>
+                                <h3 class="font-semibold mb-3">House rules</h3>
+                                <div class="space-y-3">
+                                    <div class="flex items-center gap-2">
+                                        <i class="fas fa-calendar-check text-primary"></i>
+                                        <span class="text-sm">Check-in: 3:00 PM - 10:00 PM</span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <i class="fas fa-calendar-times text-primary"></i>
+                                        <span class="text-sm">Checkout: 11:00 AM</span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <i class="fas fa-smoking-ban text-primary"></i>
+                                        <span class="text-sm">No smoking</span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <i class="fas fa-ban text-primary"></i>
+                                        <span class="text-sm">No parties or events</span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <i class="fas fa-paw text-primary"></i>
+                                        <span class="text-sm">Pets allowed</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold mb-3">Safety & security</h3>
+                                <div class="space-y-3">
+                                    <div class="flex items-center gap-2">
+                                        <i class="fas fa-fire-extinguisher text-primary"></i>
+                                        <span class="text-sm">Fire extinguisher</span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <i class="fas fa-first-aid text-primary"></i>
+                                        <span class="text-sm">First aid kit</span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <i class="fas fa-lock text-primary"></i>
+                                        <span class="text-sm">Secure building</span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <i class="fas fa-camera text-primary"></i>
+                                        <span class="text-sm">Security cameras</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold mb-3">Cancellation policy</h3>
+                                <p class="text-sm text-gray-600">Free cancellation for 48 hours. After that, cancel up
+                                    to 24 hours before check-in and get a full refund, minus the service fee.</p>
+                                <a href="#" class="text-sm text-primary font-medium mt-2 inline-block">Learn more</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Booking Panel -->
+                <div class="lg:col-span-1">
+                    <div class="sticky-sidebar bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
+                        <div class="text-center mb-6">
+                            <div class="text-3xl font-bold text-gray-800">$450</div>
+                            <div class="text-gray-600">per night</div>
+                            <div class="flex items-center justify-center gap-1 mt-1 text-sm text-green-600">
+                                <i class="fas fa-calendar-check"></i>
+                                <span>Available for selected dates</span>
+                            </div>
+                        </div>
+
+                        <div class="border border-gray-300 rounded-lg p-4 mb-6">
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-sm font-medium mb-1">Check-in</label>
+                                    <input type="date" class="w-full p-2 border border-gray-300 rounded text-sm">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium mb-1">Check-out</label>
+                                    <input type="date" class="w-full p-2 border border-gray-300 rounded text-sm">
+                                </div>
+                                <div class="col-span-2">
+                                    <label class="block text-sm font-medium mb-1">Guests</label>
+                                    <select class="w-full p-2 border border-gray-300 rounded text-sm">
+                                        <option>1 guest</option>
+                                        <option>2 guests</option>
+                                        <option>3 guests</option>
+                                        <option>4 guests</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="space-y-4">
+                            <button onclick="openBookingModal()"
+                                class="w-full bg-gradient-primary text-white py-3 px-4 rounded-lg hover:shadow-luxury transition-all text-lg font-medium">
+                                Check availability
+                            </button>
+
+                            <button onclick="contactWhatsApp()"
+                                class="w-full border border-gray-300 text-gray-700 py-3 px-4 rounded-lg hover:bg-gray-50 transition-all flex items-center justify-center gap-2">
+                                <i class="fab fa-whatsapp text-green-600"></i>
+                                Contact host
+                            </button>
+                        </div>
+
+                        <div class="mt-6 space-y-3 text-sm text-gray-600">
+                            <div class="flex justify-between">
+                                <span>$450 x 5 nights</span>
+                                <span>$2,250</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Cleaning fee</span>
+                                <span>$75</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Service fee</span>
+                                <span>$205</span>
+                            </div>
+                            <hr class="my-2">
+                            <div class="flex justify-between font-semibold text-gray-800">
+                                <span>Total</span>
+                                <span>$2,530</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Gallery Modal -->
+    <div id="galleryModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeGalleryModal()">&times;</span>
+            <div class="modal-nav">
+                <button onclick="navigateGallery(-1)"><i class="fas fa-chevron-left"></i></button>
+                <button onclick="navigateGallery(1)"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            <img id="modalImage" src="" alt="" class="w-full h-auto max-h-full object-contain">
+        </div>
+    </div>
+
+    <!-- Booking Modal (unchanged from your original) -->
+    <div id="bookingModal" class="modal">
+        <div class="modal-content p-6 bg-white rounded-lg max-w-md w-full">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-xl font-semibold">Book Your Stay</h2>
+                <button onclick="closeBookingModal()" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <p class="text-sm text-gray-600 mb-6">Luxury Ocean View Villa</p>
+
+            <form id="bookingForm" class="space-y-6">
+                <!-- Dates -->
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="flex items-center gap-2 mb-2 text-sm font-medium">
+                            <i class="fas fa-calendar"></i>
+                            Check-in
+                        </label>
+                        <input type="date" id="checkin" class="w-full p-2 border border-gray-300 rounded" required>
+                    </div>
+                    <div>
+                        <label class="flex items-center gap-2 mb-2 text-sm font-medium">
+                            <i class="fas fa-calendar"></i>
+                            Check-out
+                        </label>
+                        <input type="date" id="checkout" class="w-full p-2 border border-gray-300 rounded" required>
+                    </div>
+                </div>
+
+                <!-- Guests -->
+                <div>
+                    <label class="flex items-center gap-2 mb-3 text-sm font-medium">
+                        <i class="fas fa-users"></i>
+                        Guests
+                    </label>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="text-sm">Adults</label>
+                            <input type="number" id="adults" min="1" max="8" value="1"
+                                class="w-full p-2 border border-gray-300 rounded" required>
+                        </div>
+                        <div>
+                            <label class="text-sm">Children</label>
+                            <input type="number" id="children" min="0" max="7" value="0"
+                                class="w-full p-2 border border-gray-300 rounded">
+                        </div>
+                    </div>
+                    <p class="text-xs text-gray-600 mt-1">Maximum 8 guests total</p>
+                </div>
+
+                <hr>
+
+                <!-- Guest Information -->
+                <div class="space-y-4">
+                    <h3 class="font-medium">Guest Information</h3>
+
+                    <div>
+                        <label class="text-sm font-medium">Full Name *</label>
+                        <input type="text" id="guestName" placeholder="Enter your full name"
+                            class="w-full p-2 border border-gray-300 rounded" required>
+                    </div>
+
+                    <div>
+                        <label class="text-sm font-medium">Email Address *</label>
+                        <input type="email" id="guestEmail" placeholder="your.email@example.com"
+                            class="w-full p-2 border border-gray-300 rounded" required>
+                    </div>
+
+                    <div>
+                        <label class="text-sm font-medium">Phone Number *</label>
+                        <input type="tel" id="guestPhone" placeholder="+1 (555) 123-4567"
+                            class="w-full p-2 border border-gray-300 rounded" required>
+                    </div>
+
+                    <div>
+                        <label class="text-sm font-medium">Special Requests</label>
+                        <textarea id="specialRequests" placeholder="Any special requirements or requests..." rows="3"
+                            class="w-full p-2 border border-gray-300 rounded"></textarea>
+                    </div>
+                </div>
+
+                <!-- Booking Summary -->
+                <div id="bookingSummary" class="hidden">
+                    <hr>
+                    <div class="space-y-2">
+                        <h3 class="font-medium">Booking Summary</h3>
+                        <div class="flex justify-between text-sm">
+                            <span id="summaryText">$450 × 0 nights</span>
+                            <span id="summaryPrice">$0</span>
+                        </div>
+                        <div class="flex justify-between font-medium text-base pt-2 border-t">
+                            <span>Total</span>
+                            <span id="totalPrice">$0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="space-y-3">
+                    <button type="submit"
+                        class="w-full bg-gradient-primary text-white py-3 px-4 rounded-lg hover:shadow-luxury transition-all">
+                        Send Booking Request via WhatsApp
+                    </button>
+
+                    <div class="text-center text-sm text-gray-600">or contact us directly</div>
+
+                    <div class="grid grid-cols-3 gap-2">
+                        <button type="button" onclick="contactWhatsApp()"
+                            class="p-2 border border-gray-300 rounded hover:bg-gray-50 transition-all">
+                            <i class="fab fa-whatsapp text-green-600"></i>
+                        </button>
+                        <button type="button" onclick="contactPhone()"
+                            class="p-2 border border-gray-300 rounded hover:bg-gray-50 transition-all">
+                            <i class="fas fa-phone text-blue-600"></i>
+                        </button>
+                        <button type="button" onclick="contactEmail()"
+                            class="p-2 border border-gray-300 rounded hover:bg-gray-50 transition-all">
+                            <i class="fas fa-envelope text-red-600"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-16 mt-16">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Company Info -->
+                <div class="col-span-1 md:col-span-2">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <img src="assets/logo.jpg" alt="The Manna Stays" class="h-12 w-auto rounded">
+                        <span class="text-xl font-semibold">The Manna Stays</span>
+                    </div>
+                    <p class="text-gray-400 mb-4">Experience luxury accommodations with personalized service and
+                        unforgettable memories.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-facebook text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="https://wa.me/1234567890" target="_blank"
+                            class="text-gray-400 hover:text-green-500 transition-colors">
+                            <i class="fab fa-whatsapp text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
+                        <li><a href="gallery.html"
+                                class="text-gray-400 hover:text-white transition-colors">Properties</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Contact</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li class="flex items-center">
+                            <i class="fas fa-phone mr-2"></i>
+                            +1 (555) 123-4567
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-2"></i>
+                            info@mannastays.com
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fab fa-whatsapp mr-2"></i>
+                            WhatsApp Support
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 The Manna Stays. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Tab functionality
+        function openTab(evt, tabName) {
+            // Hide all tab contents
+            const tabContents = document.getElementsByClassName("tab-content");
+            for (let i = 0; i < tabContents.length; i++) {
+                tabContents[i].classList.remove("active");
+            }
+
+            // Remove active class from all buttons
+            const tabButtons = document.getElementsByClassName("tab-button");
+            for (let i = 0; i < tabButtons.length; i++) {
+                tabButtons[i].classList.remove("active");
+            }
+
+            // Show the specific tab content and add active class to button
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+
+        // Gallery functionality
+        const galleryImages = [
+            "assets/16I5VXgzM8hHSHl1-EH4ITTtF-Y_Q1dxLYt4iu44Gio=_plaintext_638917518845609081.jpg",
+            "assets/1Hs9pBNp9ITdezhZFFCE2QL3y-PF3HyStWO9MtwFD5s=_plaintext_638917517840719847.jpg",
+            "assets/1PPUn-qpuYUzYDfDpDPYu2cEbOpPdU4B4aYYjJXaFzU=_plaintext_638917516800254939.jpg",
+            "assets/UV7Jw5V39WEx2vbVzv4aiSHnrHyV-fSF-QXTRjbxP-8=_plaintext_638917516750029028.jpg",
+            "assets/zIao40VB9oR5Ut3a1GnsplJkaBkIRbaX0yE7TYjda5E=_plaintext_638917516808034734.jpg",
+            "assets/Westlands- 1 bed/1PPUn-qpuYUzYDfDpDPYu2cEbOpPdU4B4aYYjJXaFzU=_plaintext_638917516800254939.jpg",
+            "assets/Westlands- 1 bed/AC_v1xdEUUHClk76gqICnUlMBCIa-6CA4zkCELqi4LQ=_plaintext_638917516780851508.jpg",
+            "assets/Westlands- 1 bed/ZUAK8eUS6jPf9anwnUtwPDJPKpgCzkxtlV5_5142Rjw=_plaintext_638917516792285133.jpg",
+            "assets/Westlands- 1 bed/zUxGaLBEqng7Up4JovOdeBJEko6KDs3fsv8cOFVD2BQ=_plaintext_638917516753835621.jpg",
+            "assets/Westlands- 1 bed/n_O8lG_5oQxStpWZ9h_kk3WAn1kpZbAiaEzzDPJgVlI=_plaintext_638917516773206825.jpg",
+            "assets/Westlands- 1 bed/M03Px-EGjWiU19K7TYRSgoqWqO8086ueMNS0tZSl4CI=_plaintext_638917516776913065.jpg",
+            "assets/Westlands- 1 bed/KmbcR9koAXfygOH3vh7-60tJmpNj_A_3NEcj0s35EDA=_plaintext_638917516769707894.jpg",
+        ];
+
+        let currentImageIndex = 0;
+
+        function openGalleryModal(index) {
+            currentImageIndex = index;
+            document.getElementById('modalImage').src = galleryImages[index];
+            document.getElementById('galleryModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeGalleryModal() {
+            document.getElementById('galleryModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function navigateGallery(direction) {
+            currentImageIndex += direction;
+
+            if (currentImageIndex < 0) {
+                currentImageIndex = galleryImages.length - 1;
+            } else if (currentImageIndex >= galleryImages.length) {
+                currentImageIndex = 0;
+            }
+
+            document.getElementById('modalImage').src = galleryImages[currentImageIndex];
+            document.getElementById('modalImage').classList.add('fade-in');
+            setTimeout(() => {
+                document.getElementById('modalImage').classList.remove('fade-in');
+            }, 500);
+        }
+
+        // Close modal when clicking outside the image
+        document.getElementById('galleryModal').addEventListener('click', function (e) {
+            if (e.target === this) {
+                closeGalleryModal();
+            }
+        });
+
+        // Keyboard navigation for gallery
+        document.addEventListener('keydown', function (e) {
+            const galleryModal = document.getElementById('galleryModal');
+            if (galleryModal.classList.contains('active')) {
+                if (e.key === 'Escape') {
+                    closeGalleryModal();
+                } else if (e.key === 'ArrowLeft') {
+                    navigateGallery(-1);
+                } else if (e.key === 'ArrowRight') {
+                    navigateGallery(1);
+                }
+            }
+        });
+
+        // Booking modal functions (unchanged from your original)
+        function openBookingModal() {
+            document.getElementById('bookingModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeBookingModal() {
+            document.getElementById('bookingModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Contact functions (unchanged from your original)
+        function contactWhatsApp() {
+            const message = "Hi! I'm interested in booking Luxury Ocean View Villa in Malibu, California. Can you provide more information?";
+            window.open(`https://wa.me/1234567890?text=${encodeURIComponent(message)}`, '_blank');
+        }
+
+        function contactPhone() {
+            window.open('tel:+1234567890', '_self');
+        }
+
+        function contactEmail() {
+            const subject = 'Booking Inquiry - Luxury Ocean View Villa';
+            const body = "Hi! I'm interested in booking Luxury Ocean View Villa in Malibu, California. Can you help me with availability and booking?";
+            window.open(`mailto:info@mannastays.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`, '_self');
+        }
+
+        // Form handling (unchanged from your original)
+        document.getElementById('bookingForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const checkin = document.getElementById('checkin').value;
+            const checkout = document.getElementById('checkout').value;
+            const adults = parseInt(document.getElementById('adults').value);
+            const children = parseInt(document.getElementById('children').value);
+            const guestName = document.getElementById('guestName').value;
+            const guestEmail = document.getElementById('guestEmail').value;
+            const guestPhone = document.getElementById('guestPhone').value;
+            const specialRequests = document.getElementById('specialRequests').value;
+
+            if (!checkin || !checkout || !guestName || !guestEmail || !guestPhone) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+
+            const totalGuests = adults + children;
+            if (totalGuests > 8) {
+                alert('This property accommodates up to 8 guests.');
+                return;
+            }
+
+            if (new Date(checkin) >= new Date(checkout)) {
+                alert('Check-out date must be after check-in date.');
+                return;
+            }
+
+            const nights = Math.ceil((new Date(checkout) - new Date(checkin)) / (1000 * 60 * 60 * 24));
+            const totalPrice = nights * 450;
+
+            const message = `
+🏡 *Booking Request for Luxury Ocean View Villa*
+
+📍 Location: Malibu, California
+📅 Check-in: ${checkin}
+📅 Check-out: ${checkout}
+🛏️ Guests: ${adults} adults${children > 0 ? `, ${children} children` : ''}
+💰 Total: $${totalPrice} (${nights} nights × $450/night)
+
+👤 *Guest Details:*
+Name: ${guestName}
+Email: ${guestEmail}
+Phone: ${guestPhone}
+
+${specialRequests ? `💬 *Special Requests:*\n${specialRequests}` : ''}
+
+Please confirm availability and provide payment instructions.
+            `.trim();
+
+            window.open(`https://wa.me/1234567890?text=${encodeURIComponent(message)}`, '_blank');
+            alert('Booking request sent! We\'ll contact you shortly to confirm your reservation.');
+            closeBookingModal();
+        });
+
+        // Update booking summary (unchanged from your original)
+        function updateBookingSummary() {
+            const checkin = document.getElementById('checkin').value;
+            const checkout = document.getElementById('checkout').value;
+
+            if (checkin && checkout) {
+                const nights = Math.ceil((new Date(checkout) - new Date(checkin)) / (1000 * 60 * 60 * 24));
+                if (nights > 0) {
+                    const totalPrice = nights * 450;
+                    document.getElementById('summaryText').textContent = `$450 × ${nights} nights`;
+                    document.getElementById('summaryPrice').textContent = `$${totalPrice}`;
+                    document.getElementById('totalPrice').textContent = `$${totalPrice}`;
+                    document.getElementById('bookingSummary').classList.remove('hidden');
+                } else {
+                    document.getElementById('bookingSummary').classList.add('hidden');
+                }
+            } else {
+                document.getElementById('bookingSummary').classList.add('hidden');
+            }
+        }
+
+        // Add event listeners for date inputs (unchanged from your original)
+        document.getElementById('checkin').addEventListener('change', updateBookingSummary);
+        document.getElementById('checkout').addEventListener('change', updateBookingSummary);
+
+        // Set minimum date to today (unchanged from your original)
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('checkin').setAttribute('min', today);
+        document.getElementById('checkout').setAttribute('min', today);
+
+        // Initialize Swiper
+        const swiper = new Swiper('.swiper', {
+            loop: true,
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            autoplay: {
+                delay: 5000,
+            },
+        });
+    </script>
+</body>
+
+</html>

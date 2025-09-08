@@ -1,413 +1,610 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PropertyStay - Gallery | Browse Properties</title>
-    <meta name="description" content="Browse our curated collection of exceptional properties around the world. Find your perfect stay from villas, apartments, cabins and more." />
+    <title>Luxury Ocean View Villa - The Manna Stays</title>
+    <meta name="description"
+        content="Experience unparalleled luxury in this stunning oceanfront villa in Malibu, California. Wake up to breathtaking sunrise views over the Pacific Ocean.">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* Custom Design System */
+        /* Custom Theme Colors */
         :root {
-            --background: 0 0% 100%;
-            --foreground: 222 15% 15%;
-            --card: 0 0% 100%;
-            --card-foreground: 222 15% 15%;
-            --primary: 14 88% 65%;
-            --primary-foreground: 0 0% 100%;
-            --secondary: 220 25% 95%;
-            --secondary-foreground: 222 15% 15%;
-            --muted: 220 25% 96%;
-            --muted-foreground: 220 8% 46%;
-            --accent: 210 100% 65%;
-            --accent-foreground: 0 0% 100%;
-            --border: 220 25% 90%;
-            --gradient-primary: linear-gradient(135deg, hsl(14 88% 65%), hsl(210 100% 65%));
-            --gradient-hero: linear-gradient(135deg, hsl(14 88% 65%) 0%, hsl(25 95% 68%) 25%, hsl(210 100% 65%) 100%);
-            --gradient-card: linear-gradient(145deg, hsl(0 0% 100% / 0.8), hsl(220 25% 98%));
-            --shadow-luxury: 0 25px 50px -12px hsl(14 88% 65% / 0.25);
-            --shadow-card: 0 10px 30px -10px hsl(220 25% 50% / 0.1);
-            --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            --primary: hsl(341, 81%, 60%);
+            --primary-hover: hsl(341, 81%, 50%);
         }
-        
-        .bg-gradient-primary { background: var(--gradient-primary); }
-        .bg-gradient-hero { background: var(--gradient-hero); }
-        .bg-gradient-card { background: var(--gradient-card); }
-        .shadow-luxury { box-shadow: var(--shadow-luxury); }
-        .shadow-card-hover { box-shadow: var(--shadow-card); }
-        .text-gradient { background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-        .transition-smooth { transition: var(--transition-smooth); }
-        
-        .property-card:hover { transform: translateY(-8px); }
-        .property-card img { transition: transform 0.7s ease; }
-        .property-card:hover img { transform: scale(1.1); }
-        
-        /* Mobile menu toggle */
-        .mobile-menu { display: none; }
-        .mobile-menu.active { display: block; }
-        
-        /* Filter buttons */
-        .filter-btn.active { 
-            background: var(--gradient-primary); 
-            color: white; 
+
+        .bg-gradient-primary {
+            background: linear-gradient(135deg, #D72660, #E91E63);
         }
-        .filter-btn { 
-            transition: all 0.3s ease; 
+
+        .text-primary {
+            color: var(--primary);
         }
-        
-        /* Property grid animations */
-        .property-grid .property-card {
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 0.6s ease forwards;
+
+        .bg-primary {
+            background-color: var(--primary);
         }
-        
-        .property-grid .property-card:nth-child(1) { animation-delay: 0.1s; }
-        .property-grid .property-card:nth-child(2) { animation-delay: 0.2s; }
-        .property-grid .property-card:nth-child(3) { animation-delay: 0.3s; }
-        .property-grid .property-card:nth-child(4) { animation-delay: 0.4s; }
-        .property-grid .property-card:nth-child(5) { animation-delay: 0.5s; }
-        .property-grid .property-card:nth-child(6) { animation-delay: 0.6s; }
-        
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+
+        .border-primary {
+            border-color: var(--primary);
+        }
+
+        .shadow-luxury {
+            box-shadow: 0 20px 40px -10px rgba(215, 38, 96, 0.3);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background-color: white;
+            border-radius: 8px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
         }
     </style>
 </head>
+
 <body class="bg-white text-gray-800">
     <!-- Navigation -->
     <nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200 shadow-md">
         <div class="container mx-auto px-4 py-4">
             <div class="flex items-center justify-between">
                 <!-- Logo -->
-                <a href="index.html" class="flex items-center space-x-2">
-                    <div class="w-8 h-8 bg-gradient-primary rounded-lg flex items-center justify-center">
-                        <i class="fas fa-home text-white text-sm"></i>
-                    </div>
-                    <span class="text-xl font-bold text-gradient">PropertyStay</span>
+                <a href="index.html" class="flex items-center space-x-3">
+                    <img src="src/assets/manna-stays-logo.png" alt="The Manna Stays" class="h-10 w-auto">
                 </a>
 
                 <!-- Desktop Navigation -->
                 <div class="hidden md:flex items-center space-x-6">
                     <a href="index.html" class="text-gray-600 hover:text-gray-800 transition-colors">Home</a>
-                    <a href="gallery.html" class="text-orange-500 font-semibold">Properties</a>
-                    <button class="bg-gradient-primary text-white px-4 py-2 rounded-lg hover:shadow-lg transition-all">
-                        Book Now
-                    </button>
+                    <a href="gallery.html" class="text-gray-600 hover:text-gray-800 transition-colors">Properties</a>
+                    <a href="https://wa.me/1234567890?text=Hi,%20I%27m%20interested%20in%20your%20properties"
+                        target="_blank" class="text-green-600 hover:text-green-700 transition-colors flex items-center">
+                        <i class="fab fa-whatsapp mr-1"></i>
+                        WhatsApp
+                    </a>
                 </div>
 
                 <!-- Mobile Menu Button -->
-                <button id="mobile-menu-btn" class="md:hidden p-2">
-                    <i class="fas fa-bars text-gray-600"></i>
+                <button class="md:hidden" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars text-xl"></i>
                 </button>
             </div>
 
-            <!-- Mobile Navigation -->
-            <div id="mobile-menu" class="mobile-menu md:hidden mt-4 pt-4 border-t border-gray-200">
-                <div class="flex flex-col space-y-4">
+            <!-- Mobile Menu -->
+            <div id="mobileMenu" class="mobile-menu mt-4 pb-4 border-t border-gray-200">
+                <div class="flex flex-col space-y-3 pt-4">
                     <a href="index.html" class="text-gray-600 hover:text-gray-800 transition-colors">Home</a>
-                    <a href="gallery.html" class="text-orange-500 font-semibold">Properties</a>
-                    <button class="bg-gradient-primary text-white px-4 py-2 rounded-lg w-fit">Book Now</button>
+                    <a href="gallery.html" class="text-gray-600 hover:text-gray-800 transition-colors">Properties</a>
+                    <a href="https://wa.me/1234567890?text=Hi,%20I%27m%20interested%20in%20your%20properties"
+                        target="_blank" class="text-green-600 hover:text-green-700 transition-colors flex items-center">
+                        <i class="fab fa-whatsapp mr-1"></i>
+                        WhatsApp
+                    </a>
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="pt-24 pb-12 bg-gradient-hero">
-        <div class="container mx-auto px-4">
-            <div class="text-center max-w-3xl mx-auto">
-                <h1 class="text-4xl md:text-5xl font-bold text-white mb-6">
-                    Discover Your Perfect Stay
-                </h1>
-                <p class="text-xl text-white/90 mb-8">
-                    Browse our curated collection of exceptional properties around the world
-                </p>
-                
-                <!-- Search Bar -->
-                <div class="relative max-w-2xl mx-auto">
-                    <i class="fas fa-search absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
-                    <input 
-                        id="search-input" 
-                        type="text" 
-                        placeholder="Search by location or property name..." 
-                        class="w-full pl-12 pr-4 py-6 text-lg bg-white/90 backdrop-blur rounded-lg shadow-luxury outline-none"
-                    >
-                </div>
+    <main class="pt-20">
+        <div class="container mx-auto px-4 py-8">
+            <!-- Navigation Back -->
+            <div class="mb-6">
+                <a href="index.html"
+                    class="inline-flex items-center text-gray-600 hover:text-gray-800 transition-colors">
+                    <i class="fas fa-arrow-left mr-2"></i>
+                    Back to Home
+                </a>
             </div>
-        </div>
-    </section>
 
-    <!-- Filters -->
-    <section class="py-8 border-b border-gray-200">
-        <div class="container mx-auto px-4">
-            <div class="flex flex-col md:flex-row gap-4 items-center justify-between">
-                <div class="flex flex-wrap gap-2" id="category-filters">
-                    <button class="filter-btn active bg-orange-500 text-white px-4 py-2 rounded-lg transition-all" data-category="all">
-                        All Properties
-                    </button>
-                    <button class="filter-btn bg-gray-100 text-gray-600 hover:bg-gray-200 px-4 py-2 rounded-lg transition-all" data-category="villa">
-                        Villas
-                    </button>
-                    <button class="filter-btn bg-gray-100 text-gray-600 hover:bg-gray-200 px-4 py-2 rounded-lg transition-all" data-category="apartment">
-                        Apartments
-                    </button>
-                    <button class="filter-btn bg-gray-100 text-gray-600 hover:bg-gray-200 px-4 py-2 rounded-lg transition-all" data-category="cabin">
-                        Cabins
-                    </button>
-                    <button class="filter-btn bg-gray-100 text-gray-600 hover:bg-gray-200 px-4 py-2 rounded-lg transition-all" data-category="condo">
-                        Condos
-                    </button>
-                    <button class="filter-btn bg-gray-100 text-gray-600 hover:bg-gray-200 px-4 py-2 rounded-lg transition-all" data-category="townhouse">
-                        Townhouses
-                    </button>
-                    <button class="filter-btn bg-gray-100 text-gray-600 hover:bg-gray-200 px-4 py-2 rounded-lg transition-all" data-category="resort">
-                        Resorts
-                    </button>
-                </div>
-                
-                <div class="flex items-center gap-3">
-                    <span id="results-count" class="text-sm text-gray-600">6 properties found</span>
-                    <button class="bg-white border border-gray-300 hover:bg-gray-50 text-gray-600 px-4 py-2 rounded-lg transition-all flex items-center">
-                        <i class="fas fa-sliders-h mr-2"></i>
-                        More Filters
-                    </button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Properties Grid -->
-    <section class="py-12">
-        <div class="container mx-auto px-4">
-            <div id="properties-container">
-                <div id="properties-grid" class="property-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Property cards will be rendered here by JavaScript -->
-                </div>
-                
-                <div id="no-results" class="text-center py-16 hidden">
-                    <div class="text-6xl text-gray-400 mb-4">🏠</div>
-                    <h3 class="text-xl font-semibold mb-2">No properties found</h3>
-                    <p class="text-gray-600">Try adjusting your search or filter criteria</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Load More -->
-    <section class="pb-16">
-        <div class="container mx-auto px-4 text-center">
-            <button class="bg-white border border-gray-300 hover:bg-gray-50 text-gray-600 px-6 py-3 rounded-lg transition-all">
-                Load More Properties
-            </button>
-        </div>
-    </section>
-
-    <script>
-        // Property data
-        const properties = [
-            {
-                id: "1",
-                title: "Luxury Ocean Villa",
-                location: "Malibu, California",
-                price: 450,
-                rating: 4.9,
-                reviews: 127,
-                image: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-                guests: 8,
-                amenities: ["WiFi", "Parking", "Kitchen", "Pool"],
-                category: "villa",
-                featured: true
-            },
-            {
-                id: "2",
-                title: "Modern City Apartment",
-                location: "Downtown Manhattan",
-                price: 280,
-                rating: 4.7,
-                reviews: 89,
-                image: "https://images.unsplash.com/photo-1510798831971-661eb04b3739?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-                guests: 4,
-                amenities: ["WiFi", "Kitchen", "Gym"],
-                category: "apartment"
-            },
-            {
-                id: "3",
-                title: "Cozy Mountain Cabin",
-                location: "Aspen, Colorado",
-                price: 320,
-                rating: 4.8,
-                reviews: 156,
-                image: "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-                guests: 6,
-                amenities: ["WiFi", "Parking", "Kitchen", "Fireplace"],
-                category: "cabin"
-            },
-            {
-                id: "4",
-                title: "Beachfront Condo",
-                location: "Miami Beach, Florida",
-                price: 380,
-                rating: 4.6,
-                reviews: 98,
-                image: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-                guests: 6,
-                amenities: ["WiFi", "Parking", "Kitchen", "Beach Access"],
-                category: "condo"
-            },
-            {
-                id: "5",
-                title: "Historic Townhouse",
-                location: "Boston, Massachusetts",
-                price: 250,
-                rating: 4.5,
-                reviews: 73,
-                image: "https://images.unsplash.com/photo-1510798831971-661eb04b3739?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-                guests: 5,
-                amenities: ["WiFi", "Parking", "Kitchen"],
-                category: "townhouse"
-            },
-            {
-                id: "6",
-                title: "Desert Resort",
-                location: "Scottsdale, Arizona",
-                price: 420,
-                rating: 4.9,
-                reviews: 142,
-                image: "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-                guests: 10,
-                amenities: ["WiFi", "Parking", "Kitchen", "Spa", "Golf"],
-                category: "resort",
-                featured: true
-            }
-        ];
-
-        let currentCategory = 'all';
-        let currentSearchTerm = '';
-
-        // Generate amenity icon
-        function getAmenityIcon(amenity) {
-            const icons = {
-                'wifi': 'fas fa-wifi',
-                'parking': 'fas fa-car',
-                'kitchen': 'fas fa-utensils',
-                'pool': 'fas fa-swimmer',
-                'gym': 'fas fa-dumbbell',
-                'fireplace': 'fas fa-fire',
-                'beach access': 'fas fa-umbrella-beach',
-                'spa': 'fas fa-spa',
-                'golf': 'fas fa-golf-ball'
-            };
-            return icons[amenity.toLowerCase()] || 'fas fa-check';
-        }
-
-        // Generate property card HTML
-        function generatePropertyCard(property) {
-            const featuredBadge = property.featured ? 
-                '<div class="absolute top-4 left-4 z-10"><span class="bg-orange-500 text-white px-2 py-1 rounded-full text-xs">Featured</span></div>' : '';
-
-            const amenityIcons = property.amenities.slice(0, 3).map(amenity => 
-                `<div class="flex items-center gap-1 text-xs text-gray-600">
-                    <i class="${getAmenityIcon(amenity)}"></i>
-                    <span>${amenity}</span>
-                </div>`
-            ).join('');
-
-            return `
-                <div class="property-card bg-gradient-card rounded-lg overflow-hidden shadow-lg hover:shadow-luxury transition-smooth" data-category="${property.category}">
-                    ${featuredBadge}
-                    <div class="relative overflow-hidden">
-                        <img src="${property.image}" alt="${property.title}" class="w-full h-48 object-cover">
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-start justify-between mb-2">
-                            <h3 class="font-semibold text-lg">${property.title}</h3>
+            <!-- Property Header -->
+            <div class="mb-8">
+                <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4 mb-4">
+                    <div>
+                        <div class="flex items-center gap-2 mb-2">
+                            <h1 class="text-3xl font-bold text-gray-800">Luxury Ocean View Villa</h1>
+                            <span class="bg-primary text-white px-2 py-1 rounded text-sm">Featured</span>
+                        </div>
+                        <div class="flex items-center gap-1 mb-2">
+                            <i class="fas fa-map-marker-alt text-gray-500"></i>
+                            <span class="text-gray-600">Malibu, California</span>
+                        </div>
+                        <div class="flex items-center gap-4">
                             <div class="flex items-center gap-1">
-                                <i class="fas fa-star text-amber-400 text-sm"></i>
-                                <span class="text-sm font-medium">${property.rating}</span>
-                                <span class="text-xs text-gray-500">(${property.reviews})</span>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <span class="font-medium">4.9</span>
+                                <span class="text-gray-600">(127 reviews)</span>
+                            </div>
+                            <div class="flex items-center gap-1">
+                                <i class="fas fa-users text-gray-500"></i>
+                                <span class="text-gray-600">Up to 8 guests</span>
                             </div>
                         </div>
-                        <div class="flex items-center gap-1 mb-3">
-                            <i class="fas fa-map-marker-alt text-gray-400"></i>
-                            <span class="text-sm text-gray-600">${property.location}</span>
+                    </div>
+                    <div class="text-right">
+                        <div class="text-3xl font-bold text-gray-800">$450</div>
+                        <div class="text-gray-600">per night</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Images -->
+            <div class="mb-8">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+                    <div class="lg:col-span-2">
+                        <img id="mainImage" src="src/assets/property-1.jpg" alt="Luxury Ocean View Villa"
+                            class="w-full h-64 lg:h-96 object-cover rounded-lg">
+                    </div>
+                    <div class="grid grid-cols-2 lg:grid-cols-1 gap-4">
+                        <img src="src/assets/property-2.jpg" alt="Property View 2"
+                            class="w-full h-32 lg:h-44 object-cover rounded-lg cursor-pointer hover:opacity-80 transition-opacity"
+                            onclick="changeMainImage('src/assets/property-2.jpg')">
+                        <img src="src/assets/property-3.jpg" alt="Property View 3"
+                            class="w-full h-32 lg:h-44 object-cover rounded-lg cursor-pointer hover:opacity-80 transition-opacity"
+                            onclick="changeMainImage('src/assets/property-3.jpg')">
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Property Details -->
+                <div class="lg:col-span-2 space-y-8">
+                    <!-- Description -->
+                    <div class="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
+                        <h2 class="text-xl font-semibold mb-4">About this property</h2>
+                        <p class="text-gray-600 leading-relaxed">Experience unparalleled luxury in this stunning
+                            oceanfront villa. Wake up to breathtaking sunrise views over the Pacific Ocean from your
+                            private balcony. This meticulously designed property features modern amenities, spacious
+                            living areas, and direct beach access.</p>
+                    </div>
+
+                    <!-- Property Features -->
+                    <div class="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
+                        <h2 class="text-xl font-semibold mb-4">Property features</h2>
+                        <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-6">
+                            <div class="text-center">
+                                <div class="text-2xl font-bold text-primary">4</div>
+                                <div class="text-sm text-gray-600">Bedrooms</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-2xl font-bold text-primary">3</div>
+                                <div class="text-sm text-gray-600">Bathrooms</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-2xl font-bold text-primary">8</div>
+                                <div class="text-sm text-gray-600">Guests</div>
+                            </div>
                         </div>
-                        <div class="flex items-center gap-2 mb-4">
-                            <i class="fas fa-users text-gray-400"></i>
-                            <span class="text-sm text-gray-600">Up to ${property.guests} guests</span>
+
+                        <hr class="my-6">
+
+                        <h3 class="font-semibold mb-4">Amenities</h3>
+                        <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-wifi"></i>
+                                <span class="text-sm">WiFi</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-car"></i>
+                                <span class="text-sm">Parking</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-utensils"></i>
+                                <span class="text-sm">Kitchen</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-swimming-pool"></i>
+                                <span class="text-sm">Pool</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-umbrella-beach"></i>
+                                <span class="text-sm">Beach Access</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-wind"></i>
+                                <span class="text-sm">Air Conditioning</span>
+                            </div>
                         </div>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            ${amenityIcons}
-                        </div>
-                        <div class="flex items-center justify-between">
+                    </div>
+
+                    <!-- House Rules -->
+                    <div class="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
+                        <h2 class="text-xl font-semibold mb-4">House rules</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                             <div>
-                                <span class="text-2xl font-bold">$${property.price}</span>
-                                <span class="text-sm text-gray-600">/night</span>
+                                <div class="flex items-center gap-2 mb-2">
+                                    <i class="fas fa-calendar text-primary"></i>
+                                    <span class="font-medium">Check-in: 3:00 PM</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <i class="fas fa-calendar text-primary"></i>
+                                    <span class="font-medium">Check-out: 11:00 AM</span>
+                                </div>
                             </div>
-                            <button class="bg-gradient-primary text-white px-4 py-2 rounded-lg hover:shadow-lg transition-all">
-                                View Details
+                        </div>
+                        <ul class="space-y-2">
+                            <li class="text-sm text-gray-600">• No smoking</li>
+                            <li class="text-sm text-gray-600">• No pets</li>
+                            <li class="text-sm text-gray-600">• No parties</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Booking Panel -->
+                <div class="lg:col-span-1">
+                    <div class="sticky top-8 bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
+                        <div class="text-center mb-6">
+                            <div class="text-2xl font-bold text-gray-800">$450</div>
+                            <div class="text-gray-600">per night</div>
+                        </div>
+
+                        <div class="space-y-4">
+                            <button onclick="openBookingModal()"
+                                class="w-full bg-gradient-primary text-white py-3 px-4 rounded-lg hover:shadow-luxury transition-all text-lg font-medium">
+                                Book Now
+                            </button>
+
+                            <button onclick="contactWhatsApp()"
+                                class="w-full border border-gray-300 text-gray-700 py-3 px-4 rounded-lg hover:bg-gray-50 transition-all flex items-center justify-center gap-2">
+                                <i class="fab fa-whatsapp text-green-600"></i>
+                                Contact via WhatsApp
                             </button>
                         </div>
+
+                        <hr class="my-6">
+
+                        <div class="text-center text-sm text-gray-600">
+                            You won't be charged yet
+                        </div>
                     </div>
                 </div>
-            `;
-        }
+            </div>
+        </div>
+    </main>
 
-        // Filter properties
-        function filterProperties() {
-            const filteredProperties = properties.filter(property => {
-                const matchesSearch = property.title.toLowerCase().includes(currentSearchTerm.toLowerCase()) ||
-                                    property.location.toLowerCase().includes(currentSearchTerm.toLowerCase());
-                const matchesCategory = currentCategory === 'all' || property.category === currentCategory;
-                return matchesSearch && matchesCategory;
-            });
+    <!-- Booking Modal -->
+    <div id="bookingModal" class="modal">
+        <div class="modal-content p-6">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-xl font-semibold">Book Your Stay</h2>
+                <button onclick="closeBookingModal()" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <p class="text-sm text-gray-600 mb-6">Luxury Ocean View Villa</p>
 
-            const propertiesGrid = document.getElementById('properties-grid');
-            const noResults = document.getElementById('no-results');
-            const resultsCount = document.getElementById('results-count');
+            <form id="bookingForm" class="space-y-6">
+                <!-- Dates -->
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="flex items-center gap-2 mb-2 text-sm font-medium">
+                            <i class="fas fa-calendar"></i>
+                            Check-in
+                        </label>
+                        <input type="date" id="checkin" class="w-full p-2 border border-gray-300 rounded" required>
+                    </div>
+                    <div>
+                        <label class="flex items-center gap-2 mb-2 text-sm font-medium">
+                            <i class="fas fa-calendar"></i>
+                            Check-out
+                        </label>
+                        <input type="date" id="checkout" class="w-full p-2 border border-gray-300 rounded" required>
+                    </div>
+                </div>
 
-            if (filteredProperties.length > 0) {
-                propertiesGrid.innerHTML = filteredProperties.map(generatePropertyCard).join('');
-                propertiesGrid.style.display = 'grid';
-                noResults.classList.add('hidden');
-                resultsCount.textContent = `${filteredProperties.length} properties found`;
-            } else {
-                propertiesGrid.style.display = 'none';
-                noResults.classList.remove('hidden');
-                resultsCount.textContent = '0 properties found';
-            }
-        }
+                <!-- Guests -->
+                <div>
+                    <label class="flex items-center gap-2 mb-3 text-sm font-medium">
+                        <i class="fas fa-users"></i>
+                        Guests
+                    </label>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="text-sm">Adults</label>
+                            <input type="number" id="adults" min="1" max="8" value="1"
+                                class="w-full p-2 border border-gray-300 rounded" required>
+                        </div>
+                        <div>
+                            <label class="text-sm">Children</label>
+                            <input type="number" id="children" min="0" max="7" value="0"
+                                class="w-full p-2 border border-gray-300 rounded">
+                        </div>
+                    </div>
+                    <p class="text-xs text-gray-600 mt-1">Maximum 8 guests total</p>
+                </div>
 
+                <hr>
+
+                <!-- Guest Information -->
+                <div class="space-y-4">
+                    <h3 class="font-medium">Guest Information</h3>
+
+                    <div>
+                        <label class="text-sm font-medium">Full Name *</label>
+                        <input type="text" id="guestName" placeholder="Enter your full name"
+                            class="w-full p-2 border border-gray-300 rounded" required>
+                    </div>
+
+                    <div>
+                        <label class="text-sm font-medium">Email Address *</label>
+                        <input type="email" id="guestEmail" placeholder="your.email@example.com"
+                            class="w-full p-2 border border-gray-300 rounded" required>
+                    </div>
+
+                    <div>
+                        <label class="text-sm font-medium">Phone Number *</label>
+                        <input type="tel" id="guestPhone" placeholder="+1 (555) 123-4567"
+                            class="w-full p-2 border border-gray-300 rounded" required>
+                    </div>
+
+                    <div>
+                        <label class="text-sm font-medium">Special Requests</label>
+                        <textarea id="specialRequests" placeholder="Any special requirements or requests..." rows="3"
+                            class="w-full p-2 border border-gray-300 rounded"></textarea>
+                    </div>
+                </div>
+
+                <!-- Booking Summary -->
+                <div id="bookingSummary" class="hidden">
+                    <hr>
+                    <div class="space-y-2">
+                        <h3 class="font-medium">Booking Summary</h3>
+                        <div class="flex justify-between text-sm">
+                            <span id="summaryText">$450 × 0 nights</span>
+                            <span id="summaryPrice">$0</span>
+                        </div>
+                        <div class="flex justify-between font-medium text-base pt-2 border-t">
+                            <span>Total</span>
+                            <span id="totalPrice">$0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="space-y-3">
+                    <button type="submit"
+                        class="w-full bg-gradient-primary text-white py-3 px-4 rounded-lg hover:shadow-luxury transition-all">
+                        Send Booking Request via WhatsApp
+                    </button>
+
+                    <div class="text-center text-sm text-gray-600">or contact us directly</div>
+
+                    <div class="grid grid-cols-3 gap-2">
+                        <button type="button" onclick="contactWhatsApp()"
+                            class="p-2 border border-gray-300 rounded hover:bg-gray-50 transition-all">
+                            <i class="fab fa-whatsapp text-green-600"></i>
+                        </button>
+                        <button type="button" onclick="contactPhone()"
+                            class="p-2 border border-gray-300 rounded hover:bg-gray-50 transition-all">
+                            <i class="fas fa-phone text-blue-600"></i>
+                        </button>
+                        <button type="button" onclick="contactEmail()"
+                            class="p-2 border border-gray-300 rounded hover:bg-gray-50 transition-all">
+                            <i class="fas fa-envelope text-red-600"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-16">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Company Info -->
+                <div class="col-span-1 md:col-span-2">
+                    <img src="src/assets/manna-stays-logo.png" alt="The Manna Stays" class="h-12 mb-4">
+                    <p class="text-gray-400 mb-4">Experience luxury accommodations with personalized service and
+                        unforgettable memories.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-facebook text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="https://wa.me/1234567890" target="_blank"
+                            class="text-gray-400 hover:text-green-500 transition-colors">
+                            <i class="fab fa-whatsapp text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
+                        <li><a href="gallery.html"
+                                class="text-gray-400 hover:text-white transition-colors">Properties</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Contact</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li class="flex items-center">
+                            <i class="fas fa-phone mr-2"></i>
+                            +1 (555) 123-4567
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-2"></i>
+                            info@mannastays.com
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fab fa-whatsapp mr-2"></i>
+                            WhatsApp Support
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 The Manna Stays. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
         // Mobile menu toggle
-        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
-            const mobileMenu = document.getElementById('mobile-menu');
-            mobileMenu.classList.toggle('active');
-        });
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('active');
+        }
 
-        // Search functionality
-        document.getElementById('search-input').addEventListener('input', function(e) {
-            currentSearchTerm = e.target.value;
-            filterProperties();
-        });
+        // Change main image
+        function changeMainImage(src) {
+            document.getElementById('mainImage').src = src;
+        }
 
-        // Category filter functionality
-        document.getElementById('category-filters').addEventListener('click', function(e) {
-            if (e.target.classList.contains('filter-btn')) {
-                // Update active state
-                document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-                e.target.classList.add('active');
-                
-                currentCategory = e.target.getAttribute('data-category');
-                filterProperties();
+        // Booking modal functions
+        function openBookingModal() {
+            document.getElementById('bookingModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeBookingModal() {
+            document.getElementById('bookingModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Contact functions
+        function contactWhatsApp() {
+            const message = "Hi! I'm interested in booking Luxury Ocean View Villa in Malibu, California. Can you provide more information?";
+            window.open(`https://wa.me/1234567890?text=${encodeURIComponent(message)}`, '_blank');
+        }
+
+        function contactPhone() {
+            window.open('tel:+1234567890', '_self');
+        }
+
+        function contactEmail() {
+            const subject = 'Booking Inquiry - Luxury Ocean View Villa';
+            const body = "Hi! I'm interested in booking Luxury Ocean View Villa in Malibu, California. Can you help me with availability and booking?";
+            window.open(`mailto:info@mannastays.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`, '_self');
+        }
+
+        // Form handling
+        document.getElementById('bookingForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const checkin = document.getElementById('checkin').value;
+            const checkout = document.getElementById('checkout').value;
+            const adults = parseInt(document.getElementById('adults').value);
+            const children = parseInt(document.getElementById('children').value);
+            const guestName = document.getElementById('guestName').value;
+            const guestEmail = document.getElementById('guestEmail').value;
+            const guestPhone = document.getElementById('guestPhone').value;
+            const specialRequests = document.getElementById('specialRequests').value;
+
+            if (!checkin || !checkout || !guestName || !guestEmail || !guestPhone) {
+                alert('Please fill in all required fields.');
+                return;
             }
+
+            const totalGuests = adults + children;
+            if (totalGuests > 8) {
+                alert('This property accommodates up to 8 guests.');
+                return;
+            }
+
+            if (new Date(checkin) >= new Date(checkout)) {
+                alert('Check-out date must be after check-in date.');
+                return;
+            }
+
+            const nights = Math.ceil((new Date(checkout) - new Date(checkin)) / (1000 * 60 * 60 * 24));
+            const totalPrice = nights * 450;
+
+            const message = `
+🏡 *Booking Request for Luxury Ocean View Villa*
+
+📍 Location: Malibu, California
+📅 Check-in: ${checkin}
+📅 Check-out: ${checkout}
+🛏️ Guests: ${adults} adults${children > 0 ? `, ${children} children` : ''}
+💰 Total: $${totalPrice} (${nights} nights × $450/night)
+
+👤 *Guest Details:*
+Name: ${guestName}
+Email: ${guestEmail}
+Phone: ${guestPhone}
+
+${specialRequests ? `💬 *Special Requests:*\n${specialRequests}` : ''}
+
+Please confirm availability and provide payment instructions.
+            `.trim();
+
+            window.open(`https://wa.me/1234567890?text=${encodeURIComponent(message)}`, '_blank');
+            alert('Booking request sent! We\'ll contact you shortly to confirm your reservation.');
+            closeBookingModal();
         });
 
-        // Initialize page
-        filterProperties();
+        // Update booking summary
+        function updateBookingSummary() {
+            const checkin = document.getElementById('checkin').value;
+            const checkout = document.getElementById('checkout').value;
+
+            if (checkin && checkout) {
+                const nights = Math.ceil((new Date(checkout) - new Date(checkin)) / (1000 * 60 * 60 * 24));
+                if (nights > 0) {
+                    const totalPrice = nights * 450;
+                    document.getElementById('summaryText').textContent = `$450 × ${nights} nights`;
+                    document.getElementById('summaryPrice').textContent = `$${totalPrice}`;
+                    document.getElementById('totalPrice').textContent = `$${totalPrice}`;
+                    document.getElementById('bookingSummary').classList.remove('hidden');
+                } else {
+                    document.getElementById('bookingSummary').classList.add('hidden');
+                }
+            } else {
+                document.getElementById('bookingSummary').classList.add('hidden');
+            }
+        }
+
+        // Add event listeners for date inputs
+        document.getElementById('checkin').addEventListener('change', updateBookingSummary);
+        document.getElementById('checkout').addEventListener('change', updateBookingSummary);
+
+        // Set minimum date to today
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('checkin').setAttribute('min', today);
+        document.getElementById('checkout').setAttribute('min', today);
+
+        // Mobile menu styles
+        const style = document.createElement('style');
+        style.textContent = `
+            .mobile-menu { display: none; }
+            .mobile-menu.active { display: block; }
+        `;
+        document.head.appendChild(style);
     </script>
 </body>
+
 </html>
