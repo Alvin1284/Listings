@@ -155,7 +155,7 @@
             <div class="flex items-center justify-between">
                 <!-- Logo -->
                 <a href="index.html" class="flex items-center space-x-3">
-                    <img src="https://placehold.co/40x40" alt="The Manna Stays" class="h-10 w-auto rounded">
+                    <img src="assets/logo.jpg" alt="The Manna Stays" class="h-16 w-auto">
                     <span class="flex items-end font-bold text-xl md:text-2xl font-script">
                         <span class="text-black">The</span>
                         <span class="mx-1 text-primary">Manna</span>
@@ -169,7 +169,7 @@
                     <a href="properties.html" class="font-semibold text-primary">Properties</a>
                     <a href="#" class="text-gray-600 hover:text-gray-800 transition-colors">About</a>
                     <a href="#" class="text-gray-600 hover:text-gray-800 transition-colors">Contact</a>
-                    <a href="https://wa.me/1234567890" target="_blank" class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition-colors flex items-center">
+                    <a href="https://wa.me/254700000000?text=Hi,%20I%27m%20interested%20in%20your%20properties" target="_blank" class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition-colors flex items-center">
                         <i class="fab fa-whatsapp mr-2"></i>
                         WhatsApp
                     </a>
@@ -188,7 +188,7 @@
                     <a href="properties.html" class="font-semibold text-primary">Properties</a>
                     <a href="#" class="text-gray-600 hover:text-gray-800 transition-colors">About</a>
                     <a href="#" class="text-gray-600 hover:text-gray-800 transition-colors">Contact</a>
-                    <a href="https://wa.me/1234567890" target="_blank" class="text-green-600 hover:text-green-700 transition-colors flex items-center">
+                    <a href="https://wa.me/254700000000?text=Hi,%20I%27m%20interested%20in%20your%20properties" target="_blank" class="text-green-600 hover:text-green-700 transition-colors flex items-center">
                         <i class="fab fa-whatsapp mr-2"></i>
                         WhatsApp
                     </a>
@@ -326,7 +326,7 @@
                         <!-- Sort and View Options -->
                         <div class="bg-white p-4 rounded-xl shadow-sm mb-6 flex flex-wrap items-center justify-between">
                             <div class="text-gray-700 mb-4 md:mb-0">
-                                Showing <span class="font-semibold">12</span> of <span class="font-semibold">56</span> properties
+                                Showing <span id="showing-start" class="font-semibold">1</span>-<span id="showing-end" class="font-semibold">5</span> of <span class="font-semibold">10</span> properties across Nairobi
                             </div>
                             <div class="flex items-center space-x-4">
                                 <div class="flex items-center">
@@ -348,11 +348,11 @@
                         </div>
 
                         <!-- Properties Grid -->
-                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                            <!-- Property Card 1 -->
-                            <div class="property-card bg-white rounded-xl overflow-hidden shadow-md">
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="properties-grid">
+                            <!-- Property Card 1 - Cijana Garden Apartment -->
+                            <div class="property-card bg-white rounded-xl overflow-hidden shadow-md" data-page="1">
                                 <div class="property-image relative">
-                                    <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Luxury Apartment">
+                                    <img src="assets/WLX2---uo4hJmUHwx2HKZ1-P7lSDD73EacfDTFNQrCY=_plaintext_638917516735025036.jpg" alt="Cijana Garden Apartment">
                                     <div class="absolute top-4 left-4">
                                         <span class="bg-primary text-white px-3 py-1 rounded-full text-xs font-medium">Featured</span>
                                     </div>
@@ -364,46 +364,72 @@
                                 </div>
                                 <div class="p-5">
                                     <div class="flex justify-between items-start mb-3">
-                                        <h3 class="font-semibold text-lg">Luxury Westlands Apartment</h3>
+                                        <h3 class="font-semibold text-lg">Cijana Garden Apartment</h3>
                                         <div class="flex items-center">
                                             <i class="fas fa-star text-amber-400 text-sm"></i>
                                             <span class="ml-1 font-medium">4.9</span>
                                         </div>
                                     </div>
-                                    <div class="flex items-center text-gray-600 mb-4">
+                                    <div class="flex items-center text-gray-600 mb-3">
                                         <i class="fas fa-map-marker-alt text-gray-400 mr-2"></i>
-                                        <span class="text-sm">Westlands, Nairobi</span>
+                                        <span class="text-sm">Westlands, near Sarit Centre</span>
                                     </div>
-                                    <div class="flex items-center space-x-4 text-sm text-gray-600 mb-4">
+                                    <p class="text-xs text-gray-600 mb-3 line-clamp-2">Serene 1-bedroom retreat in Westlands. 5 mins walk to Sarit Centre, 5 mins drive to Westgate Mall. Modern finishes with homely touch.</p>
+                                    <div class="flex items-center space-x-4 text-sm text-gray-600 mb-3">
                                         <div class="flex items-center">
                                             <i class="fas fa-bed mr-1"></i>
-                                            <span>2 beds</span>
+                                            <span>1 bedroom</span>
                                         </div>
                                         <div class="flex items-center">
                                             <i class="fas fa-bath mr-1"></i>
-                                            <span>2 baths</span>
+                                            <span>1 bathroom</span>
                                         </div>
                                         <div class="flex items-center">
-                                            <i class="fas fa-ruler-combined mr-1"></i>
-                                            <span>120m²</span>
+                                            <i class="fas fa-users mr-1"></i>
+                                            <span>2 guests</span>
                                         </div>
                                     </div>
-                                    <div class="flex justify-between items-center">
-                                        <div>
-                                            <span class="text-2xl font-bold text-gray-900">$220</span>
-                                            <span class="text-gray-600">/night</span>
+                                    <!-- Key Amenities -->
+                                    <div class="flex flex-wrap gap-1 mb-4">
+                                        <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs flex items-center">
+                                            <i class="fas fa-wifi mr-1 text-primary"></i>WiFi
+                                        </span>
+                                        <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs flex items-center">
+                                            <i class="fas fa-utensils mr-1 text-primary"></i>Kitchen
+                                        </span>
+                                        <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs flex items-center">
+                                            <i class="fas fa-parking mr-1 text-primary"></i>Free Parking
+                                        </span>
+                                        <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs flex items-center">
+                                            <i class="fas fa-concierge-bell mr-1 text-primary"></i>Cleaning
+                                        </span>
+                                    </div>
+                                    <div class="flex flex-col gap-3">
+                                        <div class="flex justify-between items-center">
+                                            <div>
+                                                <span class="text-2xl font-bold text-gray-900">KES 4,500</span>
+                                                <span class="text-gray-600">/night</span>
+                                            </div>
                                         </div>
-                                        <a href="property-detail.html" class="bg-gradient-primary text-white px-4 py-2 rounded-lg text-sm font-medium hover:shadow-md transition-all">
-                                            View Details
-                                        </a>
+                                        <div class="flex gap-2">
+                                            <a href="property-cijana-garden.html" class="flex-1 bg-gradient-primary text-white px-4 py-2 rounded-lg text-sm font-medium hover:shadow-md transition-all text-center">
+                                                View Details
+                                            </a>
+                                            <a href="https://maps.app.goo.gl/vNNPLVTyUQGp5GPD9" target="_blank" class="flex-1 bg-gray-800 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-700 transition-all text-center">
+                                                Location
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <!-- Property Card 2 -->
-                            <div class="property-card bg-white rounded-xl overflow-hidden shadow-md">
+                            <!-- Property Card 2 - Siaya Park Apartment -->
+                            <div class="property-card bg-white rounded-xl overflow-hidden shadow-md" data-page="1">
                                 <div class="property-image relative">
-                                    <img src="https://images.unsplash.com/photo-1565623832582-56c2a845353c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Modern Studio">
+                                    <img src="assets/W6Mcpm7w0T6UpvvrKf0yOoSaK1tIoFDFyq4WpSSECMo=_plaintext_638917517300168966.jpg" alt="Siaya Park Apartment">
+                                    <div class="absolute top-4 left-4">
+                                        <span class="bg-primary text-white px-3 py-1 rounded-full text-xs font-medium">Featured</span>
+                                    </div>
                                     <div class="absolute top-4 right-4">
                                         <button class="bg-white/90 p-2 rounded-full hover:bg-white transition-colors heart-icon">
                                             <i class="far fa-heart text-gray-600"></i>
@@ -412,15 +438,164 @@
                                 </div>
                                 <div class="p-5">
                                     <div class="flex justify-between items-start mb-3">
-                                        <h3 class="font-semibold text-lg">Kilimani Studio Apartment</h3>
+                                        <h3 class="font-semibold text-lg">Siaya Park Apartment</h3>
+                                        <div class="flex items-center">
+                                            <i class="fas fa-star text-amber-400 text-sm"></i>
+                                            <span class="ml-1 font-medium">4.9</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center text-gray-600 mb-3">
+                                        <i class="fas fa-map-marker-alt text-gray-400 mr-2"></i>
+                                        <span class="text-sm">Kileleshwa, Nairobi</span>
+                                    </div>
+                                    <p class="text-xs text-gray-600 mb-3 line-clamp-2">Urban boho styled luxury living in expansive two-bedroom apartment. Access to swimming pool, gym, and kid's play area.</p>
+                                    <div class="flex items-center space-x-4 text-sm text-gray-600 mb-3">
+                                        <div class="flex items-center">
+                                            <i class="fas fa-bed mr-1"></i>
+                                            <span>2 bedrooms</span>
+                                        </div>
+                                        <div class="flex items-center">
+                                            <i class="fas fa-bath mr-1"></i>
+                                            <span>2 bathrooms</span>
+                                        </div>
+                                        <div class="flex items-center">
+                                            <i class="fas fa-users mr-1"></i>
+                                            <span>4 guests</span>
+                                        </div>
+                                    </div>
+                                    <!-- Premium Amenities -->
+                                    <div class="flex flex-wrap gap-1 mb-4">
+                                        <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs flex items-center">
+                                            <i class="fas fa-swimming-pool mr-1 text-primary"></i>Pool
+                                        </span>
+                                        <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs flex items-center">
+                                            <i class="fas fa-dumbbell mr-1 text-primary"></i>Gym
+                                        </span>
+                                        <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs flex items-center">
+                                            <i class="fas fa-wifi mr-1 text-primary"></i>WiFi
+                                        </span>
+                                        <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs flex items-center">
+                                            <i class="fas fa-parking mr-1 text-primary"></i>Parking
+                                        </span>
+                                    </div>
+                                    <div class="flex flex-col gap-3">
+                                        <div class="flex justify-between items-center">
+                                            <div>
+                                                <span class="text-2xl font-bold text-gray-900">KES 7,000</span>
+                                                <span class="text-gray-600">/night</span>
+                                            </div>
+                                        </div>
+                                        <div class="flex gap-2">
+                                            <a href="property-siaya-park.html" class="flex-1 bg-gradient-primary text-white px-4 py-2 rounded-lg text-sm font-medium hover:shadow-md transition-all text-center">
+                                                View Details
+                                            </a>
+                                            <a href="https://maps.google.com/?q=-1.278861,36.791439" target="_blank" class="flex-1 bg-gray-800 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-700 transition-all text-center">
+                                                Location
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Property Card 3 - Adorn Homes Apartment -->
+                            <div class="property-card bg-white rounded-xl overflow-hidden shadow-md" data-page="1">
+                                <div class="property-image relative">
+                                    <img src="assets/x4QVkBXF4YexAjxtnsJDsdSs8qUObo-ATbq4F2QqVe8=_plaintext_638917517820641763.jpg" alt="Cozy 1-Bedroom in Kileleshwa">
+                                    <div class="absolute top-4 right-4">
+                                        <button class="bg-white/90 p-2 rounded-full hover:bg-white transition-colors heart-icon">
+                                            <i class="far fa-heart text-gray-600"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="p-5">
+                                    <div class="flex justify-between items-start mb-3">
+                                        <h3 class="font-semibold text-lg">Adorn Homes Apartment</h3>
+                                        <div class="flex items-center">
+                                            <i class="fas fa-star text-amber-400 text-sm"></i>
+                                            <span class="ml-1 font-medium">4.8</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center text-gray-600 mb-3">
+                                        <i class="fas fa-map-marker-alt text-gray-400 mr-2"></i>
+                                        <span class="text-sm">Kileleshwa, Nairobi</span>
+                                    </div>
+                                    <p class="text-xs text-gray-600 mb-3 line-clamp-2">Modern 1-bedroom in serene Kileleshwa. Perfect balance of style, comfort, and convenience. Ideal for solo travelers, couples, or business guests.</p>
+                                    <div class="flex items-center space-x-4 text-sm text-gray-600 mb-3">
+                                        <div class="flex items-center">
+                                            <i class="fas fa-bed mr-1"></i>
+                                            <span>1 bedroom</span>
+                                        </div>
+                                        <div class="flex items-center">
+                                            <i class="fas fa-bath mr-1"></i>
+                                            <span>1 bathroom</span>
+                                        </div>
+                                        <div class="flex items-center">
+                                            <i class="fas fa-users mr-1"></i>
+                                            <span>2 guests</span>
+                                        </div>
+                                    </div>
+                                    <!-- Key Amenities -->
+                                    <div class="flex flex-wrap gap-1 mb-4">
+                                        <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs flex items-center">
+                                            <i class="fas fa-wifi mr-1 text-primary"></i>WiFi
+                                        </span>
+                                        <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs flex items-center">
+                                            <i class="fas fa-utensils mr-1 text-primary"></i>Kitchen
+                                        </span>
+                                        <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs flex items-center">
+                                            <i class="fas fa-parking mr-1 text-primary"></i>Parking
+                                        </span>
+                                        <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs flex items-center">
+                                            <i class="fas fa-tshirt mr-1 text-primary"></i>Washing
+                                        </span>
+                                    </div>
+                                    <div class="flex flex-col gap-3">
+                                        <div class="flex justify-between items-center">
+                                            <div>
+                                                <span class="text-2xl font-bold text-gray-900">KES 5,000</span>
+                                                <span class="text-gray-600">/night</span>
+                                            </div>
+                                        </div>
+                                        <div class="flex gap-2">
+                                            <a href="property-adorn-homes.html" class="flex-1 bg-gradient-primary text-white px-4 py-2 rounded-lg text-sm font-medium hover:shadow-md transition-all text-center">
+                                                View Details
+                                            </a>
+                                            <a href="https://maps.app.goo.gl/HD1dyyTHBbtqJ2eB9" target="_blank" class="flex-1 bg-gray-800 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-700 transition-all text-center">
+                                                Location
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Property Card 4 - Valley Heights Apartment -->
+                            <div class="property-card bg-white rounded-xl overflow-hidden shadow-md" data-page="1">
+                                <div class="property-image relative">
+                                    <img src="assets/16I5VXgzM8hHSHl1-EH4ITTtF-Y_Q1dxLYt4iu44Gio=_plaintext_638917518845609081.jpg" alt="Valley Heights Apartment">
+                                    <div class="absolute top-4 right-4">
+                                        <button class="bg-white/90 p-2 rounded-full hover:bg-white transition-colors heart-icon">
+                                            <i class="far fa-heart text-gray-600"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="p-5">
+                                    <div class="flex justify-between items-start mb-3">
+                                        <h3 class="font-semibold text-lg">Valley Heights Apartment</h3>
                                         <div class="flex items-center">
                                             <i class="fas fa-star text-amber-400 text-sm"></i>
                                             <span class="ml-1 font-medium">4.7</span>
                                         </div>
                                     </div>
-                                    <div class="flex items-center text-gray-600 mb-4">
+                                    <div class="flex items-center text-gray-600 mb-2">
                                         <i class="fas fa-map-marker-alt text-gray-400 mr-2"></i>
                                         <span class="text-sm">Kilimani, Nairobi</span>
+                                    </div>
+                                    <p class="text-gray-600 text-sm mb-4 line-clamp-2">Exquisite 9th floor city apartment with perfect blend of style and comfort. Near Valley Arcade with shopping malls and dining options.</p>
+                                    <div class="flex flex-wrap gap-1 mb-4">
+                                        <span class="bg-primary/10 text-primary px-2 py-1 rounded text-xs">WiFi</span>
+                                        <span class="bg-primary/10 text-primary px-2 py-1 rounded text-xs">Kitchen</span>
+                                        <span class="bg-primary/10 text-primary px-2 py-1 rounded text-xs">Parking</span>
+                                        <span class="bg-primary/10 text-primary px-2 py-1 rounded text-xs">Generator</span>
                                     </div>
                                     <div class="flex items-center space-x-4 text-sm text-gray-600 mb-4">
                                         <div class="flex items-center">
@@ -432,29 +607,33 @@
                                             <span>1 bath</span>
                                         </div>
                                         <div class="flex items-center">
-                                            <i class="fas fa-ruler-combined mr-1"></i>
-                                            <span>80m²</span>
+                                            <i class="fas fa-users mr-1"></i>
+                                            <span>2 guests</span>
                                         </div>
                                     </div>
-                                    <div class="flex justify-between items-center">
-                                        <div>
-                                            <span class="text-2xl font-bold text-gray-900">$150</span>
-                                            <span class="text-gray-600">/night</span>
+                                    <div class="flex flex-col gap-3">
+                                        <div class="flex justify-between items-center">
+                                            <div>
+                                                <span class="text-2xl font-bold text-gray-900">KES 4,000</span>
+                                                <span class="text-gray-600">/night</span>
+                                            </div>
                                         </div>
-                                        <a href="property-detail.html" class="bg-gradient-primary text-white px-4 py-2 rounded-lg text-sm font-medium hover:shadow-md transition-all">
-                                            View Details
-                                        </a>
+                                        <div class="flex gap-2">
+                                            <a href="property-valley-heights.html" class="flex-1 bg-gradient-primary text-white px-4 py-2 rounded-lg text-sm font-medium hover:shadow-md transition-all text-center">
+                                                View Details
+                                            </a>
+                                            <a href="https://maps.app.goo.gl/UYnDu6yjiuhs4GyP8" target="_blank" class="flex-1 bg-gray-800 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-700 transition-all text-center">
+                                                Location
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <!-- Property Card 3 -->
-                            <div class="property-card bg-white rounded-xl overflow-hidden shadow-md">
+                            <!-- Property Card 5 - The Haven -->
+                            <div class="property-card bg-white rounded-xl overflow-hidden shadow-md" data-page="1">
                                 <div class="property-image relative">
-                                    <img src="https://images.unsplash.com/photo-1560448076-3f6f44b6b4a8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Luxury Villa">
-                                    <div class="absolute top-4 left-4">
-                                        <span class="bg-green-500 text-white px-3 py-1 rounded-full text-xs font-medium">Popular</span>
-                                    </div>
+                                    <img src="assets/1Hs9pBNp9ITdezhZFFCE2QL3y-PF3HyStWO9MtwFD5s=_plaintext_638917517840719847.jpg" alt="The Haven">
                                     <div class="absolute top-4 right-4">
                                         <button class="bg-white/90 p-2 rounded-full hover:bg-white transition-colors heart-icon">
                                             <i class="far fa-heart text-gray-600"></i>
@@ -463,94 +642,60 @@
                                 </div>
                                 <div class="p-5">
                                     <div class="flex justify-between items-start mb-3">
-                                        <h3 class="font-semibold text-lg">Karen Luxury Villa</h3>
-                                        <div class="flex items-center">
-                                            <i class="fas fa-star text-amber-400 text-sm"></i>
-                                            <span class="ml-1 font-medium">4.9</span>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center text-gray-600 mb-4">
-                                        <i class="fas fa-map-marker-alt text-gray-400 mr-2"></i>
-                                        <span class="text-sm">Karen, Nairobi</span>
-                                    </div>
-                                    <div class="flex items-center space-x-4 text-sm text-gray-600 mb-4">
-                                        <div class="flex items-center">
-                                            <i class="fas fa-bed mr-1"></i>
-                                            <span>4 beds</span>
-                                        </div>
-                                        <div class="flex items-center">
-                                            <i class="fas fa-bath mr-1"></i>
-                                            <span>3 baths</span>
-                                        </div>
-                                        <div class="flex items-center">
-                                            <i class="fas fa-ruler-combined mr-1"></i>
-                                            <span>240m²</span>
-                                        </div>
-                                    </div>
-                                    <div class="flex justify-between items-center">
-                                        <div>
-                                            <span class="text-2xl font-bold text-gray-900">$450</span>
-                                            <span class="text-gray-600">/night</span>
-                                        </div>
-                                        <a href="property-detail.html" class="bg-gradient-primary text-white px-4 py-2 rounded-lg text-sm font-medium hover:shadow-md transition-all">
-                                            View Details
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Property Card 4 -->
-                            <div class="property-card bg-white rounded-xl overflow-hidden shadow-md">
-                                <div class="property-image relative">
-                                    <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="City View Apartment">
-                                    <div class="absolute top-4 right-4">
-                                        <button class="bg-white/90 p-2 rounded-full hover:bg-white transition-colors heart-icon">
-                                            <i class="far fa-heart text-gray-600"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="p-5">
-                                    <div class="flex justify-between items-start mb-3">
-                                        <h3 class="font-semibold text-lg">CBD Executive Suite</h3>
+                                        <h3 class="font-semibold text-lg">The Haven</h3>
                                         <div class="flex items-center">
                                             <i class="fas fa-star text-amber-400 text-sm"></i>
                                             <span class="ml-1 font-medium">4.8</span>
                                         </div>
                                     </div>
-                                    <div class="flex items-center text-gray-600 mb-4">
+                                    <div class="flex items-center text-gray-600 mb-2">
                                         <i class="fas fa-map-marker-alt text-gray-400 mr-2"></i>
-                                        <span class="text-sm">Nairobi CBD</span>
+                                        <span class="text-sm">Kilimani, Nairobi</span>
+                                    </div>
+                                    <p class="text-gray-600 text-sm mb-4 line-clamp-2">Stylish modern open-style apartment in the heart of the city. Perfect blend of comfort and convenience near Valley Arcade.</p>
+                                    <div class="flex flex-wrap gap-1 mb-4">
+                                        <span class="bg-primary/10 text-primary px-2 py-1 rounded text-xs">WiFi</span>
+                                        <span class="bg-primary/10 text-primary px-2 py-1 rounded text-xs">Kitchen</span>
+                                        <span class="bg-primary/10 text-primary px-2 py-1 rounded text-xs">Parking</span>
+                                        <span class="bg-primary/10 text-primary px-2 py-1 rounded text-xs">Cleaning</span>
                                     </div>
                                     <div class="flex items-center space-x-4 text-sm text-gray-600 mb-4">
                                         <div class="flex items-center">
                                             <i class="fas fa-bed mr-1"></i>
-                                            <span>2 beds</span>
+                                            <span>1 bed</span>
                                         </div>
                                         <div class="flex items-center">
                                             <i class="fas fa-bath mr-1"></i>
-                                            <span>2 baths</span>
+                                            <span>1 bath</span>
                                         </div>
                                         <div class="flex items-center">
-                                            <i class="fas fa-ruler-combined mr-1"></i>
-                                            <span>110m²</span>
+                                            <i class="fas fa-users mr-1"></i>
+                                            <span>2 guests</span>
                                         </div>
                                     </div>
-                                    <div class="flex justify-between items-center">
-                                        <div>
-                                            <span class="text-2xl font-bold text-gray-900">$280</span>
-                                            <span class="text-gray-600">/night</span>
+                                    <div class="flex flex-col gap-3">
+                                        <div class="flex justify-between items-center">
+                                            <div>
+                                                <span class="text-2xl font-bold text-gray-900">KES 4,000</span>
+                                                <span class="text-gray-600">/night</span>
+                                            </div>
                                         </div>
-                                        <a href="property-detail.html" class="bg-gradient-primary text-white px-4 py-2 rounded-lg text-sm font-medium hover:shadow-md transition-all">
-                                            View Details
-                                        </a>
+                                        <div class="flex gap-2">
+                                            <a href="property-the-haven.html" class="flex-1 bg-gradient-primary text-white px-4 py-2 rounded-lg text-sm font-medium hover:shadow-md transition-all text-center">
+                                                View Details
+                                            </a>
+                                            <a href="https://maps.app.goo.gl/UYnDu6yjiuhs4GyP8" target="_blank" class="flex-1 bg-gray-800 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-700 transition-all text-center">
+                                                Location
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <!-- Property Card 5 -->
-                            <div class="property-card bg-white rounded-xl overflow-hidden shadow-md">
+                            <!-- Property Card 6 - Exquisite Studio in South B -->
+                            <div class="property-card bg-white rounded-xl overflow-hidden shadow-md" data-page="2">
                                 <div class="property-image relative">
-                                    <img src="https://images.unsplash.com/photo-1554995207-c18c203602cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Garden Estate Home">
+                                    <img src="assets/1PPUn-qpuYUzYDfDpDPYu2cEbOpPdU4B4aYYjJXaFzU=_plaintext_638917516800254939.jpg" alt="Exquisite Studio in South B">
                                     <div class="absolute top-4 right-4">
                                         <button class="bg-white/90 p-2 rounded-full hover:bg-white transition-colors heart-icon">
                                             <i class="far fa-heart text-gray-600"></i>
@@ -559,48 +704,248 @@
                                 </div>
                                 <div class="p-5">
                                     <div class="flex justify-between items-start mb-3">
-                                        <h3 class="font-semibold text-lg">Garden Estate Bungalow</h3>
+                                        <h3 class="font-semibold text-lg">Exquisite Studio in South B</h3>
                                         <div class="flex items-center">
                                             <i class="fas fa-star text-amber-400 text-sm"></i>
-                                            <span class="ml-1 font-medium">4.6</span>
+                                            <span class="ml-1 font-medium">4.7</span>
                                         </div>
                                     </div>
-                                    <div class="flex items-center text-gray-600 mb-4">
+                                    <div class="flex items-center text-gray-600 mb-2">
                                         <i class="fas fa-map-marker-alt text-gray-400 mr-2"></i>
-                                        <span class="text-sm">Garden Estate, Nairobi</span>
+                                        <span class="text-sm">South B, Nairobi</span>
+                                    </div>
+                                    <p class="text-gray-600 text-sm mb-4 line-clamp-2">Charming big studio by The Manna Stays with ultimate comfort. Perfect for couples, business travelers, and layovers - just 15 mins from airport.</p>
+                                    <div class="flex flex-wrap gap-1 mb-4">
+                                        <span class="bg-primary/10 text-primary px-2 py-1 rounded text-xs">WiFi</span>
+                                        <span class="bg-primary/10 text-primary px-2 py-1 rounded text-xs">Kitchen</span>
+                                        <span class="bg-primary/10 text-primary px-2 py-1 rounded text-xs">Parking</span>
+                                        <span class="bg-primary/10 text-primary px-2 py-1 rounded text-xs">Airport</span>
                                     </div>
                                     <div class="flex items-center space-x-4 text-sm text-gray-600 mb-4">
                                         <div class="flex items-center">
                                             <i class="fas fa-bed mr-1"></i>
-                                            <span>3 beds</span>
+                                            <span>Studio</span>
                                         </div>
                                         <div class="flex items-center">
                                             <i class="fas fa-bath mr-1"></i>
-                                            <span>2 baths</span>
+                                            <span>1 bath</span>
                                         </div>
                                         <div class="flex items-center">
-                                            <i class="fas fa-ruler-combined mr-1"></i>
-                                            <span>180m²</span>
+                                            <i class="fas fa-users mr-1"></i>
+                                            <span>2 guests</span>
                                         </div>
                                     </div>
-                                    <div class="flex justify-between items-center">
-                                        <div>
-                                            <span class="text-2xl font-bold text-gray-900">$320</span>
-                                            <span class="text-gray-600">/night</span>
+                                    <div class="flex flex-col gap-3">
+                                        <div class="flex justify-between items-center">
+                                            <div>
+                                                <span class="text-2xl font-bold text-gray-900">KES 2,500</span>
+                                                <span class="text-gray-600">/night</span>
+                                            </div>
                                         </div>
-                                        <a href="property-detail.html" class="bg-gradient-primary text-white px-4 py-2 rounded-lg text-sm font-medium hover:shadow-md transition-all">
-                                            View Details
-                                        </a>
+                                        <div class="flex gap-2">
+                                            <a href="property-exquisite-studio.html" class="flex-1 bg-gradient-primary text-white px-4 py-2 rounded-lg text-sm font-medium hover:shadow-md transition-all text-center">
+                                                View Details
+                                            </a>
+                                            <a href="https://maps.google.com/?q=-1.317780,36.844387" target="_blank" class="flex-1 bg-gray-800 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-700 transition-all text-center">
+                                                Location
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <!-- Property Card 6 -->
-                            <div class="property-card bg-white rounded-xl overflow-hidden shadow-md">
+                            <!-- Property Card 7 - Stylish & Spacious South B Studio -->
+                            <div class="property-card bg-white rounded-xl overflow-hidden shadow-md" data-page="2">
                                 <div class="property-image relative">
-                                    <img src="https://images.unsplash.com/photo-1567767292278-a4f21aa2d36e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Lavington Penthouse">
+                                    <img src="assets/UV7Jw5V39WEx2vbVzv4aiSHnrHyV-fSF-QXTRjbxP-8=_plaintext_638917516750029028.jpg" alt="Stylish & Spacious South B Studio">
+                                    <div class="absolute top-4 right-4">
+                                        <button class="bg-white/90 p-2 rounded-full hover:bg-white transition-colors heart-icon">
+                                            <i class="far fa-heart text-gray-600"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="p-5">
+                                    <div class="flex justify-between items-start mb-3">
+                                        <h3 class="font-semibold text-lg">Stylish & Spacious South B Studio</h3>
+                                        <div class="flex items-center">
+                                            <i class="fas fa-star text-amber-400 text-sm"></i>
+                                            <span class="ml-1 font-medium">4.8</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center text-gray-600 mb-2">
+                                        <i class="fas fa-map-marker-alt text-gray-400 mr-2"></i>
+                                        <span class="text-sm">South B, Nairobi</span>
+                                    </div>
+                                    <p class="text-gray-600 text-sm mb-4 line-clamp-2">An exquisite big studio tastefully styled with a separated living space and balcony view — perfect for couples, business or layover stays.</p>
+                                    <div class="flex flex-wrap gap-1 mb-4">
+                                        <span class="bg-primary/10 text-primary px-2 py-1 rounded text-xs">WiFi</span>
+                                        <span class="bg-primary/10 text-primary px-2 py-1 rounded text-xs">Kitchen</span>
+                                        <span class="bg-primary/10 text-primary px-2 py-1 rounded text-xs">Parking</span>
+                                        <span class="bg-primary/10 text-primary px-2 py-1 rounded text-xs">Airport</span>
+                                    </div>
+                                    <div class="flex items-center space-x-4 text-sm text-gray-600 mb-4">
+                                        <div class="flex items-center">
+                                            <i class="fas fa-bed mr-1"></i>
+                                            <span>1 bed</span>
+                                        </div>
+                                        <div class="flex items-center">
+                                            <i class="fas fa-bath mr-1"></i>
+                                            <span>1 bath</span>
+                                        </div>
+                                        <div class="flex items-center">
+                                            <i class="fas fa-users mr-1"></i>
+                                            <span>2 guests</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex flex-col gap-3">
+                                        <div class="flex justify-between items-center">
+                                            <div>
+                                                <span class="text-2xl font-bold text-gray-900">KES 2,500</span>
+                                                <span class="text-gray-600">/night</span>
+                                            </div>
+                                        </div>
+                                        <div class="flex gap-2">
+                                            <a href="property-stylish-studio.html" class="flex-1 bg-gradient-primary text-white px-4 py-2 rounded-lg text-sm font-medium hover:shadow-md transition-all text-center">
+                                                View Details
+                                            </a>
+                                            <a href="https://maps.google.com/?q=-1.317780,36.844387" target="_blank" class="flex-1 bg-gray-800 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-700 transition-all text-center">
+                                                Location
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Property Card 8 - The Manna Condo -->
+                            <div class="property-card bg-white rounded-xl overflow-hidden shadow-md" data-page="2">
+                                <div class="property-image relative">
+                                    <img src="assets/zIao40VB9oR5Ut3a1GnsplJkaBkIRbaX0yE7TYjda5E=_plaintext_638917516808034734.jpg" alt="The Manna Condo">
+                                    <div class="absolute top-4 right-4">
+                                        <button class="bg-white/90 p-2 rounded-full hover:bg-white transition-colors heart-icon">
+                                            <i class="far fa-heart text-gray-600"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="p-5">
+                                    <div class="flex justify-between items-start mb-3">
+                                        <h3 class="font-semibold text-lg">The Manna Condo</h3>
+                                        <div class="flex items-center">
+                                            <i class="fas fa-star text-amber-400 text-sm"></i>
+                                            <span class="ml-1 font-medium">4.9</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center text-gray-600 mb-2">
+                                        <i class="fas fa-map-marker-alt text-gray-400 mr-2"></i>
+                                        <span class="text-sm">South B, Nairobi</span>
+                                    </div>
+                                    <p class="text-gray-600 text-sm mb-4 line-clamp-2">Stylish one-bedroom condo in the heart of the city. Modern Airbnb with perfect blend of comfort and convenience - 15 mins from airport.</p>
+                                    <div class="flex flex-wrap gap-1 mb-4">
+                                        <span class="bg-primary/10 text-primary px-2 py-1 rounded text-xs">WiFi</span>
+                                        <span class="bg-primary/10 text-primary px-2 py-1 rounded text-xs">Kitchen</span>
+                                        <span class="bg-primary/10 text-primary px-2 py-1 rounded text-xs">Parking</span>
+                                        <span class="bg-primary/10 text-primary px-2 py-1 rounded text-xs">Cleaning</span>
+                                    </div>
+                                    <div class="flex items-center space-x-4 text-sm text-gray-600 mb-4">
+                                        <div class="flex items-center">
+                                            <i class="fas fa-bed mr-1"></i>
+                                            <span>1 bed</span>
+                                        </div>
+                                        <div class="flex items-center">
+                                            <i class="fas fa-bath mr-1"></i>
+                                            <span>1 bath</span>
+                                        </div>
+                                        <div class="flex items-center">
+                                            <i class="fas fa-users mr-1"></i>
+                                            <span>2 guests</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex flex-col gap-3">
+                                        <div class="flex justify-between items-center">
+                                            <div>
+                                                <span class="text-2xl font-bold text-gray-900">KES 3,000</span>
+                                                <span class="text-gray-600">/night</span>
+                                            </div>
+                                        </div>
+                                        <div class="flex gap-2">
+                                            <a href="property-manna-condo.html" class="flex-1 bg-gradient-primary text-white px-4 py-2 rounded-lg text-sm font-medium hover:shadow-md transition-all text-center">
+                                                View Details
+                                            </a>
+                                            <a href="https://maps.google.com/?q=-1.317780,36.844387" target="_blank" class="flex-1 bg-gray-800 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-700 transition-all text-center">
+                                                Location
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Property Card 9 - The Manna Place - Studio -->
+                            <div class="property-card bg-white rounded-xl overflow-hidden shadow-md" data-page="2">
+                                <div class="property-image relative">
+                                    <img src="assets/rnb6tX61flLCW6QY7dVnvZD_KsIZ1NiEMhwGe86bSnc=_plaintext_638917518844958067.jpg" alt="The Manna Place - Studio">
+                                    <div class="absolute top-4 right-4">
+                                        <button class="bg-white/90 p-2 rounded-full hover:bg-white transition-colors heart-icon">
+                                            <i class="far fa-heart text-gray-600"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="p-5">
+                                    <div class="flex justify-between items-start mb-3">
+                                        <h3 class="font-semibold text-lg">The Manna Place - Studio</h3>
+                                        <div class="flex items-center">
+                                            <i class="fas fa-star text-amber-400 text-sm"></i>
+                                            <span class="ml-1 font-medium">4.7</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center text-gray-600 mb-2">
+                                        <i class="fas fa-map-marker-alt text-gray-400 mr-2"></i>
+                                        <span class="text-sm">South B, Nairobi</span>
+                                    </div>
+                                    <p class="text-gray-600 text-sm mb-4 line-clamp-2">Charming and cozy studio in good neighborhood at heart of Capital. Modern amenities with high-speed WiFi, smart TV - beautiful stay away from home.</p>
+                                    <div class="flex flex-wrap gap-1 mb-4">
+                                        <span class="bg-primary/10 text-primary px-2 py-1 rounded text-xs">WiFi</span>
+                                        <span class="bg-primary/10 text-primary px-2 py-1 rounded text-xs">Smart TV</span>
+                                        <span class="bg-primary/10 text-primary px-2 py-1 rounded text-xs">Parking</span>
+                                        <span class="bg-primary/10 text-primary px-2 py-1 rounded text-xs">Airport</span>
+                                    </div>
+                                    <div class="flex items-center space-x-4 text-sm text-gray-600 mb-4">
+                                        <div class="flex items-center">
+                                            <i class="fas fa-bed mr-1"></i>
+                                            <span>Studio</span>
+                                        </div>
+                                        <div class="flex items-center">
+                                            <i class="fas fa-bath mr-1"></i>
+                                            <span>1 bath</span>
+                                        </div>
+                                        <div class="flex items-center">
+                                            <i class="fas fa-users mr-1"></i>
+                                            <span>2 guests</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex flex-col gap-3">
+                                        <div class="flex justify-between items-center">
+                                            <div>
+                                                <span class="text-2xl font-bold text-gray-900">KES 2,500</span>
+                                                <span class="text-gray-600">/night</span>
+                                            </div>
+                                        </div>
+                                        <div class="flex gap-2">
+                                            <a href="property-manna-place.html" class="flex-1 bg-gradient-primary text-white px-4 py-2 rounded-lg text-sm font-medium hover:shadow-md transition-all text-center">
+                                                View Details
+                                            </a>
+                                            <a href="https://maps.google.com/?q=-1.317780,36.844387" target="_blank" class="flex-1 bg-gray-800 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-700 transition-all text-center">
+                                                Location
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Property Card 10 - The Stadeview Suite Studio -->
+                            <div class="property-card bg-white rounded-xl overflow-hidden shadow-md" data-page="2">
+                                <div class="property-image relative">
+                                    <img src="assets/WLX2---uo4hJmUHwx2HKZ1-P7lSDD73EacfDTFNQrCY=_plaintext_638917516735025036.jpg" alt="The Stadeview Suite Studio">
                                     <div class="absolute top-4 left-4">
-                                        <span class="bg-primary text-white px-3 py-1 rounded-full text-xs font-medium">New</span>
+                                        <span class="bg-green-500 text-white px-3 py-1 rounded-full text-xs font-medium">New</span>
                                     </div>
                                     <div class="absolute top-4 right-4">
                                         <button class="bg-white/90 p-2 rounded-full hover:bg-white transition-colors heart-icon">
@@ -610,38 +955,52 @@
                                 </div>
                                 <div class="p-5">
                                     <div class="flex justify-between items-start mb-3">
-                                        <h3 class="font-semibold text-lg">Lavington Penthouse</h3>
+                                        <h3 class="font-semibold text-lg">The Stadeview Suite Studio</h3>
                                         <div class="flex items-center">
                                             <i class="fas fa-star text-amber-400 text-sm"></i>
-                                            <span class="ml-1 font-medium">5.0</span>
+                                            <span class="ml-1 font-medium">4.8</span>
                                         </div>
                                     </div>
-                                    <div class="flex items-center text-gray-600 mb-4">
+                                    <div class="flex items-center text-gray-600 mb-2">
                                         <i class="fas fa-map-marker-alt text-gray-400 mr-2"></i>
-                                        <span class="text-sm">Lavington, Nairobi</span>
+                                        <span class="text-sm">Nairobi West</span>
+                                    </div>
+                                    <p class="text-gray-600 text-sm mb-4 line-clamp-2">Charming and cozy studio in good neighborhood at heart of Capital. Modern amenities with high-speed WiFi, smart TV - beautiful stay away from home.</p>
+                                    <div class="flex flex-wrap gap-1 mb-4">
+                                        <span class="bg-primary/10 text-primary px-2 py-1 rounded text-xs">WiFi</span>
+                                        <span class="bg-primary/10 text-primary px-2 py-1 rounded text-xs">Smart TV</span>
+                                        <span class="bg-primary/10 text-primary px-2 py-1 rounded text-xs">Parking</span>
+                                        <span class="bg-primary/10 text-primary px-2 py-1 rounded text-xs">Airport</span>
                                     </div>
                                     <div class="flex items-center space-x-4 text-sm text-gray-600 mb-4">
                                         <div class="flex items-center">
                                             <i class="fas fa-bed mr-1"></i>
-                                            <span>3 beds</span>
+                                            <span>Studio</span>
                                         </div>
                                         <div class="flex items-center">
                                             <i class="fas fa-bath mr-1"></i>
-                                            <span>3 baths</span>
+                                            <span>1 bath</span>
                                         </div>
                                         <div class="flex items-center">
-                                            <i class="fas fa-ruler-combined mr-1"></i>
-                                            <span>220m²</span>
+                                            <i class="fas fa-users mr-1"></i>
+                                            <span>2 guests</span>
                                         </div>
                                     </div>
-                                    <div class="flex justify-between items-center">
-                                        <div>
-                                            <span class="text-2xl font-bold text-gray-900">$380</span>
-                                            <span class="text-gray-600">/night</span>
+                                    <div class="flex flex-col gap-3">
+                                        <div class="flex justify-between items-center">
+                                            <div>
+                                                <span class="text-2xl font-bold text-gray-900">KES 3,000</span>
+                                                <span class="text-gray-600">/night</span>
+                                            </div>
                                         </div>
-                                        <a href="property-detail.html" class="bg-gradient-primary text-white px-4 py-2 rounded-lg text-sm font-medium hover:shadow-md transition-all">
-                                            View Details
-                                        </a>
+                                        <div class="flex gap-2">
+                                            <a href="property-stadeview-suite.html" class="flex-1 bg-gradient-primary text-white px-4 py-2 rounded-lg text-sm font-medium hover:shadow-md transition-all text-center">
+                                                View Details
+                                            </a>
+                                            <a href="https://maps.google.com/?q=-1.317780,36.844387" target="_blank" class="flex-1 bg-gray-800 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-700 transition-all text-center">
+                                                Location
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -649,18 +1008,15 @@
 
                         <!-- Pagination -->
                         <div class="flex justify-center mt-12">
-                            <nav class="flex items-center space-x-2">
-                                <a href="#" class="px-3 py-1 rounded-lg bg-gray-100 text-gray-600 hover:bg-primary hover:text-white transition-colors">
+                            <nav class="flex items-center space-x-2" id="pagination">
+                                <button onclick="changePage(-1)" id="prev-btn" class="px-3 py-1 rounded-lg bg-gray-100 text-gray-600 hover:bg-primary hover:text-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed" disabled>
                                     <i class="fas fa-chevron-left"></i>
-                                </a>
-                                <a href="#" class="px-3 py-1 rounded-lg bg-primary text-white">1</a>
-                                <a href="#" class="px-3 py-1 rounded-lg bg-gray-100 text-gray-600 hover:bg-primary hover:text-white transition-colors">2</a>
-                                <a href="#" class="px-3 py-1 rounded-lg bg-gray-100 text-gray-600 hover:bg-primary hover:text-white transition-colors">3</a>
-                                <span class="px-2 py-1 text-gray-600">...</span>
-                                <a href="#" class="px-3 py-1 rounded-lg bg-gray-100 text-gray-600 hover:bg-primary hover:text-white transition-colors">10</a>
-                                <a href="#" class="px-3 py-1 rounded-lg bg-gray-100 text-gray-600 hover:bg-primary hover:text-white transition-colors">
+                                </button>
+                                <button onclick="goToPage(1)" class="px-3 py-1 rounded-lg bg-primary text-white page-btn" data-page="1">1</button>
+                                <button onclick="goToPage(2)" class="px-3 py-1 rounded-lg bg-gray-100 text-gray-600 hover:bg-primary hover:text-white transition-colors page-btn" data-page="2">2</button>
+                                <button onclick="changePage(1)" id="next-btn" class="px-3 py-1 rounded-lg bg-gray-100 text-gray-600 hover:bg-primary hover:text-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
                                     <i class="fas fa-chevron-right"></i>
-                                </a>
+                                </button>
                             </nav>
                         </div>
                     </div>
@@ -674,11 +1030,11 @@
                 <h2 class="text-3xl md:text-4xl font-bold mb-6 font-script">Can't Find What You're Looking For?</h2>
                 <p class="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">Contact our team directly and we'll help you find the perfect accommodation for your needs</p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="https://wa.me/1234567890" target="_blank" class="bg-green-500 text-white px-8 py-3.5 rounded-lg hover:bg-green-600 transition-all inline-flex items-center justify-center font-medium">
+                    <a href="https://wa.me/254700000000?text=Hi,%20I%27m%20interested%20in%20your%20properties" target="_blank" class="bg-green-500 text-white px-8 py-3.5 rounded-lg hover:bg-green-600 transition-all inline-flex items-center justify-center font-medium">
                         <i class="fab fa-whatsapp mr-3 text-xl"></i>
                         Message on WhatsApp
                     </a>
-                    <a href="tel:+1234567890" class="bg-gray-800 text-white border border-gray-700 hover:bg-gray-700 px-8 py-3.5 rounded-lg transition-all font-medium">
+                    <a href="tel:+254700000000" class="bg-gray-800 text-white border border-gray-700 hover:bg-gray-700 px-8 py-3.5 rounded-lg transition-all font-medium">
                         <i class="fas fa-phone mr-3"></i>
                         Call Now
                     </a>
@@ -693,16 +1049,16 @@
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
                 <!-- Logo and Description -->
                 <div class="md:col-span-2">
-                    <div class="flex items-center space-x-3 mb-4">
-                        <img src="https://placehold.co/40x40" alt="The Manna Stays" class="h-12 w-auto rounded">
-                        <span class="flex items-end font-bold text-xl md:text-2xl font-script">
+                    <div class="flex items-center space-x-2 mb-4">
+                        <img src="assets/logo.jpg" alt="The Manna Stays" class="h-16 w-auto">
+                        <span class="flex items-end font-bold text-xl md:text-2xl font-script ml-2">
                             <span class="text-white">The</span>
                             <span class="mx-1 text-primary">Manna</span>
                             <span class="text-white">Stays</span>
                         </span>
                     </div>
                     <p class="text-gray-300 mb-6 max-w-md">
-                        Creating unforgettable experiences and luxury accommodations in Nairobi. Your perfect stay awaits with The Manna Stays.
+                        Creating unforgettable experiences and luxury accommodations across Nairobi. Your perfect stay awaits with The Manna Stays.
                     </p>
                     <!-- Social Media Icons -->
                     <div class="flex space-x-4">
@@ -715,7 +1071,7 @@
                         <a href="#" class="w-10 h-10 bg-white/10 hover:bg-primary rounded-lg flex items-center justify-center transition-colors">
                             <i class="fab fa-twitter"></i>
                         </a>
-                        <a href="https://wa.me/1234567890" target="_blank" class="w-10 h-10 bg-green-600 hover:bg-green-700 rounded-lg flex items-center justify-center transition-colors">
+                        <a href="https://wa.me/254700000000?text=Hi,%20I%27m%20interested%20in%20your%20properties" target="_blank" class="w-10 h-10 bg-green-600 hover:bg-green-700 rounded-lg flex items-center justify-center transition-colors">
                             <i class="fab fa-whatsapp"></i>
                         </a>
                     </div>
@@ -739,15 +1095,15 @@
                     <ul class="space-y-3">
                         <li class="flex items-center">
                             <i class="fas fa-phone mr-3 text-primary"></i>
-                            <span class="text-gray-300">+254 700 123 456</span>
+                            <span class="text-gray-300">+254 700 000 000</span>
                         </li>
                         <li class="flex items-center">
                             <i class="fas fa-envelope mr-3 text-primary"></i>
-                            <span class="text-gray-300">hello@mannastays.com</span>
+                            <span class="text-gray-300">info@themannastays.com</span>
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-map-marker-alt mr-3 text-primary mt-1"></i>
-                            <span class="text-gray-300">Westlands<br>Nairobi, Kenya</span>
+                            <span class="text-gray-300">Nairobi, Kenya</span>
                         </li>
                     </ul>
                 </div>
@@ -818,6 +1174,70 @@
                     i.style.color = '';
                 }
             });
+        });
+
+        // Pagination functionality
+        let currentPage = 1;
+        const propertiesPerPage = 5;
+        const totalProperties = 10;
+        const totalPages = Math.ceil(totalProperties / propertiesPerPage);
+
+        function showPage(page) {
+            // Hide all properties
+            document.querySelectorAll('.property-card').forEach(card => {
+                card.style.display = 'none';
+            });
+
+            // Show properties for current page
+            document.querySelectorAll(`.property-card[data-page="${page}"]`).forEach(card => {
+                card.style.display = 'block';
+            });
+
+            // Update pagination buttons
+            document.querySelectorAll('.page-btn').forEach(btn => {
+                btn.classList.remove('bg-primary', 'text-white');
+                btn.classList.add('bg-gray-100', 'text-gray-600');
+            });
+            document.querySelector(`.page-btn[data-page="${page}"]`).classList.remove('bg-gray-100', 'text-gray-600');
+            document.querySelector(`.page-btn[data-page="${page}"]`).classList.add('bg-primary', 'text-white');
+
+            // Update prev/next buttons
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            
+            prevBtn.disabled = page === 1;
+            nextBtn.disabled = page === totalPages;
+
+            // Update showing count
+            const startCount = (page - 1) * propertiesPerPage + 1;
+            const endCount = Math.min(page * propertiesPerPage, totalProperties);
+            document.getElementById('showing-start').textContent = startCount;
+            document.getElementById('showing-end').textContent = endCount;
+
+            // Scroll to top of properties grid
+            document.getElementById('properties-grid').scrollIntoView({ 
+                behavior: 'smooth', 
+                block: 'start' 
+            });
+        }
+
+        function goToPage(page) {
+            if (page >= 1 && page <= totalPages) {
+                currentPage = page;
+                showPage(currentPage);
+            }
+        }
+
+        function changePage(direction) {
+            const newPage = currentPage + direction;
+            if (newPage >= 1 && newPage <= totalPages) {
+                goToPage(newPage);
+            }
+        }
+
+        // Initialize pagination on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            showPage(1);
         });
     </script>
 </body>
