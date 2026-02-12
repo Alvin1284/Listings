@@ -99,28 +99,28 @@
             <div class="mb-8">
                 <div class="gallery-grid">
                     <div class="gallery-item gallery-item-1" onclick="openGalleryModal(0)">
-                        <img src="assets/x4QVkBXF4YexAjxtnsJDsdSs8qUObo-ATbq4F2QqVe8=_plaintext_638917517820641763.jpg" alt="Living room">
+                        <img src="assets/wetransfer_proffesional-pics_2026-01-19_1850/Proffesional Pics/Adorn Homes - 001.jpg" alt="Living room">
                     </div>
                     <div class="gallery-item gallery-item-2" onclick="openGalleryModal(1)">
-                        <img src="assets/x4QVkBXF4YexAjxtnsJDsdSs8qUObo-ATbq4F2QqVe8=_plaintext_638917517820641763.jpg" alt="Bedroom">
+                        <img src="assets/wetransfer_proffesional-pics_2026-01-19_1850/Proffesional Pics/Adorn Homes - 002.jpg" alt="Bedroom">
                     </div>
                     <div class="gallery-item gallery-item-3" onclick="openGalleryModal(2)">
-                        <img src="assets/x4QVkBXF4YexAjxtnsJDsdSs8qUObo-ATbq4F2QqVe8=_plaintext_638917517820641763.jpg" alt="Kitchen">
+                        <img src="assets/wetransfer_proffesional-pics_2026-01-19_1850/Proffesional Pics/Adorn Homes - 003.jpg" alt="Kitchen">
                     </div>
                     <div class="gallery-item gallery-item-4" onclick="openGalleryModal(3)">
-                        <img src="assets/x4QVkBXF4YexAjxtnsJDsdSs8qUObo-ATbq4F2QqVe8=_plaintext_638917517820641763.jpg" alt="Bathroom">
+                        <img src="assets/wetransfer_proffesional-pics_2026-01-19_1850/Proffesional Pics/Adorn Homes - 004.jpg" alt="Bathroom">
                     </div>
                     <div class="gallery-item gallery-item-5" onclick="openGalleryModal(4)">
-                        <img src="assets/x4QVkBXF4YexAjxtnsJDsdSs8qUObo-ATbq4F2QqVe8=_plaintext_638917517820641763.jpg" alt="View">
+                        <img src="assets/wetransfer_proffesional-pics_2026-01-19_1850/Proffesional Pics/Adorn Homes - 005.jpg" alt="View">
                     </div>
                     <div class="gallery-item gallery-item-6" onclick="openGalleryModal(5)">
-                        <img src="assets/x4QVkBXF4YexAjxtnsJDsdSs8qUObo-ATbq4F2QqVe8=_plaintext_638917517820641763.jpg" alt="Amenities">
+                        <img src="assets/wetransfer_proffesional-pics_2026-01-19_1850/Proffesional Pics/Adorn Homes - 006.jpg" alt="Amenities">
                     </div>
                     <div class="gallery-item gallery-item-7" onclick="openGalleryModal(6)">
-                        <img src="assets/x4QVkBXF4YexAjxtnsJDsdSs8qUObo-ATbq4F2QqVe8=_plaintext_638917517820641763.jpg" alt="Building">
+                        <img src="assets/wetransfer_proffesional-pics_2026-01-19_1850/Proffesional Pics/Adorn Homes - 007.jpg" alt="Building">
                     </div>
                     <div class="gallery-item gallery-item-8" onclick="openGalleryModal(7)">
-                        <img src="assets/x4QVkBXF4YexAjxtnsJDsdSs8qUObo-ATbq4F2QqVe8=_plaintext_638917517820641763.jpg" alt="More">
+                        <img src="assets/wetransfer_proffesional-pics_2026-01-19_1850/Proffesional Pics/Adorn Homes - 008.jpg" alt="More">
                     </div>
                 </div>
             </div>
@@ -227,10 +227,19 @@
     </main>
 
     <div id="galleryModal" class="modal">
-        <div class="modal-content">
-            <span class="modal-close" onclick="closeGalleryModal()" style="position:absolute;top:-40px;right:0;color:white;font-size:30px;cursor:pointer">&times;</span>
-            <img id="modalImage" src="" alt="" class="w-full h-auto max-h-full object-contain">
+        <span class="modal-close" onclick="closeGalleryModal()" style="position:absolute;top:20px;right:40px;color:white;font-size:40px;cursor:pointer;z-index:1001;">&times;</span>
+        <button onclick="previousImage()" style="position:absolute;left:20px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.2);color:white;border:none;font-size:40px;padding:20px;cursor:pointer;border-radius:8px;z-index:1001;backdrop-filter:blur(10px);">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <div class="modal-content" style="max-width:90%;max-height:90vh;margin:auto;position:relative;">
+            <img id="modalImage" src="" alt="" style="width:100%;height:auto;max-height:90vh;object-fit:contain;display:block;">
+            <div style="position:absolute;bottom:20px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.7);color:white;padding:8px 16px;border-radius:20px;">
+                <span id="imageCounter">1 / 36</span>
+            </div>
         </div>
+        <button onclick="nextImage()" style="position:absolute;right:20px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.2);color:white;border:none;font-size:40px;padding:20px;cursor:pointer;border-radius:8px;z-index:1001;backdrop-filter:blur(10px);">
+            <i class="fas fa-chevron-right"></i>
+        </button>
     </div>
 
     <footer class="bg-gray-900 text-white py-16 mt-16">
@@ -247,12 +256,49 @@
             evt.currentTarget.classList.add("active");
         }
 
-        const galleryImages = Array(8).fill("assets/x4QVkBXF4YexAjxtnsJDsdSs8qUObo-ATbq4F2QqVe8=_plaintext_638917517820641763.jpg");
+        const galleryImages = [
+            "assets/wetransfer_proffesional-pics_2026-01-19_1850/Proffesional Pics/Adorn Homes - 001.jpg",
+            "assets/wetransfer_proffesional-pics_2026-01-19_1850/Proffesional Pics/Adorn Homes - 002.jpg",
+            "assets/wetransfer_proffesional-pics_2026-01-19_1850/Proffesional Pics/Adorn Homes - 003.jpg",
+            "assets/wetransfer_proffesional-pics_2026-01-19_1850/Proffesional Pics/Adorn Homes - 004.jpg",
+            "assets/wetransfer_proffesional-pics_2026-01-19_1850/Proffesional Pics/Adorn Homes - 005.jpg",
+            "assets/wetransfer_proffesional-pics_2026-01-19_1850/Proffesional Pics/Adorn Homes - 006.jpg",
+            "assets/wetransfer_proffesional-pics_2026-01-19_1850/Proffesional Pics/Adorn Homes - 007.jpg",
+            "assets/wetransfer_proffesional-pics_2026-01-19_1850/Proffesional Pics/Adorn Homes - 008.jpg",
+            "assets/wetransfer_proffesional-pics_2026-01-19_1850/Proffesional Pics/Adorn Homes - 009.jpg",
+            "assets/wetransfer_proffesional-pics_2026-01-19_1850/Proffesional Pics/Adorn Homes - 010.jpg",
+            "assets/wetransfer_proffesional-pics_2026-01-19_1850/Proffesional Pics/Adorn Homes - 011.jpg",
+            "assets/wetransfer_proffesional-pics_2026-01-19_1850/Proffesional Pics/Adorn Homes - 012.jpg",
+            "assets/wetransfer_proffesional-pics_2026-01-19_1850/Proffesional Pics/Adorn Homes - 013.jpg",
+            "assets/wetransfer_proffesional-pics_2026-01-19_1850/Proffesional Pics/Adorn Homes - 014.jpg",
+            "assets/wetransfer_proffesional-pics_2026-01-19_1850/Proffesional Pics/Adorn Homes - 015.jpg",
+            "assets/wetransfer_proffesional-pics_2026-01-19_1850/Proffesional Pics/Adorn Homes - 016.jpg",
+            "assets/wetransfer_proffesional-pics_2026-01-19_1850/Proffesional Pics/Adorn Homes - 017.jpg",
+            "assets/wetransfer_proffesional-pics_2026-01-19_1850/Proffesional Pics/Adorn Homes - 018.jpg",
+            "assets/wetransfer_proffesional-pics_2026-01-19_1850/Proffesional Pics/Adorn Homes - 019.jpg",
+            "assets/wetransfer_proffesional-pics_2026-01-19_1850/Proffesional Pics/Adorn Homes - 020.jpg",
+            "assets/wetransfer_proffesional-pics_2026-01-19_1850/Proffesional Pics/Adorn Homes - 021.jpg",
+            "assets/wetransfer_proffesional-pics_2026-01-19_1850/Proffesional Pics/Adorn Homes - 022.jpg",
+            "assets/wetransfer_proffesional-pics_2026-01-19_1850/Proffesional Pics/Adorn Homes - 023.jpg",
+            "assets/wetransfer_proffesional-pics_2026-01-19_1850/Proffesional Pics/Adorn Homes - 024.jpg",
+            "assets/wetransfer_proffesional-pics_2026-01-19_1850/Proffesional Pics/Adorn Homes - 025.jpg",
+            "assets/wetransfer_proffesional-pics_2026-01-19_1850/Proffesional Pics/Adorn Homes - 026.jpg",
+            "assets/wetransfer_proffesional-pics_2026-01-19_1850/Proffesional Pics/Adorn Homes - 027.jpg",
+            "assets/wetransfer_proffesional-pics_2026-01-19_1850/Proffesional Pics/Adorn Homes - 028.jpg",
+            "assets/wetransfer_proffesional-pics_2026-01-19_1850/Proffesional Pics/Adorn Homes - 029.jpg",
+            "assets/wetransfer_proffesional-pics_2026-01-19_1850/Proffesional Pics/Adorn Homes - 030.jpg",
+            "assets/wetransfer_proffesional-pics_2026-01-19_1850/Proffesional Pics/Adorn Homes - 031.jpg",
+            "assets/wetransfer_proffesional-pics_2026-01-19_1850/Proffesional Pics/Adorn Homes - 032.jpg",
+            "assets/wetransfer_proffesional-pics_2026-01-19_1850/Proffesional Pics/Adorn Homes - 033.jpg",
+            "assets/wetransfer_proffesional-pics_2026-01-19_1850/Proffesional Pics/Adorn Homes - 034.jpg",
+            "assets/wetransfer_proffesional-pics_2026-01-19_1850/Proffesional Pics/Adorn Homes - 035.jpg",
+            "assets/wetransfer_proffesional-pics_2026-01-19_1850/Proffesional Pics/Adorn Homes - 036.jpg"
+        ];
         let currentImageIndex = 0;
 
         function openGalleryModal(index) {
             currentImageIndex = index;
-            document.getElementById('modalImage').src = galleryImages[index];
+            updateModalImage();
             document.getElementById('galleryModal').classList.add('active');
         }
 
@@ -260,8 +306,31 @@
             document.getElementById('galleryModal').classList.remove('active');
         }
 
+        function updateModalImage() {
+            document.getElementById('modalImage').src = galleryImages[currentImageIndex];
+            document.getElementById('imageCounter').textContent = `${currentImageIndex + 1} / ${galleryImages.length}`;
+        }
+
+        function nextImage() {
+            currentImageIndex = (currentImageIndex + 1) % galleryImages.length;
+            updateModalImage();
+        }
+
+        function previousImage() {
+            currentImageIndex = (currentImageIndex - 1 + galleryImages.length) % galleryImages.length;
+            updateModalImage();
+        }
+
         document.getElementById('galleryModal').addEventListener('click', function(e) {
             if (e.target === this) closeGalleryModal();
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (!document.getElementById('galleryModal').classList.contains('active')) return;
+            if (e.key === 'ArrowRight') nextImage();
+            if (e.key === 'ArrowLeft') previousImage();
+            if (e.key === 'Escape') closeGalleryModal();
         });
 
         function contactWhatsApp() {

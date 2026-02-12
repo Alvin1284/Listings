@@ -49,6 +49,17 @@
             position: relative;
             max-width: 90vw;
             max-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content img {
+            max-width: 100%;
+            max-height: 90vh;
+            width: auto;
+            height: auto;
+            object-fit: contain;
         }
 
         .modal-close {
@@ -242,28 +253,28 @@
             <div class="mb-8 relative">
                 <div class="gallery-grid">
                     <div class="gallery-item gallery-item-1" onclick="openGalleryModal(0)">
-                        <img src="assets/W6Mcpm7w0T6UpvvrKf0yOoSaK1tIoFDFyq4WpSSECMo=_plaintext_638917517300168966.jpg" alt="Living room">
+                        <img src="assets/wetransfer_kileleshwa-2-bedroom-siaya-park_2026-01-19_1610/Proffessional/1.jpg" alt="Living room">
                     </div>
                     <div class="gallery-item gallery-item-2" onclick="openGalleryModal(1)">
-                        <img src="assets/W6Mcpm7w0T6UpvvrKf0yOoSaK1tIoFDFyq4WpSSECMo=_plaintext_638917517300168966.jpg" alt="Bedroom">
+                        <img src="assets/wetransfer_kileleshwa-2-bedroom-siaya-park_2026-01-19_1610/Proffessional/2.jpg" alt="Bedroom">
                     </div>
                     <div class="gallery-item gallery-item-3" onclick="openGalleryModal(2)">
-                        <img src="assets/W6Mcpm7w0T6UpvvrKf0yOoSaK1tIoFDFyq4WpSSECMo=_plaintext_638917517300168966.jpg" alt="Kitchen">
+                        <img src="assets/wetransfer_kileleshwa-2-bedroom-siaya-park_2026-01-19_1610/Proffessional/5.jpg" alt="Kitchen">
                     </div>
                     <div class="gallery-item gallery-item-4" onclick="openGalleryModal(3)">
-                        <img src="assets/W6Mcpm7w0T6UpvvrKf0yOoSaK1tIoFDFyq4WpSSECMo=_plaintext_638917517300168966.jpg" alt="Bathroom">
+                        <img src="assets/wetransfer_kileleshwa-2-bedroom-siaya-park_2026-01-19_1610/Proffessional/8.jpg" alt="Bathroom">
                     </div>
                     <div class="gallery-item gallery-item-5" onclick="openGalleryModal(4)">
-                        <img src="assets/W6Mcpm7w0T6UpvvrKf0yOoSaK1tIoFDFyq4WpSSECMo=_plaintext_638917517300168966.jpg" alt="View">
+                        <img src="assets/wetransfer_kileleshwa-2-bedroom-siaya-park_2026-01-19_1610/Proffessional/12.jpg" alt="View">
                     </div>
                     <div class="gallery-item gallery-item-6" onclick="openGalleryModal(5)">
-                        <img src="assets/W6Mcpm7w0T6UpvvrKf0yOoSaK1tIoFDFyq4WpSSECMo=_plaintext_638917517300168966.jpg" alt="Amenities">
+                        <img src="assets/wetransfer_kileleshwa-2-bedroom-siaya-park_2026-01-19_1610/Proffessional/15.jpg" alt="Amenities">
                     </div>
                     <div class="gallery-item gallery-item-7" onclick="openGalleryModal(6)">
-                        <img src="assets/W6Mcpm7w0T6UpvvrKf0yOoSaK1tIoFDFyq4WpSSECMo=_plaintext_638917517300168966.jpg" alt="Building">
+                        <img src="assets/wetransfer_kileleshwa-2-bedroom-siaya-park_2026-01-19_1610/Proffessional/20.jpg" alt="Building">
                     </div>
                     <div class="gallery-item gallery-item-8" onclick="openGalleryModal(7)">
-                        <img src="assets/W6Mcpm7w0T6UpvvrKf0yOoSaK1tIoFDFyq4WpSSECMo=_plaintext_638917517300168966.jpg" alt="More">
+                        <img src="assets/wetransfer_kileleshwa-2-bedroom-siaya-park_2026-01-19_1610/Proffessional/25.jpg" alt="More">
                     </div>
                 </div>
             </div>
@@ -477,14 +488,19 @@
     </main>
 
     <div id="galleryModal" class="modal">
-        <div class="modal-content">
-            <span class="modal-close" onclick="closeGalleryModal()">&times;</span>
-            <div class="modal-nav">
-                <button onclick="navigateGallery(-1)"><i class="fas fa-chevron-left"></i></button>
-                <button onclick="navigateGallery(1)"><i class="fas fa-chevron-right"></i></button>
+        <span class="modal-close" onclick="closeGalleryModal()" style="position:absolute;top:20px;right:40px;color:white;font-size:40px;cursor:pointer;z-index:1001;">&times;</span>
+        <button onclick="previousImage()" style="position:absolute;left:20px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.2);color:white;border:none;font-size:40px;padding:20px;cursor:pointer;border-radius:8px;z-index:1001;backdrop-filter:blur(10px);">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <div class="modal-content" style="max-width:90%;max-height:90vh;margin:auto;position:relative;">
+            <img id="modalImage" src="" alt="" style="width:100%;height:auto;max-height:90vh;object-fit:contain;display:block;">
+            <div style="position:absolute;bottom:20px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.7);color:white;padding:8px 16px;border-radius:20px;">
+                <span id="imageCounter">1 / 12</span>
             </div>
-            <img id="modalImage" src="" alt="" class="w-full h-auto max-h-full object-contain">
         </div>
+        <button onclick="nextImage()" style="position:absolute;right:20px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.2);color:white;border:none;font-size:40px;padding:20px;cursor:pointer;border-radius:8px;z-index:1001;backdrop-filter:blur(10px);">
+            <i class="fas fa-chevron-right"></i>
+        </button>
     </div>
 
     <footer class="bg-gray-900 text-white py-16 mt-16">
@@ -545,21 +561,25 @@
         }
 
         const galleryImages = [
-            "assets/W6Mcpm7w0T6UpvvrKf0yOoSaK1tIoFDFyq4WpSSECMo=_plaintext_638917517300168966.jpg",
-            "assets/W6Mcpm7w0T6UpvvrKf0yOoSaK1tIoFDFyq4WpSSECMo=_plaintext_638917517300168966.jpg",
-            "assets/W6Mcpm7w0T6UpvvrKf0yOoSaK1tIoFDFyq4WpSSECMo=_plaintext_638917517300168966.jpg",
-            "assets/W6Mcpm7w0T6UpvvrKf0yOoSaK1tIoFDFyq4WpSSECMo=_plaintext_638917517300168966.jpg",
-            "assets/W6Mcpm7w0T6UpvvrKf0yOoSaK1tIoFDFyq4WpSSECMo=_plaintext_638917517300168966.jpg",
-            "assets/W6Mcpm7w0T6UpvvrKf0yOoSaK1tIoFDFyq4WpSSECMo=_plaintext_638917517300168966.jpg",
-            "assets/W6Mcpm7w0T6UpvvrKf0yOoSaK1tIoFDFyq4WpSSECMo=_plaintext_638917517300168966.jpg",
-            "assets/W6Mcpm7w0T6UpvvrKf0yOoSaK1tIoFDFyq4WpSSECMo=_plaintext_638917517300168966.jpg",
+            "assets/wetransfer_kileleshwa-2-bedroom-siaya-park_2026-01-19_1610/Proffessional/1.jpg",
+            "assets/wetransfer_kileleshwa-2-bedroom-siaya-park_2026-01-19_1610/Proffessional/2.jpg",
+            "assets/wetransfer_kileleshwa-2-bedroom-siaya-park_2026-01-19_1610/Proffessional/5.jpg",
+            "assets/wetransfer_kileleshwa-2-bedroom-siaya-park_2026-01-19_1610/Proffessional/8.jpg",
+            "assets/wetransfer_kileleshwa-2-bedroom-siaya-park_2026-01-19_1610/Proffessional/12.jpg",
+            "assets/wetransfer_kileleshwa-2-bedroom-siaya-park_2026-01-19_1610/Proffessional/15.jpg",
+            "assets/wetransfer_kileleshwa-2-bedroom-siaya-park_2026-01-19_1610/Proffessional/20.jpg",
+            "assets/wetransfer_kileleshwa-2-bedroom-siaya-park_2026-01-19_1610/Proffessional/25.jpg",
+            "assets/wetransfer_kileleshwa-2-bedroom-siaya-park_2026-01-19_1610/Proffessional/28.jpg",
+            "assets/wetransfer_kileleshwa-2-bedroom-siaya-park_2026-01-19_1610/Proffessional/30.jpg",
+            "assets/wetransfer_kileleshwa-2-bedroom-siaya-park_2026-01-19_1610/Proffessional/Siaya C48 - 004.jpg",
+            "assets/wetransfer_kileleshwa-2-bedroom-siaya-park_2026-01-19_1610/Proffessional/Siaya Park Exterior _ 001.jpg",
         ];
 
         let currentImageIndex = 0;
 
         function openGalleryModal(index) {
             currentImageIndex = index;
-            document.getElementById('modalImage').src = galleryImages[index];
+            updateModalImage();
             document.getElementById('galleryModal').classList.add('active');
             document.body.style.overflow = 'hidden';
         }
@@ -569,23 +589,31 @@
             document.body.style.overflow = 'auto';
         }
 
-        function navigateGallery(direction) {
-            currentImageIndex += direction;
-            if (currentImageIndex < 0) currentImageIndex = galleryImages.length - 1;
-            else if (currentImageIndex >= galleryImages.length) currentImageIndex = 0;
+        function updateModalImage() {
             document.getElementById('modalImage').src = galleryImages[currentImageIndex];
+            document.getElementById('imageCounter').textContent = `${currentImageIndex + 1} / ${galleryImages.length}`;
+        }
+
+        function nextImage() {
+            currentImageIndex = (currentImageIndex + 1) % galleryImages.length;
+            updateModalImage();
+        }
+
+        function previousImage() {
+            currentImageIndex = (currentImageIndex - 1 + galleryImages.length) % galleryImages.length;
+            updateModalImage();
         }
 
         document.getElementById('galleryModal').addEventListener('click', function (e) {
             if (e.target === this) closeGalleryModal();
         });
 
+        // Keyboard navigation
         document.addEventListener('keydown', function (e) {
-            if (document.getElementById('galleryModal').classList.contains('active')) {
-                if (e.key === 'Escape') closeGalleryModal();
-                else if (e.key === 'ArrowLeft') navigateGallery(-1);
-                else if (e.key === 'ArrowRight') navigateGallery(1);
-            }
+            if (!document.getElementById('galleryModal').classList.contains('active')) return;
+            if (e.key === 'ArrowRight') nextImage();
+            if (e.key === 'ArrowLeft') previousImage();
+            if (e.key === 'Escape') closeGalleryModal();
         });
 
         function contactWhatsApp() {

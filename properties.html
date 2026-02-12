@@ -209,7 +209,7 @@
                     <p class="text-xl text-gray-300 mb-8">Discover exceptional accommodations curated for the discerning traveler</p>
                     <div class="flex flex-wrap gap-4">
                         <div class="bg-white/10 backdrop-blur rounded-lg p-4">
-                            <div class="text-2xl font-bold">50+</div>
+                            <div class="text-2xl font-bold">10</div>
                             <div class="text-gray-300">Properties</div>
                         </div>
                         <div class="bg-white/10 backdrop-blur rounded-lg p-4">
@@ -237,55 +237,6 @@
                                 <button class="md:hidden text-gray-500" id="close-filters">
                                     <i class="fas fa-times"></i>
                                 </button>
-                            </div>
-
-                            <!-- Price Range -->
-                            <div class="mb-6">
-                                <h3 class="font-medium mb-3">Price Range</h3>
-                                <div class="space-y-2">
-                                    <div>
-                                        <input type="range" min="50" max="1000" value="500" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer">
-                                    </div>
-                                    <div class="flex justify-between text-sm text-gray-600">
-                                        <span>$50</span>
-                                        <span>$1000</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Property Type -->
-                            <div class="mb-6">
-                                <h3 class="font-medium mb-3">Property Type</h3>
-                                <div class="space-y-2">
-                                    <label class="flex items-center">
-                                        <input type="checkbox" class="form-checkbox text-primary rounded">
-                                        <span class="ml-2 text-gray-700">Apartments</span>
-                                    </label>
-                                    <label class="flex items-center">
-                                        <input type="checkbox" class="form-checkbox text-primary rounded">
-                                        <span class="ml-2 text-gray-700">Villas</span>
-                                    </label>
-                                    <label class="flex items-center">
-                                        <input type="checkbox" class="form-checkbox text-primary rounded">
-                                        <span class="ml-2 text-gray-700">Studios</span>
-                                    </label>
-                                    <label class="flex items-center">
-                                        <input type="checkbox" class="form-checkbox text-primary rounded">
-                                        <span class="ml-2 text-gray-700">Luxury</span>
-                                    </label>
-                                </div>
-                            </div>
-
-                            <!-- Bedrooms -->
-                            <div class="mb-6">
-                                <h3 class="font-medium mb-3">Bedrooms</h3>
-                                <div class="grid grid-cols-3 gap-2">
-                                    <button class="py-2 px-3 bg-gray-100 text-gray-700 rounded-lg text-sm hover:bg-primary hover:text-white transition-colors">Studio</button>
-                                    <button class="py-2 px-3 bg-gray-100 text-gray-700 rounded-lg text-sm hover:bg-primary hover:text-white transition-colors">1</button>
-                                    <button class="py-2 px-3 bg-gray-100 text-gray-700 rounded-lg text-sm hover:bg-primary hover:text-white transition-colors">2</button>
-                                    <button class="py-2 px-3 bg-gray-100 text-gray-700 rounded-lg text-sm hover:bg-primary hover:text-white transition-colors">3</button>
-                                    <button class="py-2 px-3 bg-gray-100 text-gray-700 rounded-lg text-sm hover:bg-primary hover:text-white transition-colors">4+</button>
-                                </div>
                             </div>
 
                             <!-- Amenities -->
@@ -323,6 +274,34 @@
 
                     <!-- Properties Grid -->
                     <div class="md:w-3/4 lg:w-4/5">
+                        <!-- Search Bar -->
+                        <div class="bg-white p-4 rounded-xl shadow-sm mb-4">
+                            <div class="flex gap-2">
+                                <div class="relative flex-1">
+                                    <input 
+                                        type="text" 
+                                        id="location-search" 
+                                        placeholder="Search by location (e.g., Westlands, Kileleshwa, Kilimani...)"
+                                        class="w-full px-4 py-3 pl-12 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition-colors"
+                                    >
+                                    <i class="fas fa-search absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                                </div>
+                                <button 
+                                    id="search-btn" 
+                                    class="bg-gradient-primary text-white px-6 py-3 rounded-lg font-medium hover:shadow-lg transition-all flex items-center gap-2"
+                                >
+                                    <i class="fas fa-search"></i>
+                                    <span>Search</span>
+                                </button>
+                                <button 
+                                    id="clear-search" 
+                                    class="bg-gray-100 text-gray-600 px-4 py-3 rounded-lg font-medium hover:bg-gray-200 transition-all hidden"
+                                >
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+
                         <!-- Sort and View Options -->
                         <div class="bg-white p-4 rounded-xl shadow-sm mb-6 flex flex-wrap items-center justify-between">
                             <div class="text-gray-700 mb-4 md:mb-0">
@@ -332,12 +311,11 @@
                                 <div class="flex items-center">
                                     <span class="mr-2 text-gray-700">Sort by:</span>
                                     <div class="relative">
-                                        <select class="py-2 pl-3 pr-10 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
-                                            <option>Recommended</option>
-                                            <option>Price: Low to High</option>
-                                            <option>Price: High to Low</option>
-                                            <option>Rating</option>
-                                            <option>Newest</option>
+                                        <select id="sort-select" class="py-2 pl-3 pr-10 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                                            <option value="recommended">Recommended</option>
+                                            <option value="price-low">Price: Low to High</option>
+                                            <option value="price-high">Price: High to Low</option>
+                                            <option value="rating">Rating</option>
                                         </select>
                                     </div>
                                 </div>
@@ -350,7 +328,7 @@
                         <!-- Properties Grid -->
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="properties-grid">
                             <!-- Property Card 1 - Cijana Garden Apartment -->
-                            <div class="property-card bg-white rounded-xl overflow-hidden shadow-md" data-page="1">
+                            <div class="property-card bg-white rounded-xl overflow-hidden shadow-md" data-price="4500" data-rating="4.9" data-page="1" data-location="westlands">
                                 <div class="property-image relative">
                                     <img src="assets/WLX2---uo4hJmUHwx2HKZ1-P7lSDD73EacfDTFNQrCY=_plaintext_638917516735025036.jpg" alt="Cijana Garden Apartment">
                                     <div class="absolute top-4 left-4">
@@ -424,9 +402,9 @@
                             </div>
 
                             <!-- Property Card 2 - Siaya Park Apartment -->
-                            <div class="property-card bg-white rounded-xl overflow-hidden shadow-md" data-page="1">
+                            <div class="property-card bg-white rounded-xl overflow-hidden shadow-md" data-price="7000" data-rating="4.8" data-page="1" data-location="kileleshwa">
                                 <div class="property-image relative">
-                                    <img src="assets/W6Mcpm7w0T6UpvvrKf0yOoSaK1tIoFDFyq4WpSSECMo=_plaintext_638917517300168966.jpg" alt="Siaya Park Apartment">
+                                    <img src="assets\wetransfer_kileleshwa-2-bedroom-siaya-park_2026-01-19_1610\Proffessional\1.jpg" alt="Siaya Park Apartment">
                                     <div class="absolute top-4 left-4">
                                         <span class="bg-primary text-white px-3 py-1 rounded-full text-xs font-medium">Featured</span>
                                     </div>
@@ -498,7 +476,7 @@
                             </div>
 
                             <!-- Property Card 3 - Adorn Homes Apartment -->
-                            <div class="property-card bg-white rounded-xl overflow-hidden shadow-md" data-page="1">
+                            <div class="property-card bg-white rounded-xl overflow-hidden shadow-md" data-price="5000" data-rating="4.8" data-page="1" data-location="kileleshwa">
                                 <div class="property-image relative">
                                     <img src="assets/x4QVkBXF4YexAjxtnsJDsdSs8qUObo-ATbq4F2QqVe8=_plaintext_638917517820641763.jpg" alt="Cozy 1-Bedroom in Kileleshwa">
                                     <div class="absolute top-4 right-4">
@@ -569,7 +547,7 @@
                             </div>
 
                             <!-- Property Card 4 - Valley Heights Apartment -->
-                            <div class="property-card bg-white rounded-xl overflow-hidden shadow-md" data-page="1">
+                            <div class="property-card bg-white rounded-xl overflow-hidden shadow-md" data-price="4000" data-rating="4.7" data-page="1" data-location="kilimani">
                                 <div class="property-image relative">
                                     <img src="assets/16I5VXgzM8hHSHl1-EH4ITTtF-Y_Q1dxLYt4iu44Gio=_plaintext_638917518845609081.jpg" alt="Valley Heights Apartment">
                                     <div class="absolute top-4 right-4">
@@ -631,7 +609,7 @@
                             </div>
 
                             <!-- Property Card 5 - The Haven -->
-                            <div class="property-card bg-white rounded-xl overflow-hidden shadow-md" data-page="1">
+                            <div class="property-card bg-white rounded-xl overflow-hidden shadow-md" data-price="4000" data-rating="4.8" data-page="1" data-location="kilimani">
                                 <div class="property-image relative">
                                     <img src="assets/1Hs9pBNp9ITdezhZFFCE2QL3y-PF3HyStWO9MtwFD5s=_plaintext_638917517840719847.jpg" alt="The Haven">
                                     <div class="absolute top-4 right-4">
@@ -693,7 +671,7 @@
                             </div>
 
                             <!-- Property Card 6 - Exquisite Studio in South B -->
-                            <div class="property-card bg-white rounded-xl overflow-hidden shadow-md" data-page="2">
+                            <div class="property-card bg-white rounded-xl overflow-hidden shadow-md" data-price="2500" data-rating="4.7" data-page="2" data-location="south b">
                                 <div class="property-image relative">
                                     <img src="assets/1PPUn-qpuYUzYDfDpDPYu2cEbOpPdU4B4aYYjJXaFzU=_plaintext_638917516800254939.jpg" alt="Exquisite Studio in South B">
                                     <div class="absolute top-4 right-4">
@@ -755,7 +733,7 @@
                             </div>
 
                             <!-- Property Card 7 - Stylish & Spacious South B Studio -->
-                            <div class="property-card bg-white rounded-xl overflow-hidden shadow-md" data-page="2">
+                            <div class="property-card bg-white rounded-xl overflow-hidden shadow-md" data-price="2500" data-rating="4.8" data-page="2" data-location="south b">
                                 <div class="property-image relative">
                                     <img src="assets/UV7Jw5V39WEx2vbVzv4aiSHnrHyV-fSF-QXTRjbxP-8=_plaintext_638917516750029028.jpg" alt="Stylish & Spacious South B Studio">
                                     <div class="absolute top-4 right-4">
@@ -817,7 +795,7 @@
                             </div>
 
                             <!-- Property Card 8 - The Manna Condo -->
-                            <div class="property-card bg-white rounded-xl overflow-hidden shadow-md" data-page="2">
+                            <div class="property-card bg-white rounded-xl overflow-hidden shadow-md" data-price="3000" data-rating="4.9" data-page="2" data-location="south b">
                                 <div class="property-image relative">
                                     <img src="assets/zIao40VB9oR5Ut3a1GnsplJkaBkIRbaX0yE7TYjda5E=_plaintext_638917516808034734.jpg" alt="The Manna Condo">
                                     <div class="absolute top-4 right-4">
@@ -879,7 +857,7 @@
                             </div>
 
                             <!-- Property Card 9 - The Manna Place - Studio -->
-                            <div class="property-card bg-white rounded-xl overflow-hidden shadow-md" data-page="2">
+                            <div class="property-card bg-white rounded-xl overflow-hidden shadow-md" data-price="2500" data-rating="4.7" data-page="2" data-location="south b">
                                 <div class="property-image relative">
                                     <img src="assets/rnb6tX61flLCW6QY7dVnvZD_KsIZ1NiEMhwGe86bSnc=_plaintext_638917518844958067.jpg" alt="The Manna Place - Studio">
                                     <div class="absolute top-4 right-4">
@@ -941,7 +919,7 @@
                             </div>
 
                             <!-- Property Card 10 - The Stadeview Suite Studio -->
-                            <div class="property-card bg-white rounded-xl overflow-hidden shadow-md" data-page="2">
+                            <div class="property-card bg-white rounded-xl overflow-hidden shadow-md" data-price="3000" data-rating="4.8" data-page="2" data-location="nairobi west">
                                 <div class="property-image relative">
                                     <img src="assets/WLX2---uo4hJmUHwx2HKZ1-P7lSDD73EacfDTFNQrCY=_plaintext_638917516735025036.jpg" alt="The Stadeview Suite Studio">
                                     <div class="absolute top-4 left-4">
@@ -1176,11 +1154,202 @@
             });
         });
 
-        // Pagination functionality
+        // Pagination variables
         let currentPage = 1;
         const propertiesPerPage = 5;
         const totalProperties = 10;
         const totalPages = Math.ceil(totalProperties / propertiesPerPage);
+        let filteredProperties = [];
+        let isFiltering = false;
+
+        // Location search functionality
+        const locationSearch = document.getElementById('location-search');
+        const searchBtn = document.getElementById('search-btn');
+        const clearSearchBtn = document.getElementById('clear-search');
+        const showingStart = document.getElementById('showing-start');
+        const showingEnd = document.getElementById('showing-end');
+
+        // Show/hide clear button when typing
+        locationSearch.addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase().trim();
+            
+            if (searchTerm) {
+                clearSearchBtn.classList.remove('hidden');
+            } else {
+                clearSearchBtn.classList.add('hidden');
+            }
+        });
+
+        // Search button click event
+        searchBtn.addEventListener('click', function() {
+            filterProperties();
+        });
+
+        // Allow Enter key to trigger search
+        locationSearch.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                filterProperties();
+            }
+        });
+
+        clearSearchBtn.addEventListener('click', function() {
+            locationSearch.value = '';
+            clearSearchBtn.classList.add('hidden');
+            filterProperties();
+        });
+
+        function filterProperties() {
+            const searchTerm = locationSearch.value.toLowerCase().trim();
+            const allProperties = Array.from(document.querySelectorAll('.property-card'));
+
+            if (!searchTerm) {
+                // Show all properties
+                isFiltering = false;
+                filteredProperties = [];
+                allProperties.forEach(prop => prop.style.display = 'block');
+                
+                // Update count display
+                const countElement = document.querySelector('.text-gray-700.mb-4');
+                countElement.innerHTML = `Showing <span id="showing-start" class="font-semibold">1</span>-<span id="showing-end" class="font-semibold">5</span> of <span class="font-semibold">10</span> properties across Nairobi`;
+                
+                // Restore pagination
+                currentPage = 1;
+                showPage(1);
+                return;
+            }
+
+            // Filter properties by location
+            isFiltering = true;
+            filteredProperties = allProperties.filter(prop => {
+                const location = prop.dataset.location || '';
+                return location.includes(searchTerm);
+            });
+
+            // Hide all properties first
+            allProperties.forEach(prop => prop.style.display = 'none');
+
+            // Show filtered properties
+            if (filteredProperties.length > 0) {
+                // Reassign page numbers for filtered results
+                filteredProperties.forEach((prop, index) => {
+                    prop.style.display = 'block';
+                    const newPage = Math.ceil((index + 1) / propertiesPerPage);
+                    prop.dataset.page = newPage;
+                });
+
+                // Update count display
+                const totalFiltered = filteredProperties.length;
+                const endCount = Math.min(propertiesPerPage, totalFiltered);
+                const countElement = document.querySelector('.text-gray-700.mb-4');
+                countElement.innerHTML = `Showing <span id="showing-start" class="font-semibold">1</span>-<span id="showing-end" class="font-semibold">${endCount}</span> of <span class="font-semibold">${totalFiltered}</span> properties`;
+
+                // Reset to page 1 and show filtered results
+                currentPage = 1;
+                showFilteredPage(1);
+            } else {
+                // No results found
+                const countElement = document.querySelector('.text-gray-700.mb-4');
+                countElement.innerHTML = 'No properties found for this location';
+                
+                // Hide pagination
+                document.getElementById('pagination').style.display = 'none';
+            }
+        }
+
+        function showFilteredPage(page) {
+            const totalFiltered = filteredProperties.length;
+            const totalFilteredPages = Math.ceil(totalFiltered / propertiesPerPage);
+
+            // Hide all properties
+            filteredProperties.forEach(prop => prop.style.display = 'none');
+
+            // Show properties for current page
+            const startIndex = (page - 1) * propertiesPerPage;
+            const endIndex = Math.min(startIndex + propertiesPerPage, totalFiltered);
+
+            for (let i = startIndex; i < endIndex; i++) {
+                filteredProperties[i].style.display = 'block';
+            }
+
+            // Update pagination buttons
+            document.querySelectorAll('.page-btn').forEach(btn => {
+                btn.classList.remove('bg-primary', 'text-white');
+                btn.classList.add('bg-gray-100', 'text-gray-600');
+            });
+
+            // Update showing count
+            const showingStart = document.getElementById('showing-start');
+            const showingEnd = document.getElementById('showing-end');
+            if (showingStart && showingEnd) {
+                showingStart.textContent = startIndex + 1;
+                showingEnd.textContent = endIndex;
+            }
+
+            // Update pagination visibility
+            const pagination = document.getElementById('pagination');
+            if (totalFilteredPages <= 1) {
+                pagination.style.display = 'none';
+            } else {
+                pagination.style.display = 'flex';
+            }
+
+            // Update prev/next buttons
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            prevBtn.disabled = page === 1;
+            nextBtn.disabled = page >= totalFilteredPages;
+        }
+
+        // Sort functionality
+        const sortSelect = document.getElementById('sort-select');
+        const propertiesGrid = document.getElementById('properties-grid');
+
+        sortSelect.addEventListener('change', function() {
+            const sortValue = this.value;
+            let properties;
+            
+            // Sort either all properties or filtered properties
+            if (isFiltering && filteredProperties.length > 0) {
+                properties = filteredProperties;
+            } else {
+                properties = Array.from(document.querySelectorAll('.property-card'));
+            }
+
+            properties.sort((a, b) => {
+                switch(sortValue) {
+                    case 'price-low':
+                        return parseFloat(a.dataset.price) - parseFloat(b.dataset.price);
+                    case 'price-high':
+                        return parseFloat(b.dataset.price) - parseFloat(a.dataset.price);
+                    case 'rating':
+                        return parseFloat(b.dataset.rating) - parseFloat(a.dataset.rating);
+                    case 'recommended':
+                    default:
+                        return 0; // Keep original order
+                }
+            });
+
+            // Re-append sorted properties to the grid and reassign page numbers
+            properties.forEach((property, index) => {
+                propertiesGrid.appendChild(property);
+                // Reassign page numbers based on new order
+                const newPage = Math.ceil((index + 1) / propertiesPerPage);
+                property.dataset.page = newPage;
+            });
+
+            // Update filtered properties if filtering
+            if (isFiltering) {
+                filteredProperties = properties;
+                showFilteredPage(currentPage);
+            } else {
+                // After sorting, re-apply pagination
+                if (typeof showPage !== 'undefined') {
+                    showPage(currentPage);
+                }
+            }
+        });
+
+        // Pagination functionality
 
         function showPage(page) {
             // Hide all properties
@@ -1198,8 +1367,11 @@
                 btn.classList.remove('bg-primary', 'text-white');
                 btn.classList.add('bg-gray-100', 'text-gray-600');
             });
-            document.querySelector(`.page-btn[data-page="${page}"]`).classList.remove('bg-gray-100', 'text-gray-600');
-            document.querySelector(`.page-btn[data-page="${page}"]`).classList.add('bg-primary', 'text-white');
+            const activeBtn = document.querySelector(`.page-btn[data-page="${page}"]`);
+            if (activeBtn) {
+                activeBtn.classList.remove('bg-gray-100', 'text-gray-600');
+                activeBtn.classList.add('bg-primary', 'text-white');
+            }
 
             // Update prev/next buttons
             const prevBtn = document.getElementById('prev-btn');
@@ -1222,16 +1394,33 @@
         }
 
         function goToPage(page) {
-            if (page >= 1 && page <= totalPages) {
-                currentPage = page;
-                showPage(currentPage);
+            if (isFiltering) {
+                const totalFiltered = filteredProperties.length;
+                const totalFilteredPages = Math.ceil(totalFiltered / propertiesPerPage);
+                if (page >= 1 && page <= totalFilteredPages) {
+                    currentPage = page;
+                    showFilteredPage(currentPage);
+                }
+            } else {
+                if (page >= 1 && page <= totalPages) {
+                    currentPage = page;
+                    showPage(currentPage);
+                }
             }
         }
 
         function changePage(direction) {
             const newPage = currentPage + direction;
-            if (newPage >= 1 && newPage <= totalPages) {
-                goToPage(newPage);
+            if (isFiltering) {
+                const totalFiltered = filteredProperties.length;
+                const totalFilteredPages = Math.ceil(totalFiltered / propertiesPerPage);
+                if (newPage >= 1 && newPage <= totalFilteredPages) {
+                    goToPage(newPage);
+                }
+            } else {
+                if (newPage >= 1 && newPage <= totalPages) {
+                    goToPage(newPage);
+                }
             }
         }
 
